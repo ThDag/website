@@ -1,0 +1,33 @@
+.inputs {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 0px;
+  font-size: 20px;
+  display: block;
+
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(150, 150, 150);
+  border-radius: 10px;
+
+  background-image: url('images/cursor.jpg');
+  background-position: 7px center;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+
+  padding: 10px 3px 10px 40px;
+
+  transition: width .3s ease-in-out,
+    padding-right .3s ease-in-out;
+}
+
+.inputs:focus {
+  background-color: #f1f1f1;
+  border-color: rgb(130, 130, 130);
+  outline: none;
+  width: 200px;
+  padding-right: 10px;
+}
+
+

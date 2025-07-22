@@ -1,0 +1,236 @@
+table,
+th,
+td,
+tr,
+caption {
+  border: 1px solid #333;
+  font-family: "Courier New", Courier, monospace;
+  border-collapse: collapse;
+  padding: 0.5rem;
+}
+
+* {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0px;
+  font-family: "Times New Roman", Times, serif;
+  background-color: #432818;
+  color: #3a1e00;
+}
+
+main {
+  display: flex;
+}
+
+#body {
+  flex: 1; /* tells flex to fill rest of the screen width */
+  margin: 0px 0px 10px 10px;
+  padding: 10px 20px 20px 20px;
+  min-height: 100vh; /* fill the page when the content is smaller than the screen */
+
+  background-image: url(images/chess/woodMono.jpg);
+  background-blend-mode: multiply;
+  background-size: 50%;
+  background-color: #99582a;
+
+  border: 10px solid #62381b;
+  border-radius: 20px 0px 0px 20px;
+  border-right: none;
+  box-shadow: inset 0 0 10px #000;
+}
+
+footer {
+  flex: 1; /* tells flex to fill rest of the screen width */
+  height: 40px;
+  margin: 5px 10px 5px 10px;
+  color: white;
+  text-align: center;
+}
+
+.navbar {
+  color: fartbrown;
+  width: 256px;
+  flex: 0 0 256px; /* tells flex its width because it doesn't care about the [width]. and the 0 0 tells; don't shrink, don't expand */
+
+  background-image: url(images/chess/woodMono.jpg);
+  background-blend-mode: multiply;
+  background-size: 100%;
+  background-color: #bb9457;
+
+  margin: 0px 10px 10px 0px;
+  padding: 30px 10px 10px 10px;
+  min-height: 100vh; /* fill the page when the content is smaller than the screen */
+  border: 10px solid #7b431a;
+  border-radius: 0px 20px 20px 0px;
+  border-left: none;
+  box-shadow: inset 0 0 10px #000;
+}
+
+header {
+  margin: 0;
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#logo {
+  width: 280px;
+  margin: 0px 0px -30px -10px;
+}
+
+#standingChessPieces {
+  width: 300px;
+  align-self: flex-end; /* stops it from stretching to fill the space */
+  margin: -45px 100px;
+}
+
+.topic h2 {
+  background-color: #813907;
+  color: #ecbd71;
+  box-shadow: 0px 0px 20px #432006;
+  border-radius: 5px;
+
+  padding: 5px;
+  display: inline-block;
+  margin-bottom: -10px;
+  margin-left: 5px;
+  margin-right: -10000px; /* removes the clickable area of the margin so it doesn't get inside the h2 above it.  */
+
+  cursor: pointer;
+}
+
+summary::marker {
+  color: #ecbd71;
+}
+
+/* .topic p {
+  margin: 0;
+  padding: 15px;
+  background-color: #ffe6a7;
+} */
+
+.topicBody {
+  margin: 0;
+  padding: 1px 15px 15px 15px;
+  background-color: #ecbd71;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px #432006;
+}
+
+#background {
+  width: 100%;
+  margin-top: -200px;
+}
+
+.topic h3 {
+  /* background-color: #bb9457; */
+  background-color: #813907;
+  color: #ecbd71;
+  box-shadow: 0px 0px 10px #432006;
+  display: inline-block;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* slight emphysis on en passant */
+#enPassant {
+  border: #4b1900 solid 2px;
+}
+
+.topic h4 {
+  text-decoration: underline;
+}
+
+hr {
+  height: 3px;
+  background-color: #333;
+  border: none;
+}
+
+/* the container the buttons are located at */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */ /* another way to center the buttons but i use "auto" for left & right margins for each button instead */
+}
+
+.button {
+  box-sizing: border-box;
+
+  /* aligning the text in the center */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 240px;
+  height: 50px;
+  margin: 5px auto;
+
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+  background-color: #ffe6a7;
+  border: 7px solid #99582a;
+  font-size: 1.5rem;
+  text-decoration: none;
+
+  background-image: url("images/chess/woodMono.jpg");
+  background-blend-mode: multiply;
+  background-size: 145%;
+  background-position: center;
+
+  box-shadow: 0 0 4px #000;
+}
+
+.button:active {
+  box-shadow: 0 0 4px #000, 0 0 4px inset #000;
+  font-size: 1.4rem;
+  background-size: 140%;
+}
+
+#selectedButton {
+  background-color: #753e16;
+  border-color: #411808;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin-top: 10px;
+  border: 5px solid #3a1e00;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1.2rem;
+}
+
+input,
+select,
+textarea {
+  font-size: 0.8em;
+  height: 1.5em;
+  border: 2px solid #995829;
+  border-radius: 5px;
+}
+
+form .button {
+  margin-top: 15px;
+  font-size: 1em;
+  border-radius: 20px;
+  width: 150px;
+}
+
+form .button:active {
+  font-size: 0.95em;
+}
+
+label {
+  margin: 10px 0px 1px 0px;
+}
+
+.radioGroup {
+  display: flex;
+  align-items: center; /* without this the checkbox thing is slightly above where it should be idk why */
+}
