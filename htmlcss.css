@@ -1,14 +1,42 @@
+html {
+  color: #d9c59f;
+  background-color: #000; /* makes dark theme */
+}
+
 p {
   font-size: 1.5rem;
 }
 
 .lebron {
   width: 300px;
-  border: 3px solid #333;
+  height: 300px;
+  box-shadow: 0 0 20px 20px #fff;
+}
+
+.blackAvatar {
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 0 20px 20px #665445;
 }
 
 .floatLeft {
   float: left;
-  margin-right: 1em;
+  margin: 2em 2em 2em 0em;
 }
 
+.floatRight {
+  float: right;
+  margin: 2em 0em 2em 2em;
+}
+
+.clearBoth {
+  clear: both; /* makes the text not wrap around float image. */
+}
+
+.clearLeft {
+  clear: left; /* makes the text not wrap around float images on the left */
+}
+
+.clearRight {
+  clear: right; /* makes the text not wrap around float images on the right */
+}

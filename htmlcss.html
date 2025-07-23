@@ -6,19 +6,56 @@
     <link rel="stylesheet" href="htmlcss.css" />
   </head>
   <body>
-    <!-- this website is for demostrating all the different types of features elements properties and stuff with html and css. and learning them along the way. -->
+    <section class="floats">
+      <!-- this website is for demostrating all the different types of features elements properties and stuff with html and css. and learning them along the way. -->
 
-    <h1>Floats</h1>
-    <img
-      class="lebron floatLeft"
-      src="images/sunshine_lebron.gif"
-      alt="lebron james"
-    />
-    <p>
-      floats are basically like images in newspapers, the text and other
-      elements wrap around them. they are like ghosts and only the elements you
-      tell can shape around it for others it doesn't exist, only visually to us.
-      it should only be used for wrapping text around images, not for layouts.
-    </p>
+      <h1>Floats</h1>
+      <img
+        class="lebron floatLeft"
+        src="images/sunshine_lebron.gif"
+        alt="lebron james"
+        title="lebron james"
+      />
+      <p>
+        floats are basically like images in newspapers, the text and other
+        elements wrap around them. they are like ghosts and only the elements
+        you tell can shape around it for others it doesn't exist, only visually
+        to us. it should only be used for wrapping text around images, not for
+        layouts.
+      </p>
+
+      <img
+        class="blackAvatar floatRight"
+        src="images/black_avatar.jpg"
+        alt="a black avatar looking dude"
+        title="a black avatar looking dude"
+      />
+
+      <p>
+        <span
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+          accusamus odio pariatur optio provident nihil odit? Quam aperiam
+          commodi soluta deserunt harum enim dignissimos, libero, molestias
+          mollitia sequi qui omnis.
+        </span>
+        <span>
+          Commodi adipisci molestias quae porro tempora molestiae odio dolores
+          repudiandae laboriosam modi eos explicabo quis, totam deleniti, vitae
+          sequi minus ea hic repellat debitis. Laudantium nam id possimus
+          provident architecto!
+        </span>
+        <span>
+          Aut reiciendis aliquam esse iste aspernatur obcaecati, dolorum
+        </span>
+      </p>
+
+      <div class="clearBoth"></div>
+      <!-- the clearboth is seperate because if you make the paragraph clearboth; the margins aren't respected. (it doesn't matter in this case because the margin comes from the float image but still for consistence)-->
+      <p>
+        now this paragraph is not wraping around mr lebron or the other dude
+        here because it has clear property as <i>both</i>. So it says; Hey man
+        you clear you don't have to be wrapped what so ever, have a nice day.
+      </p>
+    </section>
   </body>
 </html>
