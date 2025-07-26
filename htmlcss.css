@@ -1,22 +1,51 @@
-html {
-  color: #d9c59f;
-  background-color: #000; /* makes dark theme */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.floats {
+  color: #d9c59f; /* makes dark theme */
+  background-color: #877c7c;
+  background-image: url("images/background/droplets_mirror.png");
+  background-blend-mode: multiply;
+  background-size: 100%;
+  background-repeat: repeat-y;
+  /* the bottom of the page not having background is intended. there will be different sections with different background. (for full page background, move it to body element) */
+
+  overflow: hidden;
 }
 
 p {
   font-size: 1.5rem;
 }
 
+h2 > p {
+  text-align: center;
+  border: solid 5px blue;
+  border-radius: 10px;
+  width: max-content;
+  margin: auto;
+  padding: 5px;
+  background-color: #c71818;
+}
+
 .lebron {
   width: 300px;
   height: 300px;
   box-shadow: 0 0 20px 20px #fff;
+  border-radius: 20px;
 }
 
 .blackAvatar {
   width: 300px;
   height: 300px;
   box-shadow: 0 0 20px 20px #665445;
+  border-radius: 20px;
+}
+
+.blueText {
+  color: rgb(56, 103, 255);
+  text-decoration: underline rgb(56, 103, 255);
 }
 
 .floatLeft {
