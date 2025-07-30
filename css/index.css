@@ -2,3 +2,18 @@ body {
   margin: 0;
   padding: 0;
 }
+
+body {
+  font-family: sans-serif;
+  font-size: 1.2rem; /* scales with device */
+  margin: 1rem;
+}
+
+h1 {
+  font-size: 64px;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+}

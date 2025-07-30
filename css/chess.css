@@ -31,7 +31,7 @@ main {
   padding: 10px 20px 20px 20px;
   min-height: 100vh; /* fill the page when the content is smaller than the screen */
 
-  background-image: url(images/chess/woodMono.jpg);
+  background-image: url(../images/chess/woodMono.jpg);
   background-blend-mode: multiply;
   background-size: 50%;
   background-color: #99582a;
@@ -55,7 +55,7 @@ footer {
   width: 256px;
   flex: 0 0 256px; /* tells flex its width because it doesn't care about the [width]. and the 0 0 tells; don't shrink, don't expand */
 
-  background-image: url(images/chess/woodMono.jpg);
+  background-image: url(../images/chess/woodMono.jpg);
   background-blend-mode: multiply;
   background-size: 100%;
   background-color: #bb9457;
@@ -177,7 +177,7 @@ hr {
   font-size: 1.5rem;
   text-decoration: none;
 
-  background-image: url("images/chess/woodMono.jpg");
+  background-image: url("../images/chess/woodMono.jpg");
   background-blend-mode: multiply;
   background-size: 145%;
   background-position: center;

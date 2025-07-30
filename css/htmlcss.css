@@ -8,7 +8,7 @@ body {
 .floats {
   color: #d9c59f; /* makes dark theme */
   background-color: #877c7c;
-  background-image: url("images/background/droplets_mirror.png");
+  background-image: url("../images/background/droplets_mirror.png");
   background-blend-mode: multiply;
   background-size: 100%;
   background-repeat: repeat-y;
@@ -56,7 +56,7 @@ p {
   padding: 10px;
 
   font-family: "Archivo Black", sans-serif;
-  background-image: url("images/background/clouds_blue.jpg");
+  background-image: url("../images/background/clouds_blue.jpg");
   background-repeat: repeat-y;
   background-size: 100%;
 }
