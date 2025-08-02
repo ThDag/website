@@ -63,10 +63,19 @@ p {
 
 .columns h2 {
   text-align: center;
+  font-size: 3em;
+  margin: 1rem 0;
 }
 
 .columnsMain {
   columns: 3 300px; /* 3 columns with minimum of 300px each if not, it will lower column number */
+}
+
+.columnImage {
+  width: 80%;
+  display: block;
+  margin: auto;
+  border-radius: 20px;
 }
 
 .floatLeft {
