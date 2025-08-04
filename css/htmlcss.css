@@ -5,6 +5,20 @@ body {
   padding: 0;
 }
 
+/* //////////////////////////////////// */
+
+.blueText {
+  color: rgb(56, 103, 255);
+  text-decoration: underline rgb(56, 103, 255);
+}
+
+.cursive {
+  font-family: "Brush Script MT", cursive;
+  font-size: 1.2em;
+}
+
+/* //////////////////////////////////// */
+
 .floats {
   color: #d9c59f; /* makes dark theme */
   background-color: #877c7c;
@@ -33,49 +47,23 @@ p {
 }
 
 .lebron {
-  width: 300px;
-  height: 300px;
+  /* width: 25vw;
+  height: 25vw; */
+  width: clamp(
+    200px,
+    25vw,
+    800px
+  ); /* it will follow 25vw until but will not be smaller than 200px */
   box-shadow: 0 0 20px 20px #fff;
   border-radius: 20px;
 }
 
 .blackAvatar {
-  width: 300px;
-  height: 300px;
+  /* width: 25vw;
+  height: 25vw; */
+  width: clamp(200px, 25vw, 800px);
   box-shadow: 0 0 20px 20px #665445;
-  border-radius: 20px;
-}
-
-.blueText {
-  color: rgb(56, 103, 255);
-  text-decoration: underline rgb(56, 103, 255);
-}
-
-.columns {
-  overflow: hidden;
-  padding: 10px;
-
-  font-family: "Archivo Black", sans-serif;
-  background-image: url("../images/background/clouds_blue.jpg");
-  background-repeat: repeat-y;
-  background-size: 100%;
-}
-
-.columns h2 {
-  text-align: center;
-  font-size: 3em;
-  margin: 1rem 0;
-}
-
-.columnsMain {
-  columns: 3 300px; /* 3 columns with minimum of 300px each if not, it will lower column number */
-}
-
-.columnImage {
-  width: 80%;
-  display: block;
-  margin: auto;
-  border-radius: 20px;
+  border-radius: 1em;
 }
 
 .floatLeft {
@@ -98,4 +86,39 @@ p {
 
 .clearRight {
   clear: right; /* makes the text not wrap around float images on the right */
+}
+
+/* //////////////////////////////////// */
+
+.columns {
+  overflow: hidden;
+  padding: 10px;
+
+  font-family: "Archivo Black", sans-serif;
+  background-image: url("../images/background/clouds_blue.jpg");
+  background-repeat: repeat-y;
+  background-size: 100%;
+}
+
+.columns h2 {
+  text-align: center;
+  font-size: 3em;
+  margin: 1rem 0;
+  background-color: #c71818;
+  border-radius: 10px;
+}
+
+ul {
+  font-size: 1em;
+}
+
+.columnsMain {
+  columns: 3 300px; /* 3 columns with minimum of 300px each if not, it will lower column number */
+}
+
+.columnImage {
+  width: 80%;
+  display: block;
+  margin: auto;
+  border-radius: 20px;
 }
