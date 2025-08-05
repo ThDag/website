@@ -17,6 +17,20 @@ body {
   font-size: 1.2em;
 }
 
+.roman {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+.redText {
+  color: #c71818;
+}
+
+.borderPurple {
+  border: dashed #8f16da 6px;
+  border-radius: 12px;
+}
+
 /* //////////////////////////////////// */
 
 .floats {
@@ -109,11 +123,12 @@ p {
 }
 
 ul {
-  font-size: 1em;
+  font-size: 1.3em;
 }
 
 .columnsMain {
   columns: 3 300px; /* 3 columns with minimum of 300px each if not, it will lower column number */
+  column-rule: 5px solid#1657da;
 }
 
 .columnImage {
