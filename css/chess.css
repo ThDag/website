@@ -26,10 +26,12 @@ main {
 }
 
 #body {
-  flex: 1; /* tells flex to fill rest of the screen width */
+  flex: 1;
+  /* tells flex to fill rest of the screen width */
   margin: 0px 0px 10px 10px;
   padding: 10px 20px 20px 20px;
-  min-height: 100vh; /* fill the page when the content is smaller than the screen */
+  min-height: 100vh;
+  /* fill the page when the content is smaller than the screen */
 
   background-image: url(../images/chess/woodMono.jpg);
   background-blend-mode: multiply;
@@ -43,7 +45,8 @@ main {
 }
 
 footer {
-  flex: 1; /* tells flex to fill rest of the screen width */
+  flex: 1;
+  /* tells flex to fill rest of the screen width */
   height: 40px;
   margin: 5px 10px 5px 10px;
   color: white;
@@ -53,7 +56,8 @@ footer {
 .navbar {
   color: fartbrown;
   width: 256px;
-  flex: 0 0 256px; /* tells flex its width because it doesn't care about the [width]. and the 0 0 tells; don't shrink, don't expand */
+  flex: 0 0 256px;
+  /* tells flex its width because it doesn't care about the [width]. and the 0 0 tells; don't shrink, don't expand */
 
   background-image: url(../images/chess/woodMono.jpg);
   background-blend-mode: multiply;
@@ -62,7 +66,8 @@ footer {
 
   margin: 0px 10px 10px 0px;
   padding: 30px 10px 10px 10px;
-  min-height: 100vh; /* fill the page when the content is smaller than the screen */
+  min-height: 100vh;
+  /* fill the page when the content is smaller than the screen */
   border: 10px solid #7b431a;
   border-radius: 0px 20px 20px 0px;
   border-left: none;
@@ -83,7 +88,8 @@ header {
 
 #standingChessPieces {
   width: 300px;
-  align-self: flex-end; /* stops it from stretching to fill the space */
+  align-self: flex-end;
+  /* stops it from stretching to fill the space */
   margin: -45px 100px;
 }
 
@@ -97,7 +103,8 @@ header {
   display: inline-block;
   margin-bottom: -10px;
   margin-left: 5px;
-  margin-right: -10000px; /* removes the clickable area of the margin so it doesn't get inside the h2 above it.  */
+  margin-right: -10000px;
+  /* removes the clickable area of the margin so it doesn't get inside the h2 above it.  */
 
   cursor: pointer;
 }
@@ -155,7 +162,8 @@ hr {
 .buttons {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */ /* another way to center the buttons but i use "auto" for left & right margins for each button instead */
+  /* align-items: center; */
+  /* another way to center the buttons but i use "auto" for left & right margins for each button instead */
 }
 
 .button {
@@ -195,6 +203,7 @@ hr {
   background-color: #753e16;
   border-color: #411808;
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -232,5 +241,6 @@ label {
 
 .radioGroup {
   display: flex;
-  align-items: center; /* without this the checkbox thing is slightly above where it should be idk why */
+  align-items: center;
+  /* without this the checkbox thing is slightly above where it should be idk why */
 }

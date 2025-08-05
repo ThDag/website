@@ -1,351 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Chess Learning Website</title>
-    <link rel="icon" href="images/chess/chess_icon.jpg" type="image/x-icon" />
-    <link rel="stylesheet" href="css/chess.css" />
-  </head>
-  <body>
-    <header>
-      <a href="chess.html">
-        <img
-          id="logo"
-          src="images/chess/chees_logo.png"
-          alt="chess logo"
-          title="it's not a bug, it's a feature"
-          width="200" />
-      </a>
-      <img
-        id="standingChessPieces"
-        src="images/chess/chessPiecesInARow.png"
-        alt="chess pieces"
-        title="looks great right?" />
-    </header>
-    <!-- 
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Chess Learning Website</title>
+  <link rel="icon" href="images/chess/chess_icon.jpg" type="image/x-icon" />
+  <link rel="stylesheet" href="css/chess.css" />
+</head>
+
+<body>
+  <header>
+    <a href="chess.html">
+      <img id="logo" src="images/chess/chees_logo.png" alt="chess logo" title="it's not a bug, it's a feature"
+        width="200" />
+    </a>
+    <img id="standingChessPieces" src="images/chess/chessPiecesInARow.png" alt="chess pieces"
+      title="looks great right?" />
+  </header>
+  <!-- 
     can't get it to look good, can't find the design to have a background image
     <img
       id="background"
       src="images/chess/chessWallpaperRetro.png"
       alt="background chess"
     /> -->
-    <main>
-      <aside class="navbar">
-        <div class="buttons">
-          <a href="chess.html" class="button" id="selectedButton">Homepage</a>
-          <a href="" class="button">Play</a>
-          <a href="" class="button">Tactics</a>
-          <a href="chessForm.html" class="button">Chess Form</a>
-          <a href="" class="button">About me</a>
+  <main>
+    <aside class="navbar">
+      <div class="buttons">
+        <a href="chess.html" class="button" id="selectedButton">Homepage</a>
+        <a href="" class="button">Play</a>
+        <a href="" class="button">Tactics</a>
+        <a href="chessForm.html" class="button">Chess Form</a>
+        <a href="" class="button">About me</a>
+      </div>
+    </aside>
+    <section id="body">
+      <sectionfjds class="topic">
+        <details open>
+          <summary>
+            <h2>What <em>is</em> Chess?</h2>
+          </summary>
+          <div class="topicBody">
+            <p>
+              chess is a game that has been played for more than a thousand
+              year. chess games played has changed the trajectory of history,
+              caused empires to fall and defined peoples lives. it is based
+              purely on strategy with no aspect of luck. It is played by two
+              players, making moves in turns. both side has 16 pieces on a 8x8
+              board. The side with white pieces move first and can move any
+              piece among 6 unique pieces on the board. both sides attack
+              other sides piece and most importantly their king. first person
+              to be able to capture opponents king wins.
+            </p>
+          </div>
+        </details>
+    </section>
+    <section class="topic">
+      <details open>
+        <summary>
+          <h2>The Rules</h2>
+        </summary>
+        <div class="topicBody">
+          <p>
+            Chess is a complex game yet its easy to grasp once learned the
+            fundamental rules. The side with white pieces start first and
+            can do any <a href="#illegalMoves">legal moves</a>. then one by
+            one each side does moves.
+          </p>
+          <details open>
+            <summary>
+              <h3 id="enPassant">En Passant</h3>
+            </summary>
+            <p>
+              this rule is by far the most significant rule of the game.
+              when a pawn is 2 rows away for the opponent pawn row. and a a
+              pawn next to your pawn does a
+              <a href="#doublePawnMove">two square move</a> so now it is
+              adjacent to your pawn; you HAVE to capture it. the capture
+              moves your pawn one diagonal forward and his pawn is captured
+              even tho you didn't touch the square the opponents pawn was
+              at. This rule is enforced and has to be played when possible
+              without exception. and if not played: the oppurtunity is lost
+              forever and cannot be played again!
+            </p>
+          </details>
+          <details open>
+            <summary>
+              <h3 id="moving">Moving</h3>
+            </summary>
+            <p>Every piece has a unique way of moving.</p>
+            <ul>
+              <li>
+                <strong>King</strong>: can move to any adjacent square
+                around it. it cannot legally move to a square where it can
+                be captures because that would end the game
+              </li>
+              <li>
+                <strong>Rook</strong>: can go in a straight line in any 4
+                directions. cannot go past any pieces both his or opponents.
+              </li>
+              <li>
+                <strong>Bishop</strong>: similar to a rook but can only go
+                in 4 diagonals.
+              </li>
+              <li>
+                <strong>Queen</strong>: has the capability of both the rook
+                and the bishop.
+              </li>
+              <li id="knight">
+                <strong>Knight</strong>: (most complex one by far) can go to
+                any square thats 2 square forward and one square left and
+                right from there. if imagined it would move in a L shaped
+                path. can jump over pieces
+              </li>
+              <li>
+                <strong>pawn</strong>: can only move forward except in its
+                first move where it has the option to move two squares
+              </li>
+            </ul>
+            <h4 id="illegalMoves">Illegal Moves</h4>
+            <p>
+              illegal move is a move that would result in the instant
+              capture of the king. you can also not move to a square where
+              your piece is located at. or a square that blocked by another
+              piece (except if knight is moving) Note: you can also not jump
+              across boards in a tournament where boards are put next to
+              each other.
+            </p>
+            <h4>Check Moves</h4>
+            <p>
+              if a move results in opponents king being under threat that is
+              called a check. when there is a check, only moves that can be
+              played has to either move away from the check, block the check
+              or capture the piece that is checking. any other move is
+              illegal.
+            </p>
+            <h4 id="doublePawnMove">Double Pawn Move</h4>
+            <p>
+              when a pawn hasn't moved yet player has the option to move the
+              pawn two squares forward instead of the usual one square. this
+              move is only available at the pawns first more for each pawn.
+            </p>
+            <h4>Castling</h4>
+            <p>
+              Castling is a unique form of move where the king and Rook from
+              any side can slide across each other. it is a weird move. if
+              there is no piece obstructing the way between the rook and the
+              king and there is no threat on the king or the space between
+              the rook and king; they can just change location where king
+              gets to the side rook was at and vice versa but they are still
+              touching each other just in opposite sides. yikes its hard to
+              explain. you need a board to see it on. but idc.
+            </p>
+          </details>
+          <details open>
+            <summary>
+              <h3>Capture</h3>
+            </summary>
+            <p>
+              a capture is when you put your piece on the same square as
+              your opponents piece and their piece is captured. has to be
+              removed from the board.
+            </p>
+            <h4>Pawn Capture</h4>
+            <p>
+              unlike every piece where they capture where they can move to.
+              the pawn cannot capture where it can move. it can only capture
+              the two diagonal squares in front of him; left diagonal and
+              right diagonal.
+            </p>
+          </details>
+          <details open>
+            <summary>
+              <h3>Game Ending</h3>
+            </summary>
+            <p>
+              the game can end in three ways; win lose or draw. each one has
+              different ways of happening. the game can end in a victory in
+              two different ways; checkmate and resignation.
+            </p>
+            <h4>Checkmate</h4>
+            <p>
+              a checkmate is when your/opponents king is checked and has no
+              way of escaping, blocking or capturing the checking piece. in
+              this case the game ends in a checkmate and its over. this is
+              by far the most common ending.
+            </p>
+            <h4>Resignation</h4>
+            <p>
+              in any moment in the game you or your opponent can resign. and
+              leave the game. in this case the game is lost obviously
+            </p>
+            <h4>Run out of time</h4>
+            <p>
+              if the game is played with a clock where both side has a
+              limited amount of time for their moves. and any side fails to
+              finish the game before their clock runs out it is a loss for
+              them.
+            </p>
+            <h4>Stalemate</h4>
+            <p>
+              This is a form of draw, where if you have no legal moves left
+              but also is not under check the game ends in a stalemate and
+              it is a draw. most often happens when there is only king for
+              the stalemated.
+            </p>
+            <h4>Draw by Insufficient Material</h4>
+            <p>
+              if both side doesn't have enough pieces to perform a checkmate
+              the game ends in a draw. this consists of the following
+              situations;
+            </p>
+            <ul>
+              <li>king vs king</li>
+              <li>king vs king+bishop</li>
+              <li>king vs king+knight</li>
+              <li>king+bishop vs king+bishop (if same colored bishops)</li>
+            </ul>
+            <h4>Draw by Repetition</h4>
+            <p>
+              if last three moves of both sides are the same the game ends
+              in a draw like it or not. can be sometimes annoying because
+              opponent might be losing but you have no good move so they
+              just repeat themselves to get a unfair draw. but it has to be
+              claimed by either side to be draw other wise game continues.
+            </p>
+            <h4>Draw by Agreement</h4>
+            <p>if both sides agree to a draw. it is a draw... surely.</p>
+          </details>
+          <hr />
+          these are most of the rules you need to know. there are some
+          uncovered here that isn't necessary to be known that much. niche
+          situations etc.
         </div>
-      </aside>
-      <section id="body">
-        <section class="topic">
-          <details open>
-            <summary>
-              <h2>What <em>is</em> Chess?</h2>
-            </summary>
-            <div class="topicBody">
-              <p>
-                chess is a game that has been played for more than a thousand
-                year. chess games played has changed the trajectory of history,
-                caused empires to fall and defined peoples lives. it is based
-                purely on strategy with no aspect of luck. It is played by two
-                players, making moves in turns. both side has 16 pieces on a 8x8
-                board. The side with white pieces move first and can move any
-                piece among 6 unique pieces on the board. both sides attack
-                other sides piece and most importantly their king. first person
-                to be able to capture opponents king wins.
-              </p>
-            </div>
-          </details>
-        </section>
-        <section class="topic">
-          <details open>
-            <summary>
-              <h2>The Rules</h2>
-            </summary>
-            <div class="topicBody">
-              <p>
-                Chess is a complex game yet its easy to grasp once learned the
-                fundamental rules. The side with white pieces start first and
-                can do any <a href="#illegalMoves">legal moves</a>. then one by
-                one each side does moves.
-              </p>
-              <details open>
-                <summary>
-                  <h3 id="enPassant">En Passant</h3>
-                </summary>
-                <p>
-                  this rule is by far the most significant rule of the game.
-                  when a pawn is 2 rows away for the opponent pawn row. and a a
-                  pawn next to your pawn does a
-                  <a href="#doublePawnMove">two square move</a> so now it is
-                  adjacent to your pawn; you HAVE to capture it. the capture
-                  moves your pawn one diagonal forward and his pawn is captured
-                  even tho you didn't touch the square the opponents pawn was
-                  at. This rule is enforced and has to be played when possible
-                  without exception. and if not played: the oppurtunity is lost
-                  forever and cannot be played again!
-                </p>
-              </details>
-              <details open>
-                <summary>
-                  <h3 id="moving">Moving</h3>
-                </summary>
-                <p>Every piece has a unique way of moving.</p>
-                <ul>
-                  <li>
-                    <strong>King</strong>: can move to any adjacent square
-                    around it. it cannot legally move to a square where it can
-                    be captures because that would end the game
-                  </li>
-                  <li>
-                    <strong>Rook</strong>: can go in a straight line in any 4
-                    directions. cannot go past any pieces both his or opponents.
-                  </li>
-                  <li>
-                    <strong>Bishop</strong>: similar to a rook but can only go
-                    in 4 diagonals.
-                  </li>
-                  <li>
-                    <strong>Queen</strong>: has the capability of both the rook
-                    and the bishop.
-                  </li>
-                  <li id="knight">
-                    <strong>Knight</strong>: (most complex one by far) can go to
-                    any square thats 2 square forward and one square left and
-                    right from there. if imagined it would move in a L shaped
-                    path. can jump over pieces
-                  </li>
-                  <li>
-                    <strong>pawn</strong>: can only move forward except in its
-                    first move where it has the option to move two squares
-                  </li>
-                </ul>
-                <h4 id="illegalMoves">Illegal Moves</h4>
-                <p>
-                  illegal move is a move that would result in the instant
-                  capture of the king. you can also not move to a square where
-                  your piece is located at. or a square that blocked by another
-                  piece (except if knight is moving) Note: you can also not jump
-                  across boards in a tournament where boards are put next to
-                  each other.
-                </p>
-                <h4>Check Moves</h4>
-                <p>
-                  if a move results in opponents king being under threat that is
-                  called a check. when there is a check, only moves that can be
-                  played has to either move away from the check, block the check
-                  or capture the piece that is checking. any other move is
-                  illegal.
-                </p>
-                <h4 id="doublePawnMove">Double Pawn Move</h4>
-                <p>
-                  when a pawn hasn't moved yet player has the option to move the
-                  pawn two squares forward instead of the usual one square. this
-                  move is only available at the pawns first more for each pawn.
-                </p>
-                <h4>Castling</h4>
-                <p>
-                  Castling is a unique form of move where the king and Rook from
-                  any side can slide across each other. it is a weird move. if
-                  there is no piece obstructing the way between the rook and the
-                  king and there is no threat on the king or the space between
-                  the rook and king; they can just change location where king
-                  gets to the side rook was at and vice versa but they are still
-                  touching each other just in opposite sides. yikes its hard to
-                  explain. you need a board to see it on. but idc.
-                </p>
-              </details>
-              <details open>
-                <summary>
-                  <h3>Capture</h3>
-                </summary>
-                <p>
-                  a capture is when you put your piece on the same square as
-                  your opponents piece and their piece is captured. has to be
-                  removed from the board.
-                </p>
-                <h4>Pawn Capture</h4>
-                <p>
-                  unlike every piece where they capture where they can move to.
-                  the pawn cannot capture where it can move. it can only capture
-                  the two diagonal squares in front of him; left diagonal and
-                  right diagonal.
-                </p>
-              </details>
-              <details open>
-                <summary>
-                  <h3>Game Ending</h3>
-                </summary>
-                <p>
-                  the game can end in three ways; win lose or draw. each one has
-                  different ways of happening. the game can end in a victory in
-                  two different ways; checkmate and resignation.
-                </p>
-                <h4>Checkmate</h4>
-                <p>
-                  a checkmate is when your/opponents king is checked and has no
-                  way of escaping, blocking or capturing the checking piece. in
-                  this case the game ends in a checkmate and its over. this is
-                  by far the most common ending.
-                </p>
-                <h4>Resignation</h4>
-                <p>
-                  in any moment in the game you or your opponent can resign. and
-                  leave the game. in this case the game is lost obviously
-                </p>
-                <h4>Run out of time</h4>
-                <p>
-                  if the game is played with a clock where both side has a
-                  limited amount of time for their moves. and any side fails to
-                  finish the game before their clock runs out it is a loss for
-                  them.
-                </p>
-                <h4>Stalemate</h4>
-                <p>
-                  This is a form of draw, where if you have no legal moves left
-                  but also is not under check the game ends in a stalemate and
-                  it is a draw. most often happens when there is only king for
-                  the stalemated.
-                </p>
-                <h4>Draw by Insufficient Material</h4>
-                <p>
-                  if both side doesn't have enough pieces to perform a checkmate
-                  the game ends in a draw. this consists of the following
-                  situations;
-                </p>
-                <ul>
-                  <li>king vs king</li>
-                  <li>king vs king+bishop</li>
-                  <li>king vs king+knight</li>
-                  <li>king+bishop vs king+bishop (if same colored bishops)</li>
-                </ul>
-                <h4>Draw by Repetition</h4>
-                <p>
-                  if last three moves of both sides are the same the game ends
-                  in a draw like it or not. can be sometimes annoying because
-                  opponent might be losing but you have no good move so they
-                  just repeat themselves to get a unfair draw. but it has to be
-                  claimed by either side to be draw other wise game continues.
-                </p>
-                <h4>Draw by Agreement</h4>
-                <p>if both sides agree to a draw. it is a draw... surely.</p>
-              </details>
-              <hr />
-              these are most of the rules you need to know. there are some
-              uncovered here that isn't necessary to be known that much. niche
-              situations etc.
-            </div>
-          </details>
-        </section>
-        <section class="topic">
-          <details open>
-            <summary>
-              <h2>The setup</h2>
-            </summary>
-            <div class="topicBody">
-              <p>
-                before even starting the game, the board has to be setup. as
-                told there are 6 unique pieces; King, Queen, Rook, Bishop,
-                Knight and Pawn. These pieces have their spot in the board.
-              </p>
-              <table>
-                <caption>
-                  <strong>the board layout</strong>
-                </caption>
-                <tr>
-                  <th rowspan="2">Black Side</th>
-                  <td>Rook</td>
-                  <td>Knight</td>
-                  <td>Bishop</td>
-                  <td>Queen</td>
-                  <td>King</td>
-                  <td>Bishop</td>
-                  <td>Knight</td>
-                  <td>Rook</td>
-                </tr>
-                <tr>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                </tr>
-                <tr>
-                  <th rowspan="4"></th>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-                <tr>
-                  <th rowspan="2" scope="row">White Side</th>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                  <td>Pawn</td>
-                </tr>
-                <tr>
-                  <td>Rook</td>
-                  <td>Knight</td>
-                  <td>Bishop</td>
-                  <td>Queen</td>
-                  <td>King</td>
-                  <td>Bishop</td>
-                  <td>Knight</td>
-                  <td>Rook</td>
-                </tr>
-              </table>
-            </div>
-          </details>
-        </section>
-      </section>
-    </main>
-    <footer class="body">
-      copy rights reserved © (for some reason) << Taha Dağıstanlı - 2025 >>
-    </footer>
-  </body>
+      </details>
+    </section>
+    <section class="topic">
+      <details open>
+        <summary>
+          <h2>The setup</h2>
+        </summary>
+        <div class="topicBody">
+          <p>
+            before even starting the game, the board has to be setup. as
+            told there are 6 unique pieces; King, Queen, Rook, Bishop,
+            Knight and Pawn. These pieces have their spot in the board.
+          </p>
+          <table>
+            <caption>
+              <strong>the board layout</strong>
+            </caption>
+            <tr>
+              <th rowspan="2">Black Side</th>
+              <td>Rook</td>
+              <td>Knight</td>
+              <td>Bishop</td>
+              <td>Queen</td>
+              <td>King</td>
+              <td>Bishop</td>
+              <td>Knight</td>
+              <td>Rook</td>
+            </tr>
+            <tr>
+              <td>Pawn</td>
+              <td>Pawn</td>
+              <td>Pawn</td>
+              <td>Pawn</td>
+              <td>Pawn</td>
+              <td>Pawn</td>
+              <td>Pawn</td>
+              <td>Pawn</td>
+            </tr>
+            <tr>
+              <th rowspan="4"></th>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <th rowspan="2" scope="row">White Side</th>
+              <td>Pawn</td>
+              <td>Pawn</td>
+              <td>Pawn</td>
+              <td>Pawn</td>
+              <td>Pawn</td>
+              <td>Pawn</td>
+              <td>Pawn</td>
+              <td>Pawn</td>
+            </tr>
+            <tr>
+              <td>Rook</td>
+              <td>Knight</td>
+              <td>Bishop</td>
+              <td>Queen</td>
+              <td>King</td>
+              <td>Bishop</td>
+              <td>Knight</td>
+              <td>Rook</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+    </section>
+    </section>
+  </main>
+  <footer class="body">
+    copy rights reserved © (for some reason) << Taha Dağıstanlı - 2025>>
+  </footer>
+</body>
+
 </html>
