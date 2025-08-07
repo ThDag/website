@@ -5,6 +5,12 @@ body {
   padding: 0;
 }
 
+
+/* blind mode (not to be seen looking at those goofy ahh pictures) */
+img {
+  opacity: 10%;
+}
+
 /* //////////////////////////////////// */
 
 .blueText {
@@ -34,7 +40,8 @@ body {
 /* //////////////////////////////////// */
 
 .floats {
-  color: #d9c59f; /* makes dark theme */
+  color: #d9c59f;
+  /* makes dark theme */
   background-color: #877c7c;
   background-image: url("../images/background/droplets_mirror.png");
   background-blend-mode: multiply;
@@ -46,7 +53,7 @@ body {
   padding: 10px;
 }
 
-.floats > h2 > p {
+.floats>h2>p {
   text-align: center;
   border: solid 5px blue;
   border-radius: 10px;
@@ -63,11 +70,10 @@ p {
 .lebron {
   /* width: 25vw;
   height: 25vw; */
-  width: clamp(
-    200px,
-    25vw,
-    800px
-  ); /* it will follow 25vw until but will not be smaller than 200px */
+  width: clamp(200px,
+      25vw,
+      800px);
+  /* it will follow 25vw until but will not be smaller than 200px */
   box-shadow: 0 0 20px 20px #fff;
   border-radius: 20px;
 }
@@ -91,15 +97,18 @@ p {
 }
 
 .clearBoth {
-  clear: both; /* makes the text not wrap around float image. */
+  clear: both;
+  /* makes the text not wrap around float image. */
 }
 
 .clearLeft {
-  clear: left; /* makes the text not wrap around float images on the left */
+  clear: left;
+  /* makes the text not wrap around float images on the left */
 }
 
 .clearRight {
-  clear: right; /* makes the text not wrap around float images on the right */
+  clear: right;
+  /* makes the text not wrap around float images on the right */
 }
 
 /* //////////////////////////////////// */
@@ -127,7 +136,8 @@ ul {
 }
 
 .columnsMain {
-  columns: 3 300px; /* 3 columns with minimum of 300px each if not, it will lower column number */
+  columns: 3 300px;
+  /* 3 columns with minimum of 300px each if not, it will lower column number */
   column-rule: 5px solid#1657da;
 }
 
@@ -136,4 +146,17 @@ ul {
   display: block;
   margin: auto;
   border-radius: 20px;
+}
+
+
+
+/* ///////////////////////////////// */
+
+.position {
+  background-image: url("../images/background/clouds_colorful.jpg");
+  background-size: 100%;
+  background-repeat: repeat-y;
+
+  overflow: hidden;
+  padding: 10px;
 }
