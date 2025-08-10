@@ -16,19 +16,28 @@ body {
 }
 
 h1 {
-  font-size: 64px;
+  color: #4B4632;
+  font-size: 4rem;
   font-family: "Saira", sans-serif;
   font-weight: normal;
   text-align: center;
+  margin-bottom: 0rem;
 }
 
 p {
   font-size: 1rem;
-  line-height: 1.5;
+}
+
+.statement {
+  color: #4B4632;
+  font-family: "Saira", sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 0
 }
 
 .page {
-  background-color: coral;
+  background-color: #F8F4E6;
   width: 100%;
   height: 100vh;
   margin: 0px;
