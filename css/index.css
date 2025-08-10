@@ -2,6 +2,12 @@
 
 * {
   box-sizing: border-box;
+  text-decoration: none;
+  color: #4B4632;
+}
+
+html {
+  background-color: #F8F4E6;
 }
 
 body {
@@ -15,6 +21,10 @@ body {
   /* scales with device */
 }
 
+p {
+  font-size: 1rem;
+}
+
 h1 {
   color: #4B4632;
   font-size: 4rem;
@@ -22,10 +32,7 @@ h1 {
   font-weight: normal;
   text-align: center;
   margin-bottom: 0rem;
-}
-
-p {
-  font-size: 1rem;
+  line-height: 4rem;
 }
 
 .statement {
@@ -42,4 +49,9 @@ p {
   height: 100vh;
   margin: 0px;
   padding: 1rem;
+}
+
+section {
+  background-color: #E3DCC3;
+  color: #4B4632;
 }
