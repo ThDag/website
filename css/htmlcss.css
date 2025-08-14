@@ -59,6 +59,14 @@ p {
   margin: 50px;
 }
 
+.highlight {
+  border-radius: 1em;
+  border: rgb(200, 200, 0) 8px solid;
+  background-color: #fffc6690;
+
+  padding: 14px 14px;
+}
+
 /* //////////////////////////////////// */
 
 .floats {
@@ -229,27 +237,51 @@ ul {
 }
 
 .fixedCat {
-  width: clamp(6rem, 20vw, 14rem);
-  border-radius: 1000rem;
-  z-index: 1;
-
-
   position: fixed;
   right: 10px;
   bottom: 3rem;
 
+  --fixedcat-width: clamp(6rem, 20vw, 14rem);
+
+  z-index: 1;
+}
+
+.fixedCat img {
+  width: var(--fixedcat-width);
+  border-radius: 1000rem;
+
+
+}
+
+.fixedCatTitle {
+  font-size: calc(var(--fixedcat-width) / 15);
+  /* keeps the size of the text relative to the size of the cat */
+
+
+  text-align: center;
+
+  background-color: azure;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* center it horizontally */
+  bottom: 20px;
+}
+
+.position ul {
+  position: relative;
 }
 
 .kevinCat {
   position: absolute;
-  top: -20px;
-  left: 50px;
+  top: -24px;
+  left: 14rem;
+  width: 70px;
 
-  width: 100px;
-
-  border-radius: 45px;
+  border-radius: 35px;
   transform: rotate(30deg);
 
-  opacity: 80%;
+  opacity: 85%;
 
 }

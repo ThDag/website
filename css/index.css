@@ -27,18 +27,18 @@ p {
 
 h1 {
   color: #4B4632;
-  font-size: 4rem;
+  font-size: clamp(2rem, 10vw, 4rem);
   font-family: "Saira", sans-serif;
   font-weight: normal;
   text-align: center;
   margin-bottom: 0rem;
-  line-height: 4rem;
+  line-height: clamp(2rem, 10vw, 4rem);
 }
 
 .statement {
   color: #4B4632;
   font-family: "Saira", sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1rem, 5vw, 2rem);
   text-align: center;
   margin-top: 0
 }
@@ -51,7 +51,7 @@ h1 {
   padding: 1rem;
 }
 
-section {
-  background-color: #E3DCC3;
-  color: #4B4632;
-}
+/* section { */
+/*   background-color: #E3DCC3; */
+/*   color: #4B4632; */
+/* } */
