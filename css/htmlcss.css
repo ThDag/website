@@ -190,7 +190,6 @@ ul {
   padding: var(--p);
   /* padding-bottom: 0; */
 
-  height: 200vh;
 
   font-family: "Mozilla Headline", sans-serif;
 
@@ -206,7 +205,7 @@ ul {
 
 
   margin-top: calc(-1 * var(--p));
-  margin-bottom: 0.6em;
+  margin-bottom: 0em;
   margin-left: calc(-1 * var(--p));
   width: calc(100% + (2 * var(--p)));
   /* 100% of the parents body and also 20px for parents padding so it fills the screen
