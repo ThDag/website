@@ -31,12 +31,20 @@ p:not(.statement) {
 
 h1 {
   color: #4B4632;
-  font-size: clamp(2rem, 10vw, 4rem);
+  font-size: clamp(2rem, 12vw, 4rem);
   font-family: "Saira", sans-serif;
   font-weight: normal;
   text-align: center;
   margin-bottom: 0rem;
-  line-height: clamp(2rem, 10vw, 4rem);
+  line-height: clamp(2rem, 12vw, 4rem);
+}
+
+.statement {
+  color: #4B4632;
+  font-family: "Noto kufi arabic", sans-serif;
+  font-size: clamp(1rem, 6vw, 2rem);
+  text-align: center;
+  margin-top: 0
 }
 
 h2 {
@@ -48,16 +56,9 @@ h2 {
 ul {
   margin: 0;
   padding-left: 20px;
+  line-height: 2rem;
 }
 
-
-.statement {
-  color: #4B4632;
-  font-family: "Noto kufi arabic", sans-serif;
-  font-size: clamp(1rem, 5vw, 2rem);
-  text-align: center;
-  margin-top: 0
-}
 
 .items {
   display: flex;
@@ -93,7 +94,6 @@ hr {
   border: #4B4632 1.5px solid;
 }
 
-/* section { */
-/*   background-color: #E3DCC3; */
-/*   color: #4B4632; */
-/* } */
+a {
+  text-decoration: underline;
+}
