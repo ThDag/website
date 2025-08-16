@@ -1,152 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Chess Learning Website</title>
-    <link rel="icon" href="images/chess/chess_icon.jpg" type="image/x-icon" />
-    <link rel="stylesheet" href="css/chess.css" />
-  </head>
-  <body>
-    <header>
-      <a href="chess.html">
-        <img
-          id="logo"
-          src="images/chess/chees_logo.png"
-          alt="chess logo"
-          title="it's not a bug, it's a feature"
-          width="200" />
-      </a>
-      <img
-        id="standingChessPieces"
-        src="images/chess/chessPiecesInARow.png"
-        alt="chess pieces"
-        title="looks great right?" />
-    </header>
-    <!-- 
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Chess Learning Website</title>
+  <link rel="icon" href="images/chess/chess_icon.jpg" type="image/x-icon" />
+  <link rel="stylesheet" href="css/chess.css" />
+  <script defer src="http://tahad:3000/script.js" data-website-id="0d3ce129-bd13-42fe-87eb-82d4fdb70010"></script>
+  <!-- umami analytics -->
+</head>
+
+<body>
+  <header>
+    <a href="chess.html">
+      <img id="logo" src="images/chess/chees_logo.png" alt="chess logo" title="it's not a bug, it's a feature"
+        width="200" />
+    </a>
+    <img id="standingChessPieces" src="images/chess/chessPiecesInARow.png" alt="chess pieces"
+      title="looks great right?" />
+  </header>
+  <!-- 
     can't get it to look good, can't find the design to have a background image
     <img
       id="background"
       src="images/chess/chessWallpaperRetro.png"
       alt="background chess"
     /> -->
-    <main>
-      <aside class="navbar">
-        <div class="buttons">
-          <a href="chess.html" class="button">Homepage</a>
-          <a href="" class="button">Play</a>
-          <a href="" class="button">Tactics</a>
-          <a href="chessForm.html" class="button" id="selectedButton">
-            Chess Form
-          </a>
-          <a href="" class="button">About me</a>
-        </div>
-      </aside>
-      <section id="body">
-        <section class="topic">
-          <details open>
-            <summary>
-              <h2>Personal Chess Form</h2>
-            </summary>
-            <div class="topicBody">
-              <!-- <span class="gap"></span> -->
-              <!-- since normal the paragraph adds the margin at the top and this doesn't start with a paragraph this is a awful way of adding a margin-->
-              <form>
-                <label for="name">Name;</label>
-                <input type="text" name="name" id="name" />
+  <main>
+    <aside class="navbar">
+      <div class="buttons">
+        <a href="chess.html" class="button">Homepage</a>
+        <a href="" class="button">Play</a>
+        <a href="" class="button">Tactics</a>
+        <a href="chessForm.html" class="button" id="selectedButton">
+          Chess Form
+        </a>
+        <a href="" class="button">About me</a>
+      </div>
+    </aside>
+    <section id="body">
+      <section class="topic">
+        <details open>
+          <summary>
+            <h2>Personal Chess Form</h2>
+          </summary>
+          <div class="topicBody">
+            <!-- <span class="gap"></span> -->
+            <!-- since normal the paragraph adds the margin at the top and this doesn't start with a paragraph this is a awful way of adding a margin-->
+            <form>
+              <label for="name">Name;</label>
+              <input type="text" name="name" id="name" />
 
-                <label for="elo">Chess ELO;</label>
-                <input type="number" name="elo" id="elo" />
+              <label for="elo">Chess ELO;</label>
+              <input type="number" name="elo" id="elo" />
 
-                <label for="startDate">When did you start playing chess;</label>
-                <input type="date" name="startDate" id="startDate" />
+              <label for="startDate">When did you start playing chess;</label>
+              <input type="date" name="startDate" id="startDate" />
 
-                <label for="spiritFlavor"
-                  >What would you say is your <em>spirit flavor</em> (like
-                  spirit animal)?</label
-                >
-                <input type="text" name="spiritFlavor" id="spiritFlavor" />
+              <label for="spiritFlavor">What would you say is your <em>spirit flavor</em> (like
+                spirit animal)?</label>
+              <input type="text" name="spiritFlavor" id="spiritFlavor" />
 
-                <label for="favoriteOpening">Favortie Opening;</label>
-                <input
-                  type="text"
-                  name="favoriteOpening"
-                  id="favoriteOpening" />
+              <label for="favoriteOpening">Favortie Opening;</label>
+              <input type="text" name="favoriteOpening" id="favoriteOpening" />
 
-                <label for="preferedLoss">Prefered Loss;</label>
-                <select name="preferedLoss" id="preferedLoss">
-                  <option value="" disabled selected>Select one</option>
-                  <optgroup label="Checkmated">
-                    <option value="blunderCheckmate">
-                      Blundering Checkmate in 1
-                    </option>
+              <label for="preferedLoss">Prefered Loss;</label>
+              <select name="preferedLoss" id="preferedLoss">
+                <option value="" disabled selected>Select one</option>
+                <optgroup label="Checkmated">
+                  <option value="blunderCheckmate">
+                    Blundering Checkmate in 1
+                  </option>
 
-                    <option value="queenCheckmate">
-                      Getting checkmated by queen
-                    </option>
-                    <option value="RookCheckmate">
-                      Getting checkmated by rook
-                    </option>
-                    <option value="2bishopCheckmate">
-                      Getting checkmated by 2 bishops
-                    </option>
-                    <option value="smothermate">Getting smother mated</option>
-                  </optgroup>
-                  <optgroup label="resigning">
-                    <option value="resign">Resigning</option>
+                  <option value="queenCheckmate">
+                    Getting checkmated by queen
+                  </option>
+                  <option value="RookCheckmate">
+                    Getting checkmated by rook
+                  </option>
+                  <option value="2bishopCheckmate">
+                    Getting checkmated by 2 bishops
+                  </option>
+                  <option value="smothermate">Getting smother mated</option>
+                </optgroup>
+                <optgroup label="resigning">
+                  <option value="resign">Resigning</option>
 
-                    <option value="resignByPawnBlunder">
-                      Resigning after blundering a pawn
-                    </option>
+                  <option value="resignByPawnBlunder">
+                    Resigning after blundering a pawn
+                  </option>
 
-                    <option value="resignByQueenBlunder">
-                      Resigning after blundering a queen
-                    </option>
-                    <option value="resingByUrgentHospitalVisit">
-                      Resigning due to a urgent hospital visit
-                    </option>
-                  </optgroup>
-                  <optgroup label="Other">
-                    <option value="timeout">Timeout</option>
-                    <option value="insufficientMaterial">
-                      Insufficient material
-                    </option>
-                  </optgroup>
-                </select>
+                  <option value="resignByQueenBlunder">
+                    Resigning after blundering a queen
+                  </option>
+                  <option value="resingByUrgentHospitalVisit">
+                    Resigning due to a urgent hospital visit
+                  </option>
+                </optgroup>
+                <optgroup label="Other">
+                  <option value="timeout">Timeout</option>
+                  <option value="insufficientMaterial">
+                    Insufficient material
+                  </option>
+                </optgroup>
+              </select>
 
-                <label>
-                  Started playing chess after watching Queens gambit?
-                </label>
-                <div class="radioGroup">
-                  <input type="radio" name="queensGambit" id="yes" />
-                  <label for="yes"> Yes </label>
-                  <input type="radio" name="queensGambit" id="no" />
-                  <label for="no"> No </label>
-                </div>
+              <label>
+                Started playing chess after watching Queens gambit?
+              </label>
+              <div class="radioGroup">
+                <input type="radio" name="queensGambit" id="yes" />
+                <label for="yes"> Yes </label>
+                <input type="radio" name="queensGambit" id="no" />
+                <label for="no"> No </label>
+              </div>
 
-                <label for="favPawn">Favorite Pawn;</label>
-                <select name="favPawn" id="favPawn">
-                  <option value="" selected disabled>select pawn</option>
-                  <option value="PawnA">A pawn</option>
-                  <option value="PawnB">B pawn</option>
-                  <option value="PawnC">C pawn</option>
-                  <option value="PawnD">D pawn</option>
-                  <option value="PawnE">E pawn</option>
-                  <option value="PawnF">F pawn</option>
-                  <option value="PawnG">G pawn</option>
-                  <option value="PawnH">H pawn</option>
-                </select>
-                <abbr
-                  title="Nothing will submit because this site doesn't have JavaScript">
-                  <button class="button">Submit</button>
-                </abbr>
-              </form>
-            </div>
-          </details>
-        </section>
+              <label for="favPawn">Favorite Pawn;</label>
+              <select name="favPawn" id="favPawn">
+                <option value="" selected disabled>select pawn</option>
+                <option value="PawnA">A pawn</option>
+                <option value="PawnB">B pawn</option>
+                <option value="PawnC">C pawn</option>
+                <option value="PawnD">D pawn</option>
+                <option value="PawnE">E pawn</option>
+                <option value="PawnF">F pawn</option>
+                <option value="PawnG">G pawn</option>
+                <option value="PawnH">H pawn</option>
+              </select>
+              <abbr title="Nothing will submit because this site doesn't have JavaScript">
+                <button class="button">Submit</button>
+              </abbr>
+            </form>
+          </div>
+        </details>
       </section>
-    </main>
-    <footer class="body">
-      copy rights reserved © (for some reason) << Taha Dağıstanlı - 2025 >>
-    </footer>
-  </body>
+    </section>
+  </main>
+  <footer class="body">
+    copy rights reserved © (for some reason) << Taha Dağıstanlı - 2025>>
+  </footer>
+</body>
+
 </html>
