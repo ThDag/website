@@ -1,0 +1,31 @@
+/* #28A745 #155724 #C3E6CB #E6F4EA #6C757D */
+
+
+html {
+  background-color: #C3E6CB;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.headerParagraph {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.dark>p {
+  color: #E6F4EA;
+}
+
+.dark {
+  padding: 1rem;
+  background-color: #28A745;
+}
