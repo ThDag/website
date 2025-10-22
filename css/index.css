@@ -40,7 +40,7 @@ h1 {
   font-family: "Saira", sans-serif;
   font-weight: normal;
   text-align: center;
-  margin-bottom: 0rem;
+  margin-bottom: 4rem;
   line-height: clamp(2rem, 12vw, 4rem);
 }
 
