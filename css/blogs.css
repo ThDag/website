@@ -1,0 +1,42 @@
+/* #d2cfc6; */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+p {
+  font-size: 1.2rem
+}
+
+.storageDiagram {
+  float: right;
+  width: clamp(150px, 35%, 350px);
+  margin: 15px;
+  border-radius: 20px;
+}
+
+.clear {
+  clear: both;
+  /* keeps clear of floats */
+}
+
+.miniHeader {
+  display: inline;
+  font-weight: normal;
+  font-size: 1.3rem;
+}
+
+.code {
+  font-family: "Roboto Mono", monospace;
+  background-color: #d2cfc6;
+  border-radius: 3px;
+  padding: 4px;
+}
+
+.sidebyside {
+  display: flex;
+}
+
+.halfpage {
+  flex: 1 1 auto;
+  display: block;
+  box-sizing: border-box;
+}

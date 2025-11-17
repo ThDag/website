@@ -24,10 +24,12 @@ body {
 
 }
 
-p:not(.statement) {
+p {
   font-size: 1rem;
   line-height: 2rem;
 }
+
+
 
 .withBackButton {
   margin-top: 1rem;
