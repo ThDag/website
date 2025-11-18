@@ -18,25 +18,27 @@ p {
   /* keeps clear of floats */
 }
 
-.miniHeader {
+
+.codeContainer {
+  margin: 19px 0px 19px 0px;
+}
+
+.codeContainer>.miniHeader {
   display: inline;
   font-weight: normal;
   font-size: 1.3rem;
 }
 
-.code {
+
+.codeContainer>.code {
+  display: block;
+  width: max-content;
   font-family: "Roboto Mono", monospace;
   background-color: #d2cfc6;
   border-radius: 3px;
-  padding: 4px;
+  padding: 10px;
 }
 
-.sidebyside {
-  display: flex;
-}
-
-.halfpage {
-  flex: 1 1 auto;
-  display: block;
-  box-sizing: border-box;
+.codeContainer>.desc {
+  color: #99976c;
 }
