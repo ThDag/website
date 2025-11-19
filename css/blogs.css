@@ -18,6 +18,11 @@ p {
   /* keeps clear of floats */
 }
 
+.codeInline {
+
+  font-family: "Roboto Mono", monospace;
+  background-color: #d2cfc6;
+}
 
 .codeContainer {
   margin: 19px 0px 19px 0px;
@@ -39,6 +44,20 @@ p {
   padding: 10px;
 }
 
-.codeContainer>.desc {
-  color: #99976c;
+
+
+.desc {
+  margin-top: 3px;
+  display: flex;
+  gap: 4px;
+}
+
+.descText {
+  color: #9a9274;
+  flex: 0 0 auto;
+}
+
+.sideLine {
+  flex: 0 0 3px;
+  background-color: #4B4633;
 }

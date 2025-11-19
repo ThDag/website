@@ -25,6 +25,8 @@
 <body>
   <section class="blogMain">
 
+    <div clas="goBack"><a href="../blog.html">&LeftArrow; Go Back</a></div>
+
     <h1>Unlimited Free Encrypted cloud storage trick</h1>
 
     <hr>
@@ -59,19 +61,24 @@
     <div class="codeContainer">
       <span class="miniHeader">To archive : </span>
       <span class="code">tar zcvf &lt;archived-file&gt;.tar.gz &lt;files-to-archive&gt;</span>
-      <span class="desc">bla bla bla</span>
+      <div class="desc">
+        <span class="sideLine"></span>
+        <span class="descText">this will archive yeah. will use gzip</span>
+      </div>
     </div>
-    <div class="codeContainer">
 
+    <div class="codeContainer">
       <span class="miniHeader">To extract : </span>
       <span class="code">tar xvf &lt;file-to-extract&gt; </span>
+      <div class="desc"><span class="sideLine"></span><span class="descText"> </span></div>
     </div>
 
     <h2>Encryption</h2>
     <p>before uploading files to the these insecure services. you have to encrypt them. my go to way of encryption them
-      is <span class="code">age</span> command. it is a cli command and not a gui app which some people may be afraid of
+      is <span class="codeInline">age</span> command. it is a cli command and not a gui app which some people may be
+      afraid of
       but it is what it is. </p>
-    <p>there are two ways of encryption with <span class="code">age</span></p>
+    <p>there are two ways of encryption with <span class="codeInline">age</span></p>
     <ul>
       <li>with a private and public key</li>
       <li>with a passphrase</li>
