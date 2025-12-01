@@ -5,6 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="css/grid.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script defer src="https://umami.tahadagistanli.com/script.js"
     data-website-id="0d3ce129-bd13-42fe-87eb-82d4fdb70010"></script>
   <!-- umami analytics -->
@@ -12,12 +13,15 @@
 </head>
 
 <body>
+  <section class="popUps">
+    <div class="youLose">jfkld</div>
+  </section>
   <header>
     <h1 class="title">A website with light bulbs</h1>
   </header>
   <main>
-    <div class="gridCenterer">
-      <section class="container">
+    <section class="mainSection">
+      <div class="buttonPanel">
         <div class="item" id="1"=></div>
         <div class="item" id="2"=></div>
         <div class="item" id="3"=></div>
@@ -34,9 +38,18 @@
         <div class="item" id="14"=></div>
         <div class="item" id="15"=></div>
         <div class="item" id="16"=></div>
-      </section>
-      <button id="mainButton">click me</button>
-    </div>
+      </div>
+
+      <button class="mainButton">click me</button>
+      <p class="notification" class="thisDoesNothing">This button does nothing</p>
+
+    </section>
+
+    <aside class="sidebar">
+
+      <div class="correctClickCounter">SCORE: <span class="scoreNumber">sss</span></div>
+
+    </aside>
   </main>
 
   <script src="scripts/grid.js"></script>

@@ -8,12 +8,23 @@ const colors = {
   darkWhite: "#d6d6d6",
 };
 
-// Clear button
-const btn = document.getElementById("mainButton");
-btn.addEventListener('click', () => {
-  console.log("this button does nothing currently")
 
+const btn = document.getElementsByClassName("mainButton");
+const doesNothingText = document.getElementsByClassName("thisDoesNothing");
+const scoreElement = document.getElementsByClassName("scoreNumber")
+
+let score = 0;
+
+btn.addEventListener('click', () => {
+  console.log("this button does nothing currently");
+  doesNothingText.style.animation = "textShake 0.3s 2 linear, fadeInOut 0.6s";
+  setTimeout(() => {
+    doesNothingText.style.removeProperty("animation");
+
+  }, "600");
 });
+
+
 
 // initialColoring
 let activeButton = 4;
@@ -30,16 +41,20 @@ let gridClick = function(e) {
     console.log(activeButton)
     document.getElementById(e.target.id).style.backgroundColor = colors.darkWhite;
     document.getElementById(activeButton).style.backgroundColor = colors.yellow;
+    score = score + 1;
 
   }
   else {
     console.log("wrong button")
+
+    score = 0;
   }
+  scoreElement.innerText = String(score)
 }
 
 
+// grid each button EventListener
 const gridButtons = document.querySelectorAll(".item")
-
 gridButtons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     // console.log("target:");

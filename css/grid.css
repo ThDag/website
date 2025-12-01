@@ -3,6 +3,7 @@
   --color-light-black: #333533;
   --color-dark-black: #202020;
   --color-dark-white: #d6d6d6;
+  --color-dark-white-t: hsla(0, 0%, 83.92%, 0.8);
 }
 
 html {
@@ -12,14 +13,44 @@ html {
   color: var(--color-light-black);
   background: #2A7B9B;
   background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 156, 1) 55%, rgba(83, 237, 111, 1) 98%);
+
+  font-family: Roboto, sans-serif;
 }
 
 body {
-  padding: 50px;
-
+  padding: 20px 20px 20px 20px;
 }
 
-.gridCenterer {
+main {
+  display: grid;
+  grid-template-columns: 1fr clamp(170px, 30%, 350px);
+}
+
+
+.sidebar {
+  grid-column: 2 / 3;
+}
+
+.correctClickCounter {
+  background-color: var(--color-dark-white-t);
+  height: 100px;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 4px 1px var(--color-light-black);
+
+  font-size: 1.5rem;
+  /* box-shadow: inset 0px 0px 10px 1px var(--color-light-black), 0px 0px 6px #000; */
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* #scoreNumber { */
+/* } */
+
+
+.mainSection {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,12 +60,12 @@ body {
 
 .title {
   text-align: center;
+  font-family: Roboto, sans-serif;
+  margin-bottom: 40px;
 }
 
-.container {
-
-
-  width: clamp(300px, 50%, 500px);
+.buttonPanel {
+  width: clamp(300px, 80%, 500px);
   aspect-ratio: 1/1;
 
   display: grid;
@@ -53,19 +84,100 @@ body {
 
   background-color: var(--color-dark-white);
   border: 5px var(--color-dark-black) solid;
-  box-shadow: 0px 0px 6px #000 inset;
-  box-shadow: 0px 0px 6px #000;
+  box-shadow: inset 0px 0px 10px 1px var(--color-light-black), 0px 0px 6px #000;
   border-radius: 15%;
   padding: 5px;
+
+  transition: background-color 0.5s;
 }
 
-#mainButton {
-  font-family: "Rockwell", sans-serif;
-  font-size: 1rem;
 
-  min-width: 100px;
-  min-height: 50px;
+
+.popUps {
+
+  position: fixed;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.youLose {
+  background-color: blue;
+  font-size: 6rem;
+  /* opacity: 0%; */
+}
+
+
+.mainButton {
+  font-size: 1.5rem;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  text-align: center;
+
+
+  width: 150px;
+  height: 70px;
   background-color: var(--color-yellow);
   border: 4px var(--color-dark-black) solid;
   border-radius: 15px;
+  box-shadow: 0px 0px 6px #000;
+
+  transition: width 2s;
+}
+
+
+.mainButton:active {
+  box-shadow: inset 0px 0px 11px 0px var(--color-light-black), 0px 0px 6px #000;
+}
+
+.thisDoesNothing {
+  opacity: 0%;
+  font-size: 2rem;
+  font-family: "Helvetica", sans-serif;
+  margin-top: 1rem;
+  transition: opacity 150ms ease;
+  pointer-events: none;
+
+  /* animation: textShake 0.2s 2 linear, fadeInOut 0.4s; */
+}
+
+@keyframes textShake {
+  0% {
+    transform: rotate(0);
+  }
+
+  25% {
+    transform: rotate(-8deg);
+  }
+
+  75% {
+    transform: rotate(8deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0%;
+  }
+
+  30% {
+    opacity: 100%;
+  }
+
+  70% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0%;
+  }
 }
