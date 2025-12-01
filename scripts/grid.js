@@ -9,11 +9,13 @@ const colors = {
 };
 
 
-const btn = document.getElementsByClassName("mainButton");
-const doesNothingText = document.getElementsByClassName("thisDoesNothing");
-const scoreElement = document.getElementsByClassName("scoreNumber")
+const btn = document.getElementsByClassName("mainButton")[0];
+const doesNothingText = document.getElementsByClassName("thisDoesNothing")[0];
+const scoreElement = document.getElementsByClassName("scoreNumber")[0];
 
 let score = 0;
+
+console.log(btn)
 
 btn.addEventListener('click', () => {
   console.log("this button does nothing currently");
