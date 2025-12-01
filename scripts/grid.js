@@ -12,6 +12,7 @@ const colors = {
 const btn = document.getElementsByClassName("mainButton")[0];
 const doesNothingText = document.getElementsByClassName("thisDoesNothing")[0];
 const scoreElement = document.getElementsByClassName("scoreNumber")[0];
+const youLose = document.getElementsByClassName("youLose")[0];
 
 let score = 0;
 
@@ -50,6 +51,11 @@ let gridClick = function(e) {
     console.log("wrong button")
 
     score = 0;
+
+    youLose.style.animation = "fadeInOutFaster 4s";
+    setTimeout(() => {
+      youLose.style.removeProperty("animation");
+    }, 4000)
   }
   scoreElement.innerText = String(score)
 }

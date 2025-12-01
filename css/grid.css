@@ -3,7 +3,7 @@
   --color-light-black: #333533;
   --color-dark-black: #202020;
   --color-dark-white: #d6d6d6;
-  --color-dark-white-t: hsla(0, 0%, 83.92%, 0.8);
+  --color-dark-white-t: hsla(0, 0%, 83.92%, 0.7);
 }
 
 html {
@@ -21,36 +21,57 @@ body {
   padding: 20px 20px 20px 20px;
 }
 
+
 main {
-  display: grid;
-  grid-template-columns: 1fr clamp(170px, 30%, 350px);
+  display: flex;
+  flex-flow: row-reverse wrap;
+  justify-content: left;
+  row-gap: 32px;
+  /* grid-template-columns: 1fr clamp(170px, 30%, 350px); */
 }
 
 
+/* /////////////////// SIDEBAR ////////////////// */
+
 .sidebar {
-  grid-column: 2 / 3;
+
+  flex: 0 0 300px;
+
 }
 
 .correctClickCounter {
   background-color: var(--color-dark-white-t);
   height: 100px;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 10px;
   box-shadow: 2px 2px 4px 1px var(--color-light-black);
 
   font-size: 1.5rem;
+  font-weight: 800;
   /* box-shadow: inset 0px 0px 10px 1px var(--color-light-black), 0px 0px 6px #000; */
 
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
 }
 
-/* #scoreNumber { */
-/* } */
 
+
+/* /////////////////// TITLE ////////////////// */
+
+.title {
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  margin-bottom: 40px;
+  font-size: max(2rem, 5vw);
+}
+
+/* /////////////////// BUTTON GRID ////////////////// */
 
 .mainSection {
+  flex: 1 1 400px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,13 +79,9 @@ main {
   gap: 20px
 }
 
-.title {
-  text-align: center;
-  font-family: Roboto, sans-serif;
-  margin-bottom: 40px;
-}
 
 .buttonPanel {
+
   width: clamp(300px, 80%, 500px);
   aspect-ratio: 1/1;
 
@@ -92,6 +109,7 @@ main {
 }
 
 
+/* /////////////////// POP-UPS ////////////////// */
 
 .popUps {
 
@@ -107,11 +125,15 @@ main {
 
 
 .youLose {
-  background-color: blue;
+  background-color: white;
   font-size: 6rem;
   opacity: 0%;
+
+  transition: opacity 4s;
 }
 
+
+/* /////////////////// NOTHING BUTTON ////////////////// */
 
 .mainButton {
   font-size: 1.5rem;
@@ -143,9 +165,9 @@ main {
   transition: opacity 150ms ease;
   pointer-events: none;
 
-  /* animation: textShake 0.2s 2 linear, fadeInOut 0.4s; */
 }
 
+/* /////////////////// ANIMATIONS ////////////////// */
 @keyframes textShake {
   0% {
     transform: rotate(0);
@@ -174,6 +196,24 @@ main {
   }
 
   70% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0%;
+  }
+}
+
+@keyframes fadeInOutFaster {
+  0% {
+    opacity: 0%;
+  }
+
+  10% {
+    opacity: 100%;
+  }
+
+  90% {
     opacity: 100%;
   }
 
