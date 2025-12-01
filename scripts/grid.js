@@ -30,7 +30,7 @@ btn.addEventListener('click', () => {
 
 
 // initialColoring
-let activeButton = 4;
+activeButton = Math.floor(Math.random() * 16) + 1;
 let initialColoring = function(activeButton) {
   document.getElementById(activeButton).style.backgroundColor = "red";
 }
@@ -52,7 +52,7 @@ let gridClick = function(e) {
 
     score = 0;
 
-    youLose.style.animation = "fadeInOutFaster 4s";
+    youLose.style.animation = "fadeInOutFaster 2s";
     setTimeout(() => {
       youLose.style.removeProperty("animation");
     }, 4000)
