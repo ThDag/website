@@ -8,7 +8,7 @@ p {
 
 .storageDiagram {
   float: right;
-  width: clamp(150px, 35%, 350px);
+  width: clamp(300px, 35%, 350px);
   margin: 15px;
   border-radius: 20px;
 }
@@ -29,25 +29,28 @@ p {
 }
 
 .codeContainer>.miniHeader {
-  display: inline;
+  display: block;
   font-weight: normal;
   font-size: 1.3rem;
+  margin-bottom: 10px;
 }
 
 
 .codeContainer>.code {
-  display: block;
+  /* display: block; */
   width: max-content;
   font-family: "Roboto Mono", monospace;
   background-color: #d2cfc6;
   border-radius: 3px;
   padding: 10px;
+  line-height: 2;
+  word-break: keep-all;
+  /* margin-top: 10px; */
+  /* margin-bottom: 10px; */
 }
 
-
-
 .desc {
-  margin-top: 3px;
+  margin-top: 10px;
   display: flex;
   gap: 4px;
 }
