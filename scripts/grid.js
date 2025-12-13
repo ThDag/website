@@ -38,9 +38,15 @@ initialColoring(activeButton)
 
 // grid click processing 
 let gridClick = function(e) {
+  // if the click is correct
   if (String(e.target.id) === String(activeButton)) {
 
-    activeButton = Math.floor(Math.random() * 16) + 1;
+
+    // makes sure the next random number isn't the same one as before
+    do {
+      activeButton = Math.floor(Math.random() * 16) + 1;
+      console.log(activeButton)
+    } while (String(activeButton) === String(e.target.id))
     console.log(activeButton)
     document.getElementById(e.target.id).style.backgroundColor = colors.darkWhite;
     document.getElementById(activeButton).style.backgroundColor = colors.yellow;
@@ -53,9 +59,11 @@ let gridClick = function(e) {
     score = 0;
 
     youLose.style.animation = "fadeInOutFaster 2s";
+    youLose.style.pointerEvents = "all";
     setTimeout(() => {
       youLose.style.removeProperty("animation");
-    }, 4000)
+      youLose.style.pointerEvents = "none";
+    }, 2000)
   }
   scoreElement.innerText = String(score)
 }
