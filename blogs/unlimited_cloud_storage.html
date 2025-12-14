@@ -23,16 +23,14 @@
 </head>
 
 <body>
+
+  <div clas="goBack"><a href="index.html">&LeftArrow; Go Back</a></div>
+
+  <h1>Unlimited Free Encrypted cloud storage trick</h1>
+
+  <hr>
+
   <section class="blogMain">
-
-    <div clas="goBack"><a href="../blog.html">&LeftArrow; Go Back</a></div>
-
-    <h1>Unlimited Free Encrypted cloud storage trick</h1>
-
-    <hr>
-
-    <img class="storageDiagram" src="../images/blogs/file_storage_diagram.png" alt="file storage diagram"
-      title="file system diagram">
 
     <p> This is how to store files securely on free cloud storage providers and get the most of their provides services.
       using encrypted and file chunking when necessary. </p>
@@ -85,19 +83,119 @@
     </ul>
 
 
-    <p><span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem nostrum laudantium quo quaerat itaque facilis
-        nihil recusandae, eum illum provident ipsum voluptatem ullam esse unde? Voluptate, itaque ipsam. Similique,
-        dolorum.</span><span>Impedit exercitationem atque libero. Provident autem pariatur, nobis consequatur aspernatur
-        quia explicabo, nam magni aperiam harum dolorem obcaecati saepe illo, quas voluptate. Quasi dolore voluptate
-        aliquam amet perferendis. Autem, enim?</span><span>Soluta, mollitia impedit. Beatae consequuntur quidem aliquam
-        molestias recusandae cumque modi accusamus maiores repudiandae earum? Eius assumenda sunt libero illo provident
-        consequuntur est! Accusamus deserunt fugiat eveniet voluptas modi doloremque?</span><span>Sit odio et non
-        officia fugit vero, libero quasi voluptas illo quis laudantium laborum itaque ea dicta cum ipsam deserunt
-        fugiat. Reprehenderit sint unde dolore, possimus aperiam quas magnam perspiciatis!</span><span>Ad quia sapiente
-        quasi veniam animi at totam quisquam! Quam, nihil unde impedit, itaque, possimus nostrum corrupti architecto
-        explicabo enim accusamus asperiores inventore eveniet? Doloremque nostrum quisquam laboriosam vel
-        similique.</span></p>
+    <div class="sideBySide">
+      <section class="sideBySideItem">
+        <h3>with keys</h3>
+
+        <div class="codeContainer">
+          <span class="code">age-keygen &gt; key.txt</span>
+          <div class="desc"><span class="sideLine"></span><span class="descText">to generate a key and save the private
+              key to a file.</span>
+          </div>
+        </div>
+        <p>keep this file secure and also save the public key that will be printed on the terminal. you will use it to
+          encrypt the file.</p>
+        <div class="codeContainer">
+          <span class="code">age -r &lt;public-key&gt; -o &lt;output-file-name&gt;.age &lt;file-to-encrypt&gt;</span>
+          <div class="desc">
+            <span class="sideLine"></span>
+            <span class="descText">
+              this encrypts the file-to-encrypt with
+              the key we generated and saves it with age subfix.
+            </span>
+          </div>
+        </div>
+        <p>the file we have created can be decrypted simply by;</p>
+        <div class="codeContainer">
+          <span class="code">age -d -i key.txt -o &lt;decrypted-file&gt; &lt;encrypted-file&gt;</span>
+          <div class="desc">
+            <span class="sideLine"></span>
+            <span class="descText">
+              this will use the private key file we created and will decrypt the encrypted-file and save it as
+              decrypted-file.
+            </span>
+          </div>
+        </div>
+        <p>simple as that</p>
+      </section>
+      <section class="sideBySideItem">
+        <h3>with passphrase</h3>
+        <p>
+          this doesn't require a key to be generated and managed. simple use a passphrase you can remember.
+        </p>
+        <div class="codeContainer">
+          <span class="code">age -p -o &lt;output-file-name&gt;.age &lt;file-to-encrypt&gt;</span>
+          <div class="desc">
+            <span class="sideLine"></span>
+            <span class="descText">
+              after running this command it will ask for a passphrase. enter it and once again to confirm and file is
+              encrypted.
+            </span>
+          </div>
+        </div>
+        <p>
+          to decrypt the file it is as simple as
+        </p>
+        <div class="codeContainer">
+          <span class="code">age -d -o &lt;decrypted-file&gt; &lt;encrypted-file&gt;</span>
+          <div class="desc">
+            <span class="sideLine"></span>
+            <span class="descText">
+              this will ask for the passphrase and then save the decrypted version as decrypted-file
+            </span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <h2>File Splitting</h2>
+    <p>
+      sometimes you might need to split very large files if you want to store them in separate cloud providers. but
+      another reason to split files could be the file upload limit many cloud providers implement.
+    </p>
+    <p>for separating i use the `split` command that works both on linux and macos. for windows you are on your own lol.
+      (you can use WSL maybe)</p>
+    <p><b>you should split after encrypting</b></p>
+    <p>before splitting a file you might want to archive it. i don't why but it feels more right and safe, it's just a
+      feeling there is no proof or reason you might want to archive it. <span class="codeInline">split</span> command is
+      pretty simple.</p>
+    <div class="codeContainer">
+      <span class="code">split -n 5 &lt;file-to-split&gt; &lt;prefix&gt;</span>
+      <div class="desc">
+        <span class="sideLine"></span>
+        <span class="descText">
+          this will split the file-to-split into five chunks. prefix is name of the files.
+        </span>
+      </div>
+    </div>
+    <p><b>Or</b></p>
+    <div class="codeContainer">
+      <span class="code">split -a 500M &lt;file-to_split&gt; &lt;prefix&gt;</span>
+      <div class="desc">
+        <span class="sideLine"></span>
+        <span class="descText">
+          this will split the file-to-split into chunks with the size of 500 megabytes. (last chunk is rest of the size)
+        </span>
+      </div>
+    </div>
+    <p>the suffix "M" is for megabytes. there are several options for it</p>
+    <ul>
+      <li><span class="codeInline">K</span> for kilobytes</li>
+      <li><span class="codeInline">M</span> for megabytes</li>
+      <li><span class="codeInline">G</span> for gigabytes</li>
+      <li>if nothing it added it will be bytes</li>
+    </ul>
+    <p>after splitting it will create the files with the names starting with `prefix` then will add `aa` and so on
+      (`aa`, `ab`, `ac` ...)
+    </p>
+    <h2>Conclusion</h2>
+    <p>yeah thats all i got. then you can upload them and abuse the capitalist conglomerates that all the files you
+      could ever upload won't even feel like a spec of dust in their ginormous databases.
+    </p>
+    <img class="storageDiagram" src="../images/blogs/file_storage_diagram.png" alt="file storage diagram"
+      title="file system diagram">
   </section>
+
 </body>
 
 </html>

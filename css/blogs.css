@@ -6,8 +6,18 @@ p {
   font-size: 1.2rem
 }
 
+h3 {
+  text-decoration: underline 2px;
+}
+
+.blogMain {
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .storageDiagram {
-  float: right;
+  /* float: right; */
   width: clamp(300px, 35%, 350px);
   margin: 15px;
   border-radius: 20px;
@@ -50,17 +60,30 @@ p {
 }
 
 .desc {
-  margin-top: 10px;
+  margin-top: 5px;
   display: flex;
   gap: 4px;
 }
 
 .descText {
   color: #9a9274;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
 }
 
 .sideLine {
   flex: 0 0 3px;
   background-color: #4B4633;
+}
+
+
+.sideByside {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+}
+
+.sideBySideItem {
+  margin: 0px 10px 0px 10px;
+  flex: 1 0 430px;
 }
