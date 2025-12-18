@@ -11,14 +11,18 @@
 
 <body id="body">
 
-  <h1>Simple todo list</h1>
+  <header>
+    <h1>Simple todo list</h1>
+  </header>
 
   <main>
-    <div class="todo" id="todo"><span class="todoCheckBox"></span><span class="todoText">do this</span></div>
-    <div class="todo" id="todo"><span class="todoCheckBox"></span><span class="todoText">something</span></div>
+    <div class="todos" id="todos">
+      <div class="todo" id="todo"><span class="todoCheckBox"></span><span class="todoText">do this</span></div>
+      <div class="todo" id="todo"><span class="todoCheckBox"></span><span class="todoText">something</span></div>
+    </div>
+    <div><button>some feature</button><button>new mission</button><button id="newTaskButton">new task</button></div>
   </main>
 
-  <div><button>some feature</button><button>new mission</button><button id="newTaskButton">new task</button></div>
 
   <script src="../scripts/todo.js"></script>
 </body>
