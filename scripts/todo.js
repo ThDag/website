@@ -11,7 +11,7 @@ const todos = document.getElementById('todos')
 let newestTodoId = 0;
 
 newTaskButton.addEventListener("click", () => {
-  let todoText = "this is a test";
+  // let todoText = "this is a test";
 
   newestTodoId += 1;
   // let newTaskTemplate = `
@@ -21,7 +21,7 @@ newTaskButton.addEventListener("click", () => {
   //     </div>`
 
   let newTaskTemplate = `
-  <div class="todo" data-todoid="${newestTodoId}"><span class="todoCheckBox"></span><input class="todoInputTag" type="text" placeholder="to-do" value="${todoText} ${newestTodoId}"></div>`
+  <div class="todo" data-todoid="${newestTodoId}"><span class="todoCheckBox"></span><input class="todoInputTag" type="text" placeholder="to-do"></div>`
 
   let todos = document.getElementById("todos").innerHTML;
   document.getElementById("todos").innerHTML = `${todos} ${newTaskTemplate}`
