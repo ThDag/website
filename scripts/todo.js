@@ -7,27 +7,31 @@ const todos = document.getElementById('todos')
 // let jfds = document.getElementsByClassName('todo')
 // console.log(jfds)
 
+
 let newestTodoId = 0;
 
 newTaskButton.addEventListener("click", () => {
   let todoText = "this is a test";
 
   newestTodoId += 1;
+  // let newTaskTemplate = `
+  //     <div class="todo" data-todoid="${newestTodoId}">
+  //       <span class="todoCheckBox"></span>
+  //       <span class="todoText">${todoText} ${newestTodoId}</span>
+  //     </div>`
+
   let newTaskTemplate = `
-      <div class="todo" data-todoid="${newestTodoId}"><span class="todoCheckBox"></span><span class="todoText">${todoText} ${newestTodoId}</span></div>`
+  <div class="todo" data-todoid="${newestTodoId}"><span class="todoCheckBox"></span><input class="todoInputTag" type="text" placeholder="to-do" value="${todoText} ${newestTodoId}"></div>`
 
   let todos = document.getElementById("todos").innerHTML;
   document.getElementById("todos").innerHTML = `${todos} ${newTaskTemplate}`
 
-
 })
 
-deleteTaskButton.addEventListener("click", () => {
-  document.querySelector(`[data-todoid="${newestTodoId}"]`).remove();
-  newestTodoId -= 1;
-})
 
 todos.addEventListener("click", (event) => {
+
+  // complete task
   if (event.target.className === "todoCheckBox") {
     console.log(event.target.parentElement.dataset.todoid)
     event.target.parentElement.remove()
