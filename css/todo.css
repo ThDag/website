@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 :root {
   /** Base colors */
   --clr-dark-a0: #000000;
@@ -45,8 +47,10 @@
 
 
 html {
-  background-color: #222;
+  background-color: var(--clr-surface-a10);
   color: #fff;
+
+  font-family: "DM Sans", sans-serif;
 
 }
 
@@ -56,16 +60,34 @@ body {
 
 header {
   padding: 1px 1px 1px 20px;
-  background-color: var(--clr-surface-a20)
+  background-color: var(--clr-success-a0);
+  color: white;
 }
 
 main {
   padding: 20px;
 }
 
+.todos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.completedTodos {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .todo {
-  margin: 20px 0px 20px 0px;
+  margin: 10px 0px 5px 0px;
+  padding: 10px;
   font-size: 2.5rem;
+
+  background-color: var(--clr-surface-a20);
+  border-radius: 20px;
 
   display: flex;
   align-items: center;
@@ -81,7 +103,7 @@ main {
   width: 2rem;
   /* background-color: var(--clr-light-a0); */
   border: 3px solid var(--clr-light-a0);
-  border-radius: 6px;
+  border-radius: 10px;
 }
 
 .todoInputTag {
