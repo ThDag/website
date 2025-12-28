@@ -34,6 +34,16 @@
   --clr-info-a20: #92b2e5;
 }
 
+
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+
 html {
   background-color: #222;
   color: #fff;
@@ -88,4 +98,23 @@ main {
   /* min-width stops it from acting weird by not allowing it to go smaller than min-content  */
   min-width: 0;
   flex: 1 1 100px;
+}
+
+/* /////////////// SVG stuff /////////////// */
+
+svg {
+  /* this fixes misallignment */
+  display: block;
+}
+
+.checkBoxTickPath {
+  fill: none;
+  stroke: var(--clr-success-a0);
+  stroke-width: 14px;
+  stroke-linecap: round;
+
+}
+
+.checkBoxTickContainer {
+  pointer-events: none;
 }
