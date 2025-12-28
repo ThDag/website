@@ -11,10 +11,6 @@ class todoObject {
     this.htmlElement = document.querySelector(`[data-todoid="${id}"] .todoInputTag`)
     this.isCompleted = false;
   }
-
-  updateValue() {
-    // it is necessary to update value to get the text written in the input box.
-  }
 }
 
 const inventory = [];
@@ -44,12 +40,13 @@ todos.addEventListener("click", (event) => {
     console.log(event.target.parentElement.dataset.todoid)
 
     let todoId = event.target.parentElement.dataset.todoid;
+    itemFromInventory = inventory.find(item => String(item.id) === String(todoId));
 
     // this code down there doesn't work for some reason; it doesn't get the string instead gives <empty string>
-    let todoText = inventory.find(item => String(item.id) === String(todoId)).htmlElement.value
+    let todoText = itemFromInventory.htmlElement.value
     console.log(todoText)
 
-    let todoHtml = inventory.find(item => String(item.id) === String(todoId)).htmlElement.parentElement;
+    let todoHtml = itemFromInventory.htmlElement.parentElement;
     // let todoText = document.querySelector(`[data-todoid="${event.target.parentElement.dataset.todoid}"] .todoInputTag`).value;
 
 
