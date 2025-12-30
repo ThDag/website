@@ -4,6 +4,7 @@
   /** Base colors */
   --clr-dark-a0: #000000;
   --clr-light-a0: #ffffff;
+  --clr-light-a10: #bfbfbf;
 
   /** Theme primary colors */
   --clr-primary-a0: #e41e5a;
@@ -38,9 +39,6 @@
 }
 
 
-.visible {
-  visibility: visible;
-}
 
 .invisible {
   visibility: hidden;
@@ -72,33 +70,39 @@ main {
 
 button {
   appearance: none;
-  background-color: var(--clr-success-a10);
+  background-color: var(--clr-success-a0);
   border: var(--clr-success-a0) 5px solid;
   border-radius: 20px;
   width: 200px;
   height: 50px;
   font-size: 1.3rem;
+  color: white;
+  font-weight: bold;
+}
+
+h2 {
+  margin-bottom: 1px;
 }
 
 
 /* ////////////// todos /////////////// */
 
 
-.todos {
+.todosContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.activeTodos {
+.todos {
   display: flex;
   flex-direction: column;
   align-items: center;
 
   width: max-content;
   padding: 10px;
-  border: black 5px solid;
+  /* border: var(--clr-surface-a20) 5px solid; */
   border-radius: 10px;
 }
 
@@ -107,11 +111,12 @@ button {
 /*   display: flex; */
 /*   flex-direction: column; */
 /*   align-items: center; */
+/**/
 /* } */
 
 
 .todo {
-  margin: 10px 0px 5px 0px;
+  margin: 10px 0px 10px 0px;
   padding: 10px;
   font-size: 2.5rem;
 
@@ -124,6 +129,7 @@ button {
 
 .completedTodos .todo {
   background-color: var(--clr-surface-a15);
+  color: var(--clr-light-a10)
 }
 
 .todoCheckBox {
@@ -172,4 +178,13 @@ svg {
 
 .checkBoxTickContainer {
   pointer-events: none;
+  transition: scale 0.4s cubic-bezier(0.45, 0.85, 0.56, 0.93);
+  scale: 0;
+}
+
+/* ///////// animations //////////// */
+
+
+.transitionTest {
+  scale: 1;
 }
