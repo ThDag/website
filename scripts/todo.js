@@ -24,8 +24,7 @@ newTaskButton.addEventListener("click", () => {
   let newTaskTemplate = `
   <div class="todo" data-todoid="${newestTodoId}"><div class="todoCheckBox"><svg class="checkBoxTickContainer invisible" height="32" width="32" viewBox="0 0 100 100"><path class="linePath checkBoxTickPath" d="M 10 50 Q 30 60, 40 90 Q 50 50, 90 10" /></svg></div><input class="todoInputTag" type="text" placeholder="to-do"></div>`
 
-  // let todos = document.getElementById("todos").innerHTML;
-  document.getElementById("todos").insertAdjacentHTML("afterbegin", newTaskTemplate)
+  document.getElementById("activeTodos").insertAdjacentHTML("afterbegin", newTaskTemplate)
 
   newObj = new todoObject(newestTodoId);
   inventory.push(newObj);
@@ -33,6 +32,7 @@ newTaskButton.addEventListener("click", () => {
 })
 
 
+todos = document.querySelector("#todos")
 todos.addEventListener("click", (event) => {
 
   // console.log(event.target.classList)
