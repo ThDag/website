@@ -102,17 +102,8 @@ h2 {
 
   width: max-content;
   padding: 10px;
-  /* border: var(--clr-surface-a20) 5px solid; */
   border-radius: 10px;
 }
-
-/* .completedTodos { */
-/**/
-/*   display: flex; */
-/*   flex-direction: column; */
-/*   align-items: center; */
-/**/
-/* } */
 
 
 .todo {
@@ -133,16 +124,18 @@ h2 {
 }
 
 .todoCheckBox {
-  /* display: inline-block; */
   flex: 0 0 2rem;
 
   margin-right: 1rem;
 
   height: 2rem;
   width: 2rem;
-  /* background-color: var(--clr-light-a0); */
   border: 3px solid var(--clr-light-a0);
   border-radius: 10px;
+
+  position: relative;
+  display: grid;
+  place-items: center;
 }
 
 .todoInputTag {
@@ -170,6 +163,8 @@ svg {
 
 .checkBoxTickContainer {
   pointer-events: none;
+
+  position: absolute;
 }
 
 .checkBoxTickPath {
@@ -184,18 +179,11 @@ svg {
 
 }
 
-.checkBoxTickGlow {
-  transform-box: fill-box;
-  transform-origin: center;
-
-}
-
 
 /* ///////// animations //////////// */
 
 .tickUpAnimation {
-  visibility: visible;
-  animation: tickUp 0.4s cubic-bezier(0.45, 0.85, 0.36, 0.93);
+  animation: tickUp 0.8s ease-in-out;
 }
 
 @keyframes tickUp {

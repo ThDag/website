@@ -5,8 +5,6 @@ const testButton = document.getElementById("testButton");
 
 class todoObject {
   constructor(id) {
-    // it's not possible to have a value when the to-do is first created
-    // this.value = undefined;
     this.id = id;
     this.htmlElement = document.querySelector(`[data-todoid="${id}"]`)
     this.isCompleted = false;
@@ -22,7 +20,7 @@ newTaskButton.addEventListener("click", () => {
   newestTodoId += 1;
 
   let newTaskTemplate = `
-  <div class="todo" data-todoid="${newestTodoId}"><div class="todoCheckBox"><svg class="checkBoxTickContainer" height="32" width="32" viewBox="0 0 100 100"><path class="linePath checkBoxTickPath invisible" d="M 10 50 Q 30 60, 40 90 Q 50 50, 90 10" /></svg></div><input class="todoInputTag" type="text" placeholder="to-do"></div>`
+  <div class="todo" data-todoid="${newestTodoId}"><div class="todoCheckBox"><svg class="checkBoxTickContainer" height="50" width="50" viewBox="0 0 100 100"></svg></div><input class="todoInputTag" type="text" placeholder="to-do"></div>`
 
   document.getElementById("todos").insertAdjacentHTML("afterbegin", newTaskTemplate)
 
@@ -35,8 +33,6 @@ newTaskButton.addEventListener("click", () => {
 todosContainer = document.querySelector("#todosContainer")
 todosContainer.addEventListener("click", (event) => {
 
-  // console.log(event.target.classList)
-
   // complete task
   if (event.target.className === "todoCheckBox") {
     console.log("completed todo id;", event.target.parentElement.dataset.todoid)
@@ -45,22 +41,8 @@ todosContainer.addEventListener("click", (event) => {
     let itemFromInventory = inventory.find(item => String(item.id) === String(todoId));
 
 
-    itemFromInventory.htmlElement.querySelector(".checkBoxTickPath").classList.add("tickUpAnimation")
+    itemFromInventory.htmlElement.querySelector(".checkBoxTickContainer").insertAdjacentHTML("afterbegin", '<path class="linePath checkBoxTickPath tickUpAnimation" d="M 10 50 Q 30 60, 40 80 Q 50 50, 90 10" />')
 
-
-    // let todoText = itemFromInventory.htmlElement.querySelector(".todoInputTag").value
-    //
-    // let todoHtmlElement = itemFromInventory.htmlElement;
-    // // let todoText = document.querySelector(`[data-todoid="${event.target.parentElement.dataset.todoid}"] .todoInputTag`).value;
-    //
-    // event.target.parentElement.remove()
-    //
-    // // adds todo to the html and updates the value(text inside) to be what it was.
-    // document.getElementById("completedTodos").prepend(todoHtmlElement);
-    // itemFromInventory.htmlElement.querySelector(".todoInputTag").value = todoText;
-    //
-    // itemFromInventory.htmlElement.querySelector(".checkBoxTickContainer").classList.remove("invisible")
-    // console.log(itemFromInventory.htmlElement.querySelector(".checkBoxTickContainer"))
   }
 })
 
@@ -69,22 +51,20 @@ todosContainer.addEventListener("animationend", (event) => {
 
   console.log(event)
   if (event.animationName === "tickUp") {
+    let todoId = event.target.closest(".todo").dataset.todoid;
 
-    let todoId = event.target.parentElement.parentElement.parentElement.dataset.todoid;
     let itemFromInventory = inventory.find(item => String(item.id) === String(todoId));
 
-    let todoText = itemFromInventory.htmlElement.querySelector(".todoInputTag").value
-
     let todoHtmlElement = itemFromInventory.htmlElement;
-
+    let todoText = itemFromInventory.htmlElement.querySelector(".todoInputTag").value
 
     // adds todo to the html and updates the value(text inside) to be what it was.
     document.getElementById("completedTodos").prepend(todoHtmlElement);
     itemFromInventory.htmlElement.querySelector(".todoInputTag").value = todoText;
 
-    itemFromInventory.htmlElement.querySelector(".checkBoxTickPath").classList.remove("tickUpAnimation", "invisible")
+    // since this is the end result where the tick is just visible we remove the animation; otherwise it keeps looping itself and this fucntion
+    itemFromInventory.htmlElement.querySelector(".checkBoxTickPath").classList.remove("tickUpAnimation")
 
-    // console.log(itemFromInventory.htmlElement.querySelector(".checkBoxTickContainer"))
 
   }
 
@@ -95,6 +75,4 @@ todosContainer.addEventListener("animationend", (event) => {
 testButton.addEventListener("click", () => {
   const bruhmoment = inventory.find(item => item.id === 2);
   console.log(bruhmoment.htmlElement.value);
-  // console.log(bruhmoment.htmlElement.value);
-  // console.log(document.querySelector('[data-todoid="2"] .todoInputTag').value);
 })
