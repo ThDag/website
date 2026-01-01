@@ -1,6 +1,6 @@
 
 const newTaskButton = document.getElementById("newTaskButton");
-const testButton = document.getElementById("testButton");
+// const testButton = document.getElementById("testButton");
 
 
 class todoObject {
@@ -51,28 +51,31 @@ todosContainer.addEventListener("animationend", (event) => {
 
   console.log(event)
   if (event.animationName === "tickUp") {
-    let todoId = event.target.closest(".todo").dataset.todoid;
+    setTimeout(() => {
 
-    let itemFromInventory = inventory.find(item => String(item.id) === String(todoId));
+      let todoId = event.target.closest(".todo").dataset.todoid;
 
-    let todoHtmlElement = itemFromInventory.htmlElement;
-    let todoText = itemFromInventory.htmlElement.querySelector(".todoInputTag").value
+      let itemFromInventory = inventory.find(item => String(item.id) === String(todoId));
 
-    // adds todo to the html and updates the value(text inside) to be what it was.
-    document.getElementById("completedTodos").prepend(todoHtmlElement);
-    itemFromInventory.htmlElement.querySelector(".todoInputTag").value = todoText;
+      let todoHtmlElement = itemFromInventory.htmlElement;
+      let todoText = itemFromInventory.htmlElement.querySelector(".todoInputTag").value
 
-    // since this is the end result where the tick is just visible we remove the animation; otherwise it keeps looping itself and this fucntion
-    itemFromInventory.htmlElement.querySelector(".checkBoxTickPath").classList.remove("tickUpAnimation")
+      // adds todo to the html and updates the value(text inside) to be what it was.
+      document.getElementById("completedTodos").prepend(todoHtmlElement);
+      itemFromInventory.htmlElement.querySelector(".todoInputTag").value = todoText;
+
+      // since this is the end result where the tick is just visible we remove the animation; otherwise it keeps looping itself and this fucntion
+      itemFromInventory.htmlElement.querySelector(".checkBoxTickPath").classList.remove("tickUpAnimation")
 
 
+    }, 300)
   }
 
 
 })
 
 
-testButton.addEventListener("click", () => {
-  const bruhmoment = inventory.find(item => item.id === 2);
-  console.log(bruhmoment.htmlElement.value);
-})
+// testButton.addEventListener("click", () => {
+//   const bruhmoment = inventory.find(item => item.id === 2);
+//   console.log(bruhmoment.htmlElement.value);
+// })

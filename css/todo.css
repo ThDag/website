@@ -64,9 +64,21 @@ header {
 }
 
 main {
-  padding: 20px;
+  padding: 20px 0px 20px 0px;
 }
 
+
+
+h2 {
+  margin-bottom: 1px;
+}
+
+/* //////////// buttons //////////// */
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
 
 button {
   appearance: none;
@@ -78,11 +90,18 @@ button {
   font-size: 1.3rem;
   color: white;
   font-weight: bold;
+  margin: 0px 5px 0px 5px;
+
+  box-shadow: 0px 6px 0px var(--clr-success-a20);
+
+  transition: all 0.1s ease-in-out;
 }
 
-h2 {
-  margin-bottom: 1px;
+button:active {
+  box-shadow: 0px 0px 0px var(--clr-success-a20);
+  translate: 0px 6px;
 }
+
 
 
 /* ////////////// todos /////////////// */
@@ -98,9 +117,9 @@ h2 {
 .todos {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 
-  width: max-content;
+  width: clamp(0px, 90%, 600px);
   padding: 10px;
   border-radius: 10px;
 }
@@ -109,7 +128,7 @@ h2 {
 .todo {
   margin: 10px 0px 10px 0px;
   padding: 10px;
-  font-size: 2.5rem;
+  font-size: min(7vw, 2.5rem);
 
   background-color: var(--clr-surface-a20);
   border-radius: 20px;
@@ -183,7 +202,7 @@ svg {
 /* ///////// animations //////////// */
 
 .tickUpAnimation {
-  animation: tickUp 0.8s ease-in-out;
+  animation: tickUp 0.4s ease-in-out;
 }
 
 @keyframes tickUp {
