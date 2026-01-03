@@ -11,9 +11,12 @@ class todoObject {
   }
 }
 
+
 const inventory = [];
 
-let newestTodoId = 0;
+// the first empty todo initilazation
+inventory.push(new todoObject(1))
+let newestTodoId = 1;
 
 newTaskButton.addEventListener("click", () => {
 
@@ -49,7 +52,6 @@ todosContainer.addEventListener("click", (event) => {
 
 todosContainer.addEventListener("animationend", (event) => {
 
-  console.log(event)
   if (event.animationName === "tickUp") {
     setTimeout(() => {
 
@@ -71,11 +73,5 @@ todosContainer.addEventListener("animationend", (event) => {
     }, 300)
   }
 
-
 })
 
-
-// testButton.addEventListener("click", () => {
-//   const bruhmoment = inventory.find(item => item.id === 2);
-//   console.log(bruhmoment.htmlElement.value);
-// })
