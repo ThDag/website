@@ -1,17 +1,70 @@
+:root {
+  /** Base colors */
+  --clr-dark-a0: #000000;
+  --clr-light-a0: #ffffff;
+
+  /** Theme primary colors */
+  --clr-primary-a0: #86b1b6;
+  --clr-primary-a10: #93b9be;
+  --clr-primary-a20: #a1c2c6;
+  --clr-primary-a30: #aecbce;
+  --clr-primary-a40: #bcd3d6;
+  --clr-primary-a50: #c9dcde;
+
+  /** Theme surface colors */
+  --clr-surface-a0: #121212;
+  --clr-surface-a10: #282828;
+  --clr-surface-a20: #3f3f3f;
+  --clr-surface-a30: #575757;
+  --clr-surface-a40: #717171;
+  --clr-surface-a50: #8b8b8b;
+
+  /** Theme tonal surface colors */
+  --clr-surface-tonal-a0: #1d2020;
+  --clr-surface-tonal-a10: #323535;
+  --clr-surface-tonal-a20: #484b4b;
+  --clr-surface-tonal-a30: #606262;
+  --clr-surface-tonal-a40: #787a7a;
+  --clr-surface-tonal-a50: #919393;
+
+  /** Success colors */
+  --clr-success-a0: #22946e;
+  --clr-success-a10: #47d5a6;
+  --clr-success-a20: #9ae8ce;
+
+  /** Warning colors */
+  --clr-warning-a0: #a87a2a;
+  --clr-warning-a10: #d7ac61;
+  --clr-warning-a20: #ecd7b2;
+
+  /** Danger colors */
+  --clr-danger-a0: #9c2121;
+  --clr-danger-a10: #d94a4a;
+  --clr-danger-a20: #eb9e9e;
+
+  /** Info colors */
+  --clr-info-a0: #21498a;
+  --clr-info-a10: #4077d1;
+  --clr-info-a20: #92b2e5;
+
+}
+
 body {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+
   height: 100vh;
 }
 
 .clock {
   border-radius: 50%;
-  border: 10px black solid;
-  min-width: 500px;
+  border: 10px var(--clr-surface-a30) solid;
+  min-width: clamp(250px, 90%, 500px);
   aspect-ratio: 1/1;
 
-  background-color: darkgrey;
+  background-color: var(--clr-surface-a50);
 }
 
 .clockFace {
@@ -27,10 +80,8 @@ body {
 
 
 .hand {
-
   position: absolute;
   right: 50%;
-  background-color: black;
   border-radius: 10px;
 
   rotate: 90deg;
@@ -43,13 +94,14 @@ body {
 
   width: 45%;
   height: 7px;
+  background-color: var(--clr-primary-a0);
 }
 
 .minuteHand {
   width: 40%;
   height: 12px;
 
-  background-color: darkslategray;
+  background-color: var(--clr-info-a10);
 }
 
 .hourHand {
