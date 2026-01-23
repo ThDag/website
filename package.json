@@ -1,0 +1,23 @@
+{
+  "name": "html",
+  "version": "1.0.0",
+  "description": "main website source code",
+  "keywords": [
+    "main"
+  ],
+  "homepage": "https://github.com/ThDag/website#readme",
+  "bugs": {
+    "url": "https://github.com/ThDag/website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThDag/website.git"
+  },
+  "license": "MIT",
+  "author": "Taha",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
