@@ -9,13 +9,10 @@ const breedListUrl = "https://dog.ceo/api/breeds/list/all";
 // list of selected breeds in index form from the breedlistArray
 let selectedBreeds = [];
 
-
 fetch(randomDogUrl)
   .then(response => response.json())
   .then(data => {
-
     mainImage.src = data.message;
-
   })
   .catch(error => console.log("sike sorry", error))
 
@@ -23,9 +20,18 @@ const breedListArray = [];
 fetch(breedListUrl)
   .then(response => response.json())
   .then(data => breedListArray.push(...Object.keys(data.message)))
-  .then(console.log(breedListArray))
-  .catch(error => console.log("errorr", error))
+  .then(() => { handleHtmlOfBreeds(breedListArray) }) // this is to ensure this function runs after the previous .then statement
+  .catch(error => console.error("error fetching breed list;", error))
 
+
+function handleHtmlOfBreeds(array) {
+  array = array.map((item, index) => {
+    return `<li class="breedListItem list-group-item list-group-item-action" data-breedId="${index}">${item}</li>`
+  })
+
+  dogBreeds.innerHTML = array.join(" ")
+
+}
 
 function htmlizeBadgeArray(array) {
   // takes a list of ids, returns a html string of dog breed names in pill shaped badges
