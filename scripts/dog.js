@@ -9,8 +9,21 @@ const breedListUrl = "https://dog.ceo/api/breeds/list/all";
 // list of selected breeds in index form from the breedlistArray
 let selectedBreeds = [];
 
-function fetchDogImage(selectedBreeds) {
+const breedListArray = [];
+fetch(breedListUrl)
+  .then(response => response.json())
+  .then(data => breedListArray.push(...Object.keys(data.message)))
+  .then(() => { handleHtmlOfBreeds(breedListArray) }) // this is to ensure this function runs after the previous .then statement
+  .catch(error => console.error("error fetching breed list;", error))
 
+function handleHtmlOfBreeds(array) {
+  array = array.map((item, index) => {
+    return `<li class="breedListItem list-group-item list-group-item-action" data-breedId="${index}">${item}</li>`
+  })
+  dogBreeds.innerHTML = array.join(" ")
+}
+
+function fetchDogImage(selectedBreeds) {
   let randomBreed = breedListArray[Number(selectedBreeds[Math.floor(Math.random() * selectedBreeds.length)])]
   fetch(`https://dog.ceo/api/breed/${randomBreed}/images/random`)
     .then(response => response.json())
@@ -20,36 +33,17 @@ function fetchDogImage(selectedBreeds) {
     .catch(error => console.error("sorry lol;", error))
 }
 
-const breedListArray = [];
-fetch(breedListUrl)
-  .then(response => response.json())
-  .then(data => breedListArray.push(...Object.keys(data.message)))
-  .then(() => { handleHtmlOfBreeds(breedListArray) }) // this is to ensure this function runs after the previous .then statement
-  .catch(error => console.error("error fetching breed list;", error))
-
-
-function handleHtmlOfBreeds(array) {
-  array = array.map((item, index) => {
-    return `<li class="breedListItem list-group-item list-group-item-action" data-breedId="${index}">${item}</li>`
-  })
-
-  dogBreeds.innerHTML = array.join(" ")
-
-}
-
 function handleHtmlOfBreedBadges(array) {
   // takes a list of ids, returns a html string of dog breed names in pill shaped badges
   let htmlizedArray = array.map((item) => {
-    return `<span class="badge fs-6 rounded-pill text-bg-primary ">${breedListArray[Number(item)]}</span>`
+    return `<span class="badge fw-medium fs-6 rounded-pill text-bg-primary ">${breedListArray[Number(item)]}</span>`
   })
   selectedBreedsBadges.innerHTML = htmlizedArray.join(" ")
-
 }
 
 document.addEventListener("click", (event) => {
 
   if (event.target.matches(".breedListItem")) {
-
     if (!event.target.matches(".active")) {
       selectedBreeds.push(event.target.dataset.breedid)
     }
@@ -63,4 +57,22 @@ document.addEventListener("click", (event) => {
     handleHtmlOfBreedBadges(selectedBreeds)
   }
 
+  else if (event.target.matches(".fetchDogImageButton")) {
+    fetchDogImage(selectedBreeds)
+  }
+
+  else if (event.target.matches(".clearButton")) {
+
+    // removes the active class of selected breeds
+    selectedBreeds.forEach((idOfBreed) => {
+      dogBreeds.children[Number(idOfBreed)].classList.remove("active")
+    })
+
+    // removes the badges
+    selectedBreeds = [];
+    handleHtmlOfBreedBadges(selectedBreeds);
+
+
+
+  }
 })
