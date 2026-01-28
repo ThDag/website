@@ -10,16 +10,19 @@
 
 <body>
   <div class="container mt-3 ">
+    <div class="row text-center mb-4">
+      <h1>random dog images</h1>
+    </div>
     <div class="row">
       <div class="col-sm-4 col-auto ">
-        <button class="clearButton btn btn-primary">clear</button>
-        <ul class="dogBreeds list-group list-group-flush overflow-y-auto" style="height: 90vh">
+        <button class="clearButton btn btn-primary mb-3 w-100">clear</button>
+        <ul class="dogBreeds list-group list-group-flush overflow-y-auto" style="height: 75dvh">
         </ul>
       </div>
 
 
       <div class="col">
-        <div class="card">
+        <div class="card mb-3">
           <h3 class="card-header">
             Selected Breeds
           </h3>
@@ -32,10 +35,15 @@
 
         </div>
 
-        <img class="mt-3 rounded w-100" id="mainImage">
+        <figure class="figure w-100">
+          <img class="figure-image w-100 rounded mb-1" id="mainImage">
+          <figcaption class="figure-caption" id="mainImageFigcaption"></figcaption>
+        </figure>
       </div>
-
     </div>
+  </div>
+
+  </div>
   </div>
 
   <script src="scripts/dog.js"></script>

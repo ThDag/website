@@ -1,5 +1,6 @@
 
 const mainImage = document.getElementById("mainImage");
+const mainImageFigcaption = document.getElementById("mainImageFigcaption");
 const dogBreeds = document.querySelector(".dogBreeds");
 const selectedBreedsBadges = document.querySelector(".selectedBreedsBadges");
 
@@ -23,14 +24,29 @@ function handleHtmlOfBreeds(array) {
   dogBreeds.innerHTML = array.join(" ")
 }
 
+// non-initial functions
+
 function fetchDogImage(selectedBreeds) {
-  let randomBreed = breedListArray[Number(selectedBreeds[Math.floor(Math.random() * selectedBreeds.length)])]
-  fetch(`https://dog.ceo/api/breed/${randomBreed}/images/random`)
-    .then(response => response.json())
-    .then(data => {
-      mainImage.src = data.message;
-    })
-    .catch(error => console.error("sorry lol;", error))
+  if (selectedBreeds.length > 0) {
+    let randomBreed = breedListArray[Number(selectedBreeds[Math.floor(Math.random() * selectedBreeds.length)])]
+    fetch(`https://dog.ceo/api/breed/${randomBreed}/images/random`)
+      .then(response => response.json())
+      .then(data => {
+        mainImage.src = data.message;
+      })
+      .catch(error => console.error("sorry lol;", error))
+  }
+  else {
+    fetch(randomDogUrl)
+      .then(response => response.json())
+      .then(data => {
+        mainImage.src = data.message;
+        // using regex to get breed name from the returned url and putting it in figcaption of image
+        mainImageFigcaption.innerHTML = data.message.match(/(?<=breeds\/).*(?=\/)/)
+      })
+      .catch(error => console.error("sorry lol;", error))
+
+  }
 }
 
 function handleHtmlOfBreedBadges(array) {
