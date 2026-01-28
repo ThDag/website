@@ -1,6 +1,7 @@
 
 const mainImage = document.getElementById("mainImage");
 const mainImageFigcaption = document.getElementById("mainImageFigcaption");
+const cardHeader = document.getElementById("cardHeader");
 const dogBreeds = document.querySelector(".dogBreeds");
 const selectedBreedsBadges = document.querySelector(".selectedBreedsBadges");
 
@@ -33,6 +34,7 @@ function fetchDogImage(selectedBreeds) {
       .then(response => response.json())
       .then(data => {
         mainImage.src = data.message;
+        data.message.match(/(?<=breeds\/).*(?=\/)/)
       })
       .catch(error => console.error("sorry lol;", error))
   }
@@ -49,9 +51,21 @@ function fetchDogImage(selectedBreeds) {
   }
 }
 
-function handleHtmlOfBreedBadges(array) {
-  // takes a list of ids, returns a html string of dog breed names in pill shaped badges
-  let htmlizedArray = array.map((item) => {
+function handlebreedSelection(target) {
+
+  // if target is undefines it means that the function was called by the clear button
+  if (target) {
+    if (!target.matches(".active")) {
+      selectedBreeds.push(target.dataset.breedid)
+    }
+    else {
+      // this is the only way to remove something from an array with the value
+      selectedBreeds = selectedBreeds.filter(item => item !== target.dataset.breedid)
+    }
+    target.classList.toggle("active")
+  }
+
+  let htmlizedArray = selectedBreeds.map((item) => {
     return `<span class="badge fw-medium fs-6 rounded-pill text-bg-primary ">${breedListArray[Number(item)]}</span>`
   })
   selectedBreedsBadges.innerHTML = htmlizedArray.join(" ")
@@ -60,17 +74,8 @@ function handleHtmlOfBreedBadges(array) {
 document.addEventListener("click", (event) => {
 
   if (event.target.matches(".breedListItem")) {
-    if (!event.target.matches(".active")) {
-      selectedBreeds.push(event.target.dataset.breedid)
-    }
 
-    else if (event.target.matches(".active")) {
-      // this is the only way to remove something from an array with the value
-      selectedBreeds = selectedBreeds.filter(item => item !== event.target.dataset.breedid)
-    }
-
-    event.target.classList.toggle("active")
-    handleHtmlOfBreedBadges(selectedBreeds)
+    handlebreedSelection(event.target)
   }
 
   else if (event.target.matches(".fetchDogImageButton")) {
@@ -86,7 +91,7 @@ document.addEventListener("click", (event) => {
 
     // removes the badges
     selectedBreeds = [];
-    handleHtmlOfBreedBadges(selectedBreeds);
+    handlebreedSelection();
 
 
 
