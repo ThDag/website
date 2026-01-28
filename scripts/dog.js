@@ -34,7 +34,7 @@ function fetchDogImage(selectedBreeds) {
       .then(response => response.json())
       .then(data => {
         mainImage.src = data.message;
-        data.message.match(/(?<=breeds\/).*(?=\/)/)
+        mainImageFigcaption = data.message.match(/(?<=breeds\/).*(?=\/)/)
       })
       .catch(error => console.error("sorry lol;", error))
   }
