@@ -9,12 +9,16 @@ const breedListUrl = "https://dog.ceo/api/breeds/list/all";
 // list of selected breeds in index form from the breedlistArray
 let selectedBreeds = [];
 
-fetch(randomDogUrl)
-  .then(response => response.json())
-  .then(data => {
-    mainImage.src = data.message;
-  })
-  .catch(error => console.log("sike sorry", error))
+function fetchDogImage(selectedBreeds) {
+
+  let randomBreed = breedListArray[Number(selectedBreeds[Math.floor(Math.random() * selectedBreeds.length)])]
+  fetch(`https://dog.ceo/api/breed/${randomBreed}/images/random`)
+    .then(response => response.json())
+    .then(data => {
+      mainImage.src = data.message;
+    })
+    .catch(error => console.error("sorry lol;", error))
+}
 
 const breedListArray = [];
 fetch(breedListUrl)
@@ -33,13 +37,12 @@ function handleHtmlOfBreeds(array) {
 
 }
 
-function htmlizeBadgeArray(array) {
+function handleHtmlOfBreedBadges(array) {
   // takes a list of ids, returns a html string of dog breed names in pill shaped badges
   let htmlizedArray = array.map((item) => {
-    return `<span class="badge fw-medium rounded-pill text-primary border border-2 border-primary">${breedListArray[Number(item)]}</span>`
+    return `<span class="badge fs-6 rounded-pill text-bg-primary ">${breedListArray[Number(item)]}</span>`
   })
-
-  return htmlizedArray.join(" ")
+  selectedBreedsBadges.innerHTML = htmlizedArray.join(" ")
 
 }
 
@@ -57,8 +60,7 @@ document.addEventListener("click", (event) => {
     }
 
     event.target.classList.toggle("active")
-    selectedBreedsBadges.innerHTML = htmlizeBadgeArray(selectedBreeds)
+    handleHtmlOfBreedBadges(selectedBreeds)
   }
-  // console.log(selectedBreeds)
 
 })
