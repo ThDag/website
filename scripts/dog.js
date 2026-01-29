@@ -34,9 +34,10 @@ function fetchDogImage(selectedBreeds) {
       .then(response => response.json())
       .then(data => {
         mainImage.src = data.message;
-        mainImageFigcaption = data.message.match(/(?<=breeds\/).*(?=\/)/)
+        mainImageFigcaption.innerHTML = data.message.match(/(?<=breeds\/).*(?=\/)/)
       })
       .catch(error => console.error("sorry lol;", error))
+
   }
   else {
     fetch(randomDogUrl)
@@ -47,6 +48,7 @@ function fetchDogImage(selectedBreeds) {
         mainImageFigcaption.innerHTML = data.message.match(/(?<=breeds\/).*(?=\/)/)
       })
       .catch(error => console.error("sorry lol;", error))
+
 
   }
 }
@@ -69,6 +71,9 @@ function handlebreedSelection(target) {
     return `<span class="badge fw-medium fs-6 rounded-pill text-bg-primary ">${breedListArray[Number(item)]}</span>`
   })
   selectedBreedsBadges.innerHTML = htmlizedArray.join(" ")
+
+  if (selectedBreeds.length > 0) { cardHeader.innerHTML = "Selected Breeds" }
+  else { cardHeader.innerHTML = "Random Breeds" }
 }
 
 document.addEventListener("click", (event) => {
