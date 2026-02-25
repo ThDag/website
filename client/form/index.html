@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <title>Send a message</title>
+</head>
+
+<body>
+  <div class="container mt-3">
+    <div class="row justify-content-center">
+      <div class="col">
+
+        <form action="http://localhost:3000">
+          <div class="mb-3">
+            <label for="name" class="form-label">name</label>
+            <input type="text" id="name" name="name" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="theMessage">Message</label>
+            <input class="form-control" type="text" name="theMessage" id="theMessage" required>
+          </div>
+
+          <button id="mainSubmitButton" class="btn btn-primary">send</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+  <script src="../scripts/form.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
