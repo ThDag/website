@@ -1,7 +1,8 @@
-submitButton = document.getElementById("mainSubmitButton")
-nameInput = document.getElementById("name")
-messageInput = document.getElementById("theMessage")
-form = document.querySelector("form")
+
+const submitButton = document.getElementById("mainSubmitButton")
+const nameInput = document.getElementById("name")
+const messageInput = document.getElementById("theMessage")
+const form = document.querySelector("form")
 
 form.addEventListener("submit", (event) => {
   event.preventDefault(); // <--- THIS STOPS THE RELOAD
@@ -31,11 +32,5 @@ async function sendMessageToBackend() {
 
 document.addEventListener("click", (event) => {
 
-  // if (event.target === submitButton) {
-  //   console.log("submit clicked")
-  //   sendMessageToBackend()
-  // }
-
-  // else { }
 
 })
