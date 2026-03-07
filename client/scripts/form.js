@@ -17,7 +17,7 @@ async function sendMessageToBackend() {
   }
 
   try {
-    const response = await fetch("/api", {
+    const response = await fetch("/api/", {
       method: "POST",
       body: JSON.stringify(bodyData)
     })
