@@ -39,17 +39,17 @@ const server = http.createServer((req, res) => {
 
   req.on("end", () => {
     console.log("given data >> ", data)
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+
+    res.end(`request recieved body; ${data}`);
+
+    console.log("url;", url);
+    n8nHook(data)
   })
 
-
-  res.setHeader('Access-Control-Allow-Origin', '*');
-
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-
-  res.end(`request recieved body; ${data}`);
-
-  console.log("url;", url);
-  n8nHook(data)
 });
 
 // Define the port to listen on const PORT = 3000;
