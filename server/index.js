@@ -5,6 +5,29 @@ const PORT = 3011
 
 formHandler()
 
+const n8nHook = async (data) => {
+  const url = "http://localhost:5678/webhook/59f8c12c"
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+
+    const result = await response.json();
+    console.log('Success:', result);
+
+  } catch (error) {
+    console.error("Error: ", error)
+
+  }
+
+  console.log("n8n hook activated")
+};
+
 // Create a server object
 const server = http.createServer((req, res) => {
   const { method, url } = req;
@@ -23,9 +46,10 @@ const server = http.createServer((req, res) => {
 
   res.writeHead(200, { 'Content-Type': 'text/plain' });
 
-  res.write("first response \n")
-  res.end('second and last response Hello, World!\n');
+  res.end(`request recieved body; ${data}`);
 
+  console.log("url;", url);
+  n8nHook(data)
 });
 
 // Define the port to listen on const PORT = 3000;
