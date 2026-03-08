@@ -7,6 +7,8 @@ const form = document.querySelector("form")
 form.addEventListener("submit", (event) => {
   event.preventDefault(); // <--- THIS STOPS THE RELOAD
   sendMessageToBackend()
+  nameInput.value = "";
+  messageInput.value = "";
 })
 
 async function sendMessageToBackend() {
