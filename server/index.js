@@ -6,7 +6,7 @@ const PORT = 3011
 formHandler()
 
 const n8nHook = async (data) => {
-  const url = "http://localhost:5678/webhook/59f8c12c"
+  const url = "http://host.docker.internal:5678/webhook/59f8c12c"
 
   try {
     const response = await fetch(url, {
