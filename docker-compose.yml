@@ -1,0 +1,17 @@
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./client:/usr/share/nginx/html:ro
+      - ./nginx/mysite.conf:/etc/nginx/conf.d/mysite.conf:ro
+    restart: unless-stopped
+    depends_on:
+      - server
+
+  server:
+    build: ./server
+    ports:
+      - "3011:3011"
+    restart: unless-stopped
