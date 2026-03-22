@@ -110,8 +110,8 @@ a {
 .contact-container {
   display: flex;
   justify-content: center;
-  margin-top: 6rem;
-  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
   width: 100%;
 }
 
@@ -119,7 +119,7 @@ a {
   text-align: center;
   font-size: 0.85rem;
   opacity: 0.6;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .contact-btn {
