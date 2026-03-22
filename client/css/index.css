@@ -107,6 +107,28 @@ a {
   text-decoration: underline;
 }
 
+.contact-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.contact-btn {
+  padding: 0.5rem 1.2rem;
+  border: 2px solid #4B4632;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: #4B4632;
+  color: #F8F4E6;
+}
+
 .blogDate {
   display: block;
   text-align: right;
