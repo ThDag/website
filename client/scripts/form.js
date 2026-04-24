@@ -3,6 +3,8 @@ const submitButton = document.getElementById("mainSubmitButton")
 const nameInput = document.getElementById("name")
 const messageInput = document.getElementById("theMessage")
 const form = document.querySelector("form")
+const submitAlert = document.getElementById("submitAlert")
+const submitAlertInnerAlert = document.getElementById("submitAlertInnerAlert")
 
 form.addEventListener("submit", (event) => {
   event.preventDefault(); // <--- THIS STOPS THE RELOAD
@@ -12,6 +14,8 @@ form.addEventListener("submit", (event) => {
 })
 
 async function sendMessageToBackend() {
+  let isError = false;
+  let errorText = ""
 
   let bodyData = {
     name: nameInput.value,
@@ -28,8 +32,26 @@ async function sendMessageToBackend() {
     console.log(result)
   }
   catch (error) {
+    errorText = error
     console.error(error)
+    isError = true;
   }
+
+
+  if (isError) {
+    submitAlertInnerAlert.textContent = `Unable to send message \n Error: ${errorText}`
+  }
+
+
+  submitAlert.classList.remove("invisible")
+  setTimeout(() => {
+    submitAlert.classList.add("invisible");
+    submitAlertInnerAlert.textContent = `Message Sent.`;
+  }, 1000)
+
+
+
+
 }
 
 document.addEventListener("click", (event) => {
