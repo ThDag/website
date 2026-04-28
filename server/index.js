@@ -1,32 +1,12 @@
-import formHandler from "./form.js"
+import handleFormRequest from "./form.js";
 import http from 'http'
 
 const PORT = 3011
 
-formHandler()
+function handleRequest(data) {
+  handleFormRequest(data)
+}
 
-const n8nHook = async (data) => {
-  const url = "http://host.docker.internal:5678/webhook/59f8c12c"
-
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data)
-    })
-
-    const result = await response.json();
-    console.log('Success:', result);
-
-  } catch (error) {
-    console.error("Error: ", error)
-
-  }
-
-  console.log("n8n hook activated")
-};
 
 // Create a server object
 const server = http.createServer((req, res) => {
@@ -47,7 +27,7 @@ const server = http.createServer((req, res) => {
     res.end(`request recieved body; ${data}`);
 
     console.log("url;", url);
-    n8nHook(data)
+    handleRequest(data)
   })
 
 });
