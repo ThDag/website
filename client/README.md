@@ -1,4 +1,3 @@
-
 # website
 
-all the code for my main websites page on [tahadagistanli.com](tahadagistanli.com)
+All the code for my main websites page on [tahadagistanli.com](tahadagistanli.com)

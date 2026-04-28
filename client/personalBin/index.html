@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<!-- This page is where users can store simple notes in a textbox by using a
+login system (with username & password). and will be able to modfiy the text
+box when logged in. -->
+
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container mt-3">
+    <div class="row justify-content-center">
+      <div class="col-md-9">
+
+        <form class="mb-4">
+          <div class="mb-3">
+            <label for="username" class="form-label">username</label>
+            <input type="text" id="username" name="username" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="password">password</label>
+            <input class="form-control" type="password" name="password" id="password" required>
+          </div>
+
+          <button id="mainSubmitButton" class="btn btn-primary">send</button>
+        </form>
+
+
+        <label class="form-label" for="mainTextBox">Your box</label>
+        <textarea class="form-control" name="mainTextBox" id="mainTextBox" style="height: 200px;"></textarea>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="../scripts/personalBin.js"></script>
+  <!-- Bootstrap 5.3 JS -->
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
