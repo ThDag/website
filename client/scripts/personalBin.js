@@ -4,22 +4,23 @@ const passwordInput = document.getElementById("password")
 
 form.addEventListener("submit", (event) => {
   event.preventDefault(); // <--- THIS STOPS THE RELOAD
-  logIn()
-  nameInput.value = "";
-  messageInput.value = "";
+  logInSignUp(event.submitter.name)
+  usernameInput.value = "";
+  passwordInput.value = "";
 })
 
 
-async function logIn() {
+async function logInSignUp(action) {
 
 
   let bodyData = {
     name: usernameInput.value,
-    password: hash(passwordInput.value)
+    password: await hash(passwordInput.value),
+    action: action
   }
 
   try {
-    const response = fetch("/api/binlogin/", {
+    const response = await fetch("http://localhost:3011/", {
       method: "POST",
       body: JSON.stringify(bodyData)
     })
@@ -29,7 +30,6 @@ async function logIn() {
   }
   catch (error) {
     console.error(error)
-
   }
 }
 
@@ -38,7 +38,11 @@ async function hash(msg) {
   const buffer = await crypto.subtle.digest('SHA-256', bytes);
 
   // The "old" way to get a hex string
-  return Array.from(new Uint8Array(buffer))
+  let finishedHash = Array.from(new Uint8Array(buffer))
     .map(b => b.toString(16).padStart(2, '0'))
     .join('');
+
+
+  console.log(finishedHash)
+  return finishedHash
 }
