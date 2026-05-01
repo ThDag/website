@@ -3,6 +3,9 @@
 client/node_modules
 server/node_modules
 
+postgres_data/
+docker-compose.local.yml
+
 ### macOS ###
 .DS_Store
 .AppleDouble
