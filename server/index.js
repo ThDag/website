@@ -1,10 +1,16 @@
 import handleFormRequest from "./form.js";
+import handlePersonalBin from "./personalBin.js";
 import http from 'http'
 
 const PORT = 3011
 
-function handleRequest(data) {
-  handleFormRequest(data)
+function handleRequest(data, url) {
+
+  if (url == "/api/form") {
+    handleFormRequest(data)
+  } else if (url == "/api/personalbin") {
+    handlePersonalBin(data)
+  }
 }
 
 
@@ -27,7 +33,7 @@ const server = http.createServer((req, res) => {
     res.end(`request recieved body; ${data}`);
 
     console.log("url;", url);
-    handleRequest(data)
+    handleRequest(data, url)
   })
 
 });
