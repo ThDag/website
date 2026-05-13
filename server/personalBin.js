@@ -14,3 +14,10 @@ const pool = new Pool({
 const res = await pool.query("SELECT * FROM test_table")
 // const res = await pool.query("INSERT INTO test_table (name, age) VALUES ('nig', 6)")
 console.log(res)
+
+
+async function handlePersonalBin() {
+  console.log("handling personalbin beep boop...")
+}
+
+export default handlePersonalBin
