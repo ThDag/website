@@ -10,8 +10,8 @@ const pool = new Pool({
   port: 5432
 })
 
-// const res = await pool.query("CREATE TABLE test_table (id SERIAL PRIMARY KEY, name TEXT, age INTEGER)")
-const res = await pool.query("SELECT * FROM test_table")
+const res = await pool.query("CREATE TABLE IF NOT EXISTS test_table (id SERIAL PRIMARY KEY, name TEXT, age INTEGER)")
+const res = await pool.query("SELECT * FROM postgres")
 // const res = await pool.query("INSERT INTO test_table (name, age) VALUES ('nig', 6)")
 console.log(res)
 
