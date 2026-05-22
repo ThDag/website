@@ -10,22 +10,27 @@ services:
     restart: unless-stopped
     depends_on:
       - server
+      - db
 
   server:
     build: ./server
     ports:
       - "3011:3011"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+
     restart: unless-stopped
 
   db:
-      image: postgres:latest
-      container_name: my_postgres
-      environment:
-        POSTGRES_USER: ${DB_USER} 
-        POSTGRES_PASSWORD: ${DB_PASSWORD} 
-        POSTGRES_DB: mydatabase
-      ports:
-        - "5432:5432"
-      volumes:
-        - ./postgres_data:/var/lib/postgresql
-      restart: always
+    image: postgres:latest
+    container_name: my_postgres
+    environment:
+      POSTGRES_USER: ${DB_USER} 
+      POSTGRES_PASSWORD: ${DB_PASSWORD} 
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql
+    restart: always

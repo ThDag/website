@@ -28,11 +28,11 @@ const server = http.createServer((req, res) => {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
 
-    if (method = "OPTIONS") {
+    if (method === "OPTIONS") {
       res.writeHead(204);
       res.end();
       return;
-    } else if (method = "get" && url.startsWith("/api/")) {
+    } else {
       res.writeHead(200, { 'Content-Type': 'text/plain' });
 
       res.end(`request recieved body; ${data}`);

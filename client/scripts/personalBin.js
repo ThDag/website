@@ -20,7 +20,7 @@ async function logInSignUp(action) {
   }
 
   try {
-    const response = await fetch("http://localhost:3011/api/personalbin", {
+    const response = await fetch("/api/personalbin", {
       method: "POST",
       body: JSON.stringify(bodyData)
     })
