@@ -36,21 +36,21 @@ const server = http.createServer((req, res) => {
       return;
 
     } else {
-      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.setHeader('Content-Type', 'application/json');
 
-      console.log("given data >> ", data)
-      console.log("url:", url);
+
       const result = await handleRequest(data, url)
-      console.log("result:", result)
+      console.log("recieved data: ", data)
+      console.log("url: ", url);
+      console.log("result: ", result)
 
+      if (result.cookie) {
+        res.writeHead(200, { "Set-Cookie": result.cookie })
+      }
 
       res.end(JSON.stringify(result));
-
-
     }
-
   })
-
 });
 
 // Define the port to listen on const PORT = 3000;

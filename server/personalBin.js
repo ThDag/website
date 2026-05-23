@@ -20,26 +20,28 @@ async function handlePersonalBin(data) {
   // console.log(data) // {"name":"sdfsdf","password":"4bac27393bdd9777ce02453256c5577cd02275510b2227f473d03f533924f877","action":"logIn"}
   const parsedData = JSON.parse(data)
 
+  // ----------------- login --------------------
   if (parsedData.action === "logIn") {
     const usernameCheck = await pool.query("SELECT * FROM users WHERE name = $1", [parsedData.name])
     const usernameMatch = usernameCheck.rows
 
     if (usernameCheck.rowCount) {
       if (parsedData.password === usernameMatch[0].password) {
-
-
         const usersTextBox = usernameMatch[0].textbox
-
         console.log(`logged in successfully as ${parsedData.name}`)
-        return { status: "success", message: `logged in successfully as ${parsedData.name}`, task: "signup", textbox: usersTextBox }
+        return { status: "success", message: `logged in successfully as ${parsedData.name}`, task: "signup", textbox: usersTextBox, cookie: "user_session=yep; HttpOnly; secure;" }
+
       } else {
         console.log("password wrong")
       }
+
     } else {
       console.log("username doesn't exist")
     }
     return { status: "unsuccessful", message: "username or password incorrect", task: "login" }
 
+
+    // ----------------- singup ---------------
   } else if (parsedData.action === "signUp") {
     const usernameCheck = await pool.query("SELECT * FROM users WHERE name = $1", [parsedData.name])
     const usernameExists = usernameCheck.rowCount
@@ -52,6 +54,7 @@ async function handlePersonalBin(data) {
       return { status: "unsuccessful", message: "username already taken", task: "signup" }
     }
 
+    // ---------------- submit changes ---------------
   } else if (parsedData.action === "submitChanges") {
 
   }
