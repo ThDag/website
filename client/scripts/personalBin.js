@@ -1,6 +1,8 @@
 const form = document.querySelector("form")
 const usernameInput = document.getElementById("username")
 const passwordInput = document.getElementById("password")
+const mainTextBox = document.getElementById("mainTextBox")
+const submitChangesButton = document.getElementById("submitChangesButton")
 
 form.addEventListener("submit", (event) => {
   event.preventDefault(); // <--- THIS STOPS THE RELOAD
@@ -9,10 +11,33 @@ form.addEventListener("submit", (event) => {
   passwordInput.value = "";
 })
 
+submitChangesButton.addEventListener("click", async () => {
+  submitChanges()
+})
+
+async function submitChanges() {
+
+  const mainText = mainTextBox.value;
+  let bodyData = {
+    mainText: mainText,
+    action: "submitChanges"
+  }
+
+  try {
+    const response = await fetch("/api/personalbin", {
+      method: "POST",
+      body: JSON.stringify(bodyData)
+    })
+
+    const result = await response.text()
+    console.log(result)
+  }
+  catch (error) {
+    console.error(error)
+  }
+}
 
 async function logInSignUp(action) {
-
-
   let bodyData = {
     name: usernameInput.value,
     password: await hash(passwordInput.value),
