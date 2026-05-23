@@ -1,5 +1,6 @@
 import "dotenv/config"
 import { Pool } from "pg"
+import * as crypto from 'node:crypto';
 
 
 const pool = new Pool({
@@ -10,9 +11,8 @@ const pool = new Pool({
   port: 5432
 })
 
-const res = await pool.query("CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, name TEXT, password TEXT)")
+const res = await pool.query("CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, name TEXT, password TEXT, textbox TEXT)")
 const res1 = await pool.query("SELECT * FROM users")
-// const res = await pool.query("INSERT INTO test_table (name, age) VALUES ('nig', 6)")
 console.log("entire database:", res1.rows)
 
 
@@ -29,7 +29,7 @@ async function handlePersonalBin(data) {
       if (parsedData.password === usernameMatch[0].password) {
         const usersTextBox = usernameMatch[0].textbox
         console.log(`logged in successfully as ${parsedData.name}`)
-        return { status: "success", message: `logged in successfully as ${parsedData.name}`, task: "signup", textbox: usersTextBox, cookie: "user_session=yep; HttpOnly; secure;" }
+        return { status: "success", message: `logged in successfully as ${parsedData.name}`, task: "signup", textbox: usersTextBox, cookie: `user_session=${createRandomHash()}; HttpOnly; secure;` }
 
       } else {
         console.log("password wrong")
@@ -58,6 +58,11 @@ async function handlePersonalBin(data) {
   } else if (parsedData.action === "submitChanges") {
 
   }
+}
+
+function createRandomHash() {
+  const randomString = crypto.randomBytes(32).toString("hex")
+  return randomString
 }
 
 export default handlePersonalBin
