@@ -36,14 +36,15 @@ const server = http.createServer((req, res) => {
       return;
 
     } else {
-      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.writeHead(200, { 'Content-Type': 'application/json' });
 
       console.log("given data >> ", data)
       console.log("url:", url);
       const result = await handleRequest(data, url)
       console.log("result:", result)
 
-      res.end(`request recieved body; ${data} \n\n result: ${JSON.stringify(result)}`);
+
+      res.end(JSON.stringify(result));
 
 
     }

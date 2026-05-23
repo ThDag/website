@@ -26,14 +26,19 @@ async function handlePersonalBin(data) {
 
     if (usernameCheck.rowCount) {
       if (parsedData.password === usernameMatch[0].password) {
-        return `logged in successfully as ${parsedData.name}`
+
+
+        const usersTextBox = usernameMatch[0].textbox
+
+        console.log(`logged in successfully as ${parsedData.name}`)
+        return { status: "success", message: `logged in successfully as ${parsedData.name}`, task: "signup", textbox: usersTextBox }
       } else {
         console.log("password wrong")
       }
     } else {
       console.log("username doesn't exist")
     }
-    return "username or password incorrect"
+    return { status: "unsuccessful", message: "username or password incorrect", task: "login" }
 
   } else if (parsedData.action === "signUp") {
     const usernameCheck = await pool.query("SELECT * FROM users WHERE name = $1", [parsedData.name])
@@ -41,11 +46,13 @@ async function handlePersonalBin(data) {
 
     if (!usernameExists) {
       const signUpAction = await pool.query("INSERT INTO users (name, password) VALUES ($1, $2)", [parsedData.name, parsedData.password])
-      return "account created"
+      return { status: "success", message: "account created", task: "signup" }
 
     } else {
-      return "username already taken"
+      return { status: "unsuccessful", message: "username already taken", task: "signup" }
     }
+
+  } else if (parsedData.action === "submitChanges") {
 
   }
 }

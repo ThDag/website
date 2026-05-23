@@ -16,7 +16,6 @@ submitChangesButton.addEventListener("click", async () => {
 })
 
 async function submitChanges() {
-
   const mainText = mainTextBox.value;
   let bodyData = {
     mainText: mainText,
@@ -51,7 +50,10 @@ async function logInSignUp(action) {
     })
 
     const result = await response.text()
-    console.log(result)
+    const parsedResult = JSON.parse(result)
+    console.log(parsedResult)
+    mainTextBox.value = parsedResult.textbox
+
   }
   catch (error) {
     console.error(error)
@@ -67,7 +69,5 @@ async function hash(msg) {
     .map(b => b.toString(16).padStart(2, '0'))
     .join('');
 
-
-  console.log(finishedHash)
   return finishedHash
 }
