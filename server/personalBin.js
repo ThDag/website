@@ -10,14 +10,35 @@ const pool = new Pool({
   port: 5432
 })
 
-const res = await pool.query("CREATE TABLE IF NOT EXISTS test_table (id SERIAL PRIMARY KEY, name TEXT, age INTEGER)")
-const res1 = await pool.query("SELECT * FROM test_table")
+const res = await pool.query("CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, name TEXT, password TEXT)")
+const res1 = await pool.query("SELECT * FROM users")
 // const res = await pool.query("INSERT INTO test_table (name, age) VALUES ('nig', 6)")
-console.log(res1)
+console.log("entire database:", res1.rows)
 
 
-async function handlePersonalBin() {
-  console.log("handling personalbin beep boop...")
+async function handlePersonalBin(data) {
+  // console.log(data) // {"name":"sdfsdf","password":"4bac27393bdd9777ce02453256c5577cd02275510b2227f473d03f533924f877","action":"logIn"}
+  const parsedData = JSON.parse(data)
+
+  if (parsedData.action === "logIn") {
+    const usernameCheck = await pool.query("SELECT * FROM users WHERE name = $1", [parsedData.name])
+    const result = usernameCheck.rows
+    return result
+
+  } else if (parsedData.action === "signUp") {
+    const usernameCheck = await pool.query("SELECT * FROM users WHERE name = $1", [parsedData.name])
+    const usernameExists = usernameCheck.rowCount
+
+    if (!usernameExists) {
+      const signUpAction = await pool.query("INSERT INTO users (name, password) VALUES ($1, $2)", [parsedData.name, parsedData.password])
+      const result = signUpAction
+      return "account created"
+
+    } else {
+      return "username already taken"
+    }
+
+  }
 }
 
 export default handlePersonalBin

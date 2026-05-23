@@ -4,13 +4,16 @@ import http from 'http'
 
 const PORT = 3011
 
-function handleRequest(data, url) {
+async function handleRequest(data, url) {
+  let result = null;
 
   if (url == "/api/form") {
-    handleFormRequest(data)
+    result = await handleFormRequest(data)
   } else if (url == "/api/personalbin") {
-    handlePersonalBin(data)
+    result = await handlePersonalBin(data)
   }
+
+  return result
 }
 
 
@@ -23,7 +26,7 @@ const server = http.createServer((req, res) => {
     data += chunk.toString()
   })
 
-  req.on("end", () => {
+  req.on("end", async () => {
     console.log("given data >> ", data)
 
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -32,13 +35,16 @@ const server = http.createServer((req, res) => {
       res.writeHead(204);
       res.end();
       return;
+
     } else {
       res.writeHead(200, { 'Content-Type': 'text/plain' });
 
-      res.end(`request recieved body; ${data}`);
+      console.log("url:", url);
+      const result = await handleRequest(data, url)
+      console.log("result:", result)
 
-      console.log("url;", url);
-      handleRequest(data, url)
+      res.end(`request recieved body; ${data} \n\n result: ${JSON.stringify(result)}`);
+
 
     }
 
