@@ -27,7 +27,6 @@ const server = http.createServer((req, res) => {
   })
 
   req.on("end", async () => {
-    console.log("given data >> ", data)
 
     res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -39,6 +38,7 @@ const server = http.createServer((req, res) => {
     } else {
       res.writeHead(200, { 'Content-Type': 'text/plain' });
 
+      console.log("given data >> ", data)
       console.log("url:", url);
       const result = await handleRequest(data, url)
       console.log("result:", result)
