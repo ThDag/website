@@ -2,7 +2,7 @@ const form = document.querySelector("form")
 const usernameInput = document.getElementById("username")
 const passwordInput = document.getElementById("password")
 const mainTextBox = document.getElementById("mainTextBox")
-const submitChangesButton = document.getElementById("submitChangesButton")
+const submitChangesBtn = document.getElementById("submitChangesBtn")
 
 form.addEventListener("submit", (event) => {
   event.preventDefault(); // <--- THIS STOPS THE RELOAD
@@ -11,7 +11,7 @@ form.addEventListener("submit", (event) => {
   passwordInput.value = "";
 })
 
-submitChangesButton.addEventListener("click", async () => {
+submitChangesBtn.addEventListener("click", async () => {
   submitChanges()
 })
 
@@ -30,7 +30,10 @@ async function submitChanges() {
     })
 
     const result = await response.text()
-    console.log(result)
+    const parsedResult = JSON.parse(result)
+    // calls the ui change javascript (vibecoded idk what happens really)
+    window.dispatchEvent(new CustomEvent("personalbin-response", { detail: parsedResult }))
+    console.log(parsedResult)
   }
   catch (error) {
     console.error(error)
@@ -53,11 +56,12 @@ async function logInSignUp(action) {
 
     const result = await response.text()
     const parsedResult = JSON.parse(result)
-    console.log(parsedResult)
+    // calls the ui change javascript (vibecoded idk what happens really)
+    window.dispatchEvent(new CustomEvent("personalbin-response", { detail: parsedResult }))
     if (parsedResult.status === "success") {
-
       mainTextBox.value = parsedResult.textbox
     }
+    console.log(parsedResult)
 
 
 
