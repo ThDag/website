@@ -54,7 +54,12 @@ async function logInSignUp(action) {
     const result = await response.text()
     const parsedResult = JSON.parse(result)
     console.log(parsedResult)
-    mainTextBox.value = parsedResult.textbox
+    if (parsedResult.status === "success") {
+
+      mainTextBox.value = parsedResult.textbox
+    }
+
+
 
   }
   catch (error) {
