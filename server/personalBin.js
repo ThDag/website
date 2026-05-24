@@ -1,6 +1,7 @@
 import "dotenv/config"
 import { Pool } from "pg"
 import * as crypto from 'node:crypto';
+import { getCookieValueFromKey, parseCookies } from "./middleware/cookieHandler.js"
 
 
 const pool = new Pool({
@@ -11,7 +12,9 @@ const pool = new Pool({
   port: 5432
 })
 
-const res = await pool.query("CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, name TEXT, password TEXT, textbox TEXT)")
+// const res = await pool.query("CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, name TEXT, password TEXT, textbox TEXT)")
+// const re2 = await pool.query(`CREATE TABLE IF NOT EXISTS sessions ( id SERIAL PRIMARY KEY, session_id TEXT NOT NULL,
+//  account_id INT NOT NULL, created_at TIMESTAMPTZ DEFAULT NOW(), expires_at TIMESTAMPTZ DEFAULT (NOW() + INTERVAL '1 day')); `)
 const res1 = await pool.query("SELECT * FROM users")
 console.log("entire database:", res1.rows)
 
@@ -28,8 +31,15 @@ async function handlePersonalBin(data, headers) {
     if (usernameCheck.rowCount) {
       if (parsedData.password === usernameMatch[0].password) {
         const usersTextBox = usernameMatch[0].textbox
+        const session_cookie = createRandomHash()
+        const addSessionToDBResponse = await pool.query("INSERT INTO sessions (session_id, account_id) VALUES ($1, $2)", [session_cookie, usernameMatch[0].id])
+
         console.log(`logged in successfully as ${parsedData.name}`)
-        return { status: "success", message: `logged in successfully as ${parsedData.name}`, task: "signup", textbox: usersTextBox, cookie: `user_session=${createRandomHash()}; HttpOnly; secure;` }
+        return {
+          status: "success", message: `logged in successfully as ${parsedData.name}`,
+
+          task: "signup", textbox: usersTextBox, cookie: `session_id=${session_cookie}; HttpOnly; secure;`
+        }
 
       } else {
         console.log("password wrong")
@@ -56,8 +66,17 @@ async function handlePersonalBin(data, headers) {
 
     // ---------------- submit changes ---------------
   } else if (parsedData.action === "submitChanges") {
-    console.log("headers ", headers.cookie)
-    return {}
+    const cookie = getCookieValueFromKey(headers.cookie, "session_id")
+    const cookieValidationCheck = await pool.query(`SELECT * FROM sessions JOIN users
+    ON sessions.account_id = users.id WHERE session_id = $1 AND expires_at > NOW();`, [cookie])
+
+    if (cookieValidationCheck.rowCount) {
+      const updateTextbox = await pool.query(`UPDATE users SET textbox = $1 WHERE id = $2`, [parsedData.textbox, cookieValidationCheck.rows[0].account_id])
+      return { status: "success", message: "changes submitted successfully", task: "submitChanges" }
+    } else {
+      return { status: "unsuccessful", message: "session expired or cookie wrong idk", task: "submitChanges" }
+
+    }
 
   }
 }

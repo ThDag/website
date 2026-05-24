@@ -39,13 +39,17 @@ const server = http.createServer((req, res) => {
       res.setHeader('Content-Type', 'application/json');
 
 
-      const result = await handleRequest(data, url, req.headers)
+      let result;
+      try {
+        result = await handleRequest(data, url, req.headers)
+      } catch (err) {
+        console.error(err)
+      }
       console.log("recieved data: ", data)
-      console.log("recieved cookies: ", req.headers.cookie)
       console.log("url: ", url);
       console.log("result: ", result)
 
-      if (result.cookie) {
+      if (result?.cookie) {
         res.writeHead(200, { "Set-Cookie": result.cookie })
       }
 
