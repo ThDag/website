@@ -17,38 +17,64 @@
 <body>
 
   <div class="container py-5" style="max-width: 640px;">
-    <div id="loginStatus" class="small text-secondary mb-3">Not logged in</div>
-    <div class="mb-4">
-      <h1 class="h3 mb-1">PersonalBin</h1>
-      <p class="text-secondary small mb-0">A barebones pastebin with account creation, login, and persistent text storage — built to learn authentication, sessions, and databases.</p>
+
+    <!-- Header Section -->
+    <div class="d-flex justify-content-between align-items-start mb-4">
+      <div>
+        <h1 class="h3 mb-1 fw-bold text-primary">PersonalBin</h1>
+        <p class="text-secondary small mb-0">A barebones pastebin with account creation, login, and persistent text
+          storage.</p>
+      </div>
+      <span id="loginStatus"
+        class="badge bg-secondary-subtle text-secondary-emphasis border border-secondary-subtle rounded-pill mt-1">Not
+        logged in</span>
     </div>
 
     <div id="messageArea"></div>
 
-    <div class="card-subtle rounded-3 p-4 mb-4">
+    <!-- Auth Card -->
+    <div class="card-subtle rounded-4 p-4 mb-4 shadow-sm">
       <form>
-        <div class="mb-3">
-          <label for="username" class="form-label small fw-medium">Username</label>
-          <input type="text" id="username" name="username" class="form-control" autocomplete="username">
+        <div class="form-floating mb-3">
+          <input type="text" id="username" name="username" class="form-control" autocomplete="username"
+            placeholder="Username">
+          <label for="username" class="text-secondary">Username</label>
         </div>
-        <div class="mb-3">
-          <label for="password" class="form-label small fw-medium">Password</label>
-          <input type="password" id="password" name="password" class="form-control" autocomplete="current-password">
+        <div class="form-floating mb-4">
+          <input type="password" id="password" name="password" class="form-control" autocomplete="current-password"
+            placeholder="Password">
+          <label for="password" class="text-secondary">Password</label>
         </div>
         <div class="d-flex gap-2">
-          <button id="loginBtn" class="btn btn-primary" name="logIn">Log in</button>
-          <button id="signupBtn" class="btn btn-outline-secondary" name="signUp">Sign up</button>
+          <button id="loginBtn" class="btn btn-primary px-4 fw-medium" name="logIn">Log in</button>
+          <button id="signupBtn" class="btn btn-outline-secondary px-4 fw-medium" name="signUp">Sign up</button>
         </div>
       </form>
     </div>
 
-    <div class="card-subtle rounded-3 p-4">
-      <div class="mb-3">
-        <label for="mainTextBox" class="form-label small fw-medium">Your box</label>
-        <textarea class="form-control font-monospace" id="mainTextBox" rows="8"></textarea>
+    <!-- Main Workspace Card -->
+    <div class="card-subtle rounded-4 p-4 shadow-sm">
+      <div class="mb-4">
+        <!-- Main Section Title -->
+        <label for="mainTextBox" class="form-label fs-5 fw-semibold text-light mb-1 d-block">
+          Your Box
+        </label>
+
+        <!-- Added Box Description -->
+        <div class="form-text text-secondary mb-3 pb-2 border-bottom border-secondary-subtle">
+          This is your personal workspace. Anything you save here is tied directly to your account, meaning you can
+          access it securely from any device whenever you log in.
+        </div>
+
+        <textarea class="form-control font-monospace bg-dark-subtle border-secondary focus-ring focus-ring-primary"
+          id="mainTextBox" rows="10" placeholder="Paste your text here..."></textarea>
       </div>
-      <button id="submitChangesBtn" class="btn btn-success" name="submitChanges">Submit Changes</button>
+      <div class="d-flex justify-content-end">
+        <button id="submitChangesBtn" class="btn btn-success px-4 fw-medium" name="submitChanges">Submit
+          Changes</button>
+      </div>
     </div>
+
   </div>
 
   <script src="../scripts/personalBin.js"></script>
