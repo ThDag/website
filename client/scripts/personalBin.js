@@ -58,7 +58,7 @@ async function logInSignUp(action) {
     const parsedResult = JSON.parse(result)
     // calls the ui change javascript (vibecoded idk what happens really)
     window.dispatchEvent(new CustomEvent("personalbin-response", { detail: parsedResult }))
-    if (parsedResult.status === "success") {
+    if (parsedResult.status === "success" && parsedResult.action === "logIn") {
       mainTextBox.value = parsedResult.textbox
     }
     console.log(parsedResult)
