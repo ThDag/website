@@ -1,5 +1,4 @@
 const messageArea = document.getElementById("messageArea")
-const mainTextBox = document.getElementById("mainTextBox")
 
 window.addEventListener("personalbin-response", (e) => {
   const { status, task, message, textbox } = e.detail
@@ -13,7 +12,7 @@ window.addEventListener("personalbin-response", (e) => {
   messageArea.appendChild(alert)
 
   if (status === "success" && task === "signup" && textbox != null) {
-    mainTextBox.value = textbox
+    document.getElementById("mainTextBox").value = textbox
   }
 
   setTimeout(() => alert.remove(), 5000)
