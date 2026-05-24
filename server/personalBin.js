@@ -16,7 +16,7 @@ const res1 = await pool.query("SELECT * FROM users")
 console.log("entire database:", res1.rows)
 
 
-async function handlePersonalBin(data) {
+async function handlePersonalBin(data, headers) {
   // console.log(data) // {"name":"sdfsdf","password":"4bac27393bdd9777ce02453256c5577cd02275510b2227f473d03f533924f877","action":"logIn"}
   const parsedData = JSON.parse(data)
 
@@ -56,6 +56,8 @@ async function handlePersonalBin(data) {
 
     // ---------------- submit changes ---------------
   } else if (parsedData.action === "submitChanges") {
+    console.log("headers ", headers.cookie)
+    return {}
 
   }
 }

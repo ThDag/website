@@ -4,20 +4,20 @@ import http from 'http'
 
 const PORT = 3011
 
-async function handleRequest(data, url) {
+async function handleRequest(data, url, headers) {
   let result = null;
 
   if (url == "/api/form") {
     result = await handleFormRequest(data)
   } else if (url == "/api/personalbin") {
-    result = await handlePersonalBin(data)
+    result = await handlePersonalBin(data, headers)
   }
 
   return result
 }
 
 
-// Create a server object
+// ----------------- Create a server object -----------------
 const server = http.createServer((req, res) => {
   const { method, url } = req;
 
@@ -39,8 +39,9 @@ const server = http.createServer((req, res) => {
       res.setHeader('Content-Type', 'application/json');
 
 
-      const result = await handleRequest(data, url)
+      const result = await handleRequest(data, url, req.headers)
       console.log("recieved data: ", data)
+      console.log("recieved cookies: ", req.headers.cookie)
       console.log("url: ", url);
       console.log("result: ", result)
 

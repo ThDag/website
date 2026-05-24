@@ -15,10 +15,11 @@ submitChangesButton.addEventListener("click", async () => {
   submitChanges()
 })
 
+// --------------- submit changes -------------------
 async function submitChanges() {
   const mainText = mainTextBox.value;
   let bodyData = {
-    mainText: mainText,
+    textbox: mainText,
     action: "submitChanges"
   }
 
@@ -36,6 +37,7 @@ async function submitChanges() {
   }
 }
 
+// ------------------ logInSignUp ----------------------
 async function logInSignUp(action) {
   let bodyData = {
     name: usernameInput.value,
