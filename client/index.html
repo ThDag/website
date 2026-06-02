@@ -8,13 +8,10 @@
   <meta name="description" content="Portfolio and personal page of Taha Dağıstanlı.">
   <link rel="icon" type="image/png" href="images/taha_dagistanli/profile_pic.png">
 
-  <!-- Bootstrap 5.3 CSS -->
   <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Custom Minimal Styles to match original vibe -->
   <style>
     :root {
       --bg-color: #F8F4E6;
@@ -38,6 +35,22 @@
     a:hover {
       opacity: 0.7;
       color: var(--text-color);
+    }
+
+    /* --- Image Styles --- */
+    .profile-img {
+      width: 140px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid rgba(75, 70, 50, 0.1);
+    }
+
+    .signature-img {
+      width: 120px;
+      aspect-ratio: 2.5 / 1;
+      object-fit: contain;
+      opacity: 0.85;
     }
 
     .header-name {
@@ -67,7 +80,6 @@
 
     .social-link {
       text-decoration: none;
-      margin-right: 1.5rem;
       font-size: 0.95rem;
     }
 
@@ -125,30 +137,42 @@
 <body>
 
   <div class="container py-5" style="max-width: 800px;">
-    <!-- Header -->
     <header class="mb-5">
-      <h1 class="header-name display-4 mb-3">Taha Dağıstanlı</h1>
-      <p class="lead">Python programmer, amateur web developer, and chess enthusiast with a deep interest in history and
-        culture.</p>
+      <div class="row align-items-center justify-content-center text-center text-md-start mb-4 mx-auto"
+        style="max-width: 700px;">
+        <div class="col-md-auto mb-4 mb-md-0 pe-md-3">
+          <img src="images/black_avatar.jpg" alt="Taha Dağıstanlı Profile" class="profile-img">
+        </div>
 
-      <div class="mt-4">
-        <a href="https://github.com/ThDag" class="social-link" target="_blank"><i
-            class="fa-brands fa-github"></i>GitHub</a>
-        <a href="https://www.linkedin.com/in/taha-dağıstanlı" class="social-link" target="_blank"><i
-            class="fa-brands fa-linkedin"></i>LinkedIn</a>
-        <a href="https://x.com/TahaDagistanli" class="social-link" target="_blank"><i
-            class="fa-brands fa-x-twitter"></i>Twitter</a>
-        <a href="https://www.instagram.com/taha_dagistanli/" class="social-link" target="_blank"><i
-            class="fa-brands fa-instagram"></i>Instagram</a>
-        <a href="https://signal.me/#eu/EubdC0JAzwYFZIQU-HkZQFhEUOw_1y-TVF5PFkO_Ea6Bou4a2CJAU6nTZaJdS4Mh"
-          class="social-link" target="_blank"><i class="fa-solid fa-comment-sms"></i>Signal</a>
+        <div class="col-md-auto" style="max-width: 480px;">
+          <h1 class="header-name display-4 mb-2">Taha Dağıstanlı</h1>
+          <p class="lead mb-0 mx-auto mx-md-0">
+            Python programmer, amateur web developer, and chess enthusiast with a deep interest in history and culture.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <img src="images/signature.png" alt="Signature" class="signature-img mb-4 mt-2">
+
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+          <a href="https://github.com/ThDag" class="social-link" target="_blank"><i
+              class="fa-brands fa-github"></i>GitHub</a>
+          <a href="https://www.linkedin.com/in/taha-dağıstanlı" class="social-link" target="_blank"><i
+              class="fa-brands fa-linkedin"></i>LinkedIn</a>
+          <a href="https://x.com/TahaDagistanli" class="social-link" target="_blank"><i
+              class="fa-brands fa-x-twitter"></i>Twitter</a>
+          <a href="https://www.instagram.com/taha_dagistanli/" class="social-link" target="_blank"><i
+              class="fa-brands fa-instagram"></i>Instagram</a>
+          <a href="https://signal.me/#eu/EubdC0JAzwYFZIQU-HkZQFhEUOw_1y-TVF5PFkO_Ea6Bou4a2CJAU6nTZaJdS4Mh"
+            class="social-link" target="_blank"><i class="fa-solid fa-comment-sms"></i>Signal</a>
+        </div>
       </div>
     </header>
 
-    <!-- Skills -->
     <section>
       <h2 class="section-title">Skills</h2>
-      <div class="row row-cols-2 row-cols-md-4 g-3 mb-4">
+      <div class="row row-cols-auto justify-content-center justify-content-md-start g-3 g-md-4 mb-4">
         <div class="col">
           <div class="skill-item">
             <i class="fa-brands fa-python"></i>Python
@@ -187,7 +211,6 @@
       </div>
     </section>
 
-    <!-- Web Projects -->
     <section>
       <h2 class="section-title">Projects</h2>
       <ul class="list-unstyled">
@@ -231,7 +254,6 @@
       </ul>
     </section>
 
-    <!-- Curated Links -->
     <section>
       <h2 class="section-title">Recommended Websites</h2>
       <ul class="list-unstyled">
@@ -254,7 +276,6 @@
       </ul>
     </section>
 
-    <!-- Footer -->
     <footer class="footer pt-5">
       <div class="row align-items-center">
         <div class="col-md-6">
@@ -269,7 +290,6 @@
     </footer>
   </div>
 
-  <!-- Bootstrap 5.3 JS -->
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
