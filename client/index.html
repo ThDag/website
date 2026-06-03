@@ -16,9 +16,10 @@
 
   <style>
     :root {
-      --bg-color: #F8F4E6;
-      --text-color: #4B4632;
-      --accent-color: #4B4632;
+      /* Switched to deep, warm earthy tones to keep the vintage/minimalist vibe */
+      --bg-color: #1C1A17;
+      --text-color: #F0EDE1;
+      --accent-color: #F0EDE1;
     }
 
     body {
@@ -45,7 +46,8 @@
       aspect-ratio: 1 / 1;
       object-fit: cover;
       border-radius: 50%;
-      border: 3px solid rgba(75, 70, 50, 0.1);
+      /* Updated rgba to match the new light text color */
+      border: 3px solid rgba(240, 237, 225, 0.15);
     }
 
     .signature-img {
@@ -53,6 +55,8 @@
       aspect-ratio: 2.5 / 1;
       object-fit: contain;
       opacity: 0.85;
+      /* Added filter to invert the dark signature for the dark background */
+      filter: invert(0.9) sepia(0.1);
     }
 
     .header-name {
@@ -108,7 +112,8 @@
     .footer {
       margin-top: 5rem;
       padding-bottom: 3rem;
-      border-top: 1px solid rgba(75, 70, 50, 0.1);
+      /* Updated rgba to match the new light text color */
+      border-top: 1px solid rgba(240, 237, 225, 0.15);
     }
 
     .blog-link {
