@@ -7,7 +7,7 @@ const PORT = 3011
 async function handleRequest(data, url, headers) {
   let result = null;
 
-  if (url == "/api/form") {
+  if (url == "/api/form/") {
     result = await handleFormRequest(data)
   } else if (url == "/api/personalbin") {
     result = await handlePersonalBin(data, headers)
