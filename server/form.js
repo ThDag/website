@@ -3,6 +3,7 @@
 async function handleFormRequest(data) {
   // this just calls the n8n webhook
   const url = "http://host.docker.internal:5678/webhook/59f8c12c"
+  const result = ""
 
   try {
     const response = await fetch(url, {
@@ -13,10 +14,10 @@ async function handleFormRequest(data) {
       body: JSON.stringify(data)
     })
 
-    const result = await response.json();
+    result = await response.json();
 
   } catch (error) {
-    const result = error
+    result = error
 
   }
 
