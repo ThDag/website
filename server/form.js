@@ -22,6 +22,7 @@ async function handleFormRequest(data) {
 
 
   console.log("n8n hook activated")
+  console.log("form.js-result:", result)
   return result
 }
 
