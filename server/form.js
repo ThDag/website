@@ -14,14 +14,15 @@ async function handleFormRequest(data) {
     })
 
     const result = await response.json();
-    console.log('Success:', result);
 
   } catch (error) {
-    console.error("Error: ", error)
+    const result = error
 
   }
 
+
   console.log("n8n hook activated")
+  return result
 }
 
 export default handleFormRequest
