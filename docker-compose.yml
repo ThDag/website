@@ -1,7 +1,7 @@
 services:
 
   nginx:
-    image: nginx:latest
+    build: ./client
     ports:
       - "80:80"
     volumes:
