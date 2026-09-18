@@ -38,8 +38,8 @@ function renderGallery() {
     } else {
       tile.className = "relative overflow-hidden bg-surface-container-low group cursor-pointer aspect-square"
       img.className = "w-full h-full object-cover filter contrast-105 group-hover:scale-105 transition-transform duration-300 ease-out"
-      tile.addEventListener("click", () => openLightbox(photo))
     }
+    tile.addEventListener("click", () => openLightbox(photo))
 
     tile.appendChild(img)
     grid.appendChild(tile)
