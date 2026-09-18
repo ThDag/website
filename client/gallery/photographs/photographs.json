@@ -4,44 +4,39 @@
     "name": "test",
     "description": "",
     "date": "2026-08-08",
+    "time": "".
     "camera": "iPhone 13 Pro",
-    "width": 3024,
-    "height": 4032
   },
   {
     "filename": "4.jpeg",
     "name": "",
     "description": "",
     "date": "2026-09-10",
+    "time": "".
     "camera": "iPhone 14 Pro",
-    "width": 3024,
-    "height": 4032
   },
   {
     "filename": "3.jpeg",
     "name": "seagull",
     "description": "life is like bird, you fly then die",
     "date": "2026-09-11",
+    "time": "".
     "camera": "iPhone 14 Pro",
-    "width": 3024,
-    "height": 4032
   },
   {
     "filename": "photo2.jpeg",
     "name": "tahtakale",
     "description": "istanbul is full of life",
     "date": "2026-09-11",
+    "time": "".
     "camera": "iPhone 14 Pro",
-    "width": 2250,
-    "height": 3000
   },
   {
     "filename": "image_1.jpeg",
     "name": "",
     "description": "",
     "date": "2026-09-11",
+    "time": "".
     "camera": "iPhone 14 Pro",
-    "width": 4032,
-    "height": 3024
   }
 ]
