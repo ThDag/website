@@ -6,6 +6,8 @@ services:
       - "80:80"
     volumes:
       - ./client:/usr/share/nginx/html:ro
+      # 2. Overlays the container's built node_modules on top of the host bind mount
+      - /usr/share/nginx/html/node_modules
       - ./nginx/mysite.conf:/etc/nginx/conf.d/mysite.conf:ro
     restart: unless-stopped
     depends_on:
