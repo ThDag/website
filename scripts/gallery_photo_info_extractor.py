@@ -38,37 +38,50 @@ def extract_exif(file_path):
 
 def process_directory(target_dir):
     if not os.path.isdir(target_dir):
-        print("Directory does not exist.")
+        print(f"Error: Directory '{target_dir}' does not exist.")
         sys.exit(1)
 
     files = os.listdir(target_dir)
 
     json_files = [f for f in files if f.lower().endswith(".json")]
     if len(json_files) != 1:
-        print("Error: The directory must contain exactly one JSON file.")
+        print(f"Error: Found {len(json_files)} JSON files. Expected exactly 1.")
         sys.exit(1)
 
     json_path = os.path.join(target_dir, json_files[0])
 
+    # 1. Read existing JSON data without clearing or defaulting to empty on parse errors
     with open(json_path, "r", encoding="utf-8") as f:
-        try:
-            data = json.load(f)
-        except json.JSONDecodeError:
-            data = []
+        content = f.read().strip()
+        if not content:
+            existing_data = []
+        else:
+            try:
+                existing_data = json.loads(content)
+            except json.JSONDecodeError as e:
+                print(f"Aborting: Invalid JSON in '{json_path}': {e}")
+                sys.exit(1)
 
-    existing_filenames = {
-        item.get("filename") for item in data if isinstance(item, dict)
-    }
+    if not isinstance(existing_data, list):
+        print(f"Aborting: Root of '{json_files[0]}' must be an array/list.")
+        sys.exit(1)
 
+    # 2. Collect existing filenames (exact match)
+    existing_filenames = set()
+    for item in existing_data:
+        if isinstance(item, dict) and "filename" in item and item["filename"]:
+            existing_filenames.add(item["filename"])
+
+    # 3. Find JPEG files in the directory
     jpegs = [f for f in files if f.lower().endswith((".jpg", ".jpeg"))]
 
-    added_count = 0
-    for filename in jpegs:
+    new_entries = []
+    for filename in sorted(jpegs):
         if filename not in existing_filenames:
             full_path = os.path.join(target_dir, filename)
             date, time_str, camera = extract_exif(full_path)
 
-            data.append(
+            new_entries.append(
                 {
                     "filename": filename,
                     "name": "",
@@ -78,13 +91,21 @@ def process_directory(target_dir):
                     "camera": camera,
                 }
             )
-            added_count += 1
 
-    if added_count > 0:
-        with open(json_path, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=4)
+    # 4. Only write to disk if there are genuinely new items to append
+    if not new_entries:
+        print("No new JPEG files found. JSON untouched.")
+        return
 
-    print(f"Added {added_count} new images to {json_files[0]}")
+    # Append new items directly to the untouched existing data list
+    updated_data = existing_data + new_entries
+
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(updated_data, f, indent=4, ensure_ascii=False)
+
+    print(
+        f"Retained {len(existing_data)} existing entries, appended {len(new_entries)} new entries to {json_files[0]}."
+    )
 
 
 if __name__ == "__main__":
