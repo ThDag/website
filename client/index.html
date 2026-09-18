@@ -16,8 +16,8 @@
 
   <style>
     :root {
-      /* Switched to deep, warm earthy tones to keep the vintage/minimalist vibe */
-      --bg-color: #1C1A17;
+      /* Matches the gallery page's dark surface + grain background */
+      --bg-color: #141312;
       --text-color: #F0EDE1;
       --accent-color: #F0EDE1;
     }
@@ -28,20 +28,11 @@
 
     body {
       background-color: var(--bg-color);
-      background-image: url("images/white-paper-texture-1.jpg");
-      background-blend-mode: overlay;
-      background-size: 600px;
-      background-repeat: repeat;
-      background-attachment: scroll;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 0);
+      background-size: 24px 24px;
       color: var(--text-color);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       line-height: 1.6;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        background-size: 900px;
-      }
     }
 
     a {
@@ -78,6 +69,10 @@
       font-family: 'DM Serif Display', serif;
       letter-spacing: -1px;
       font-size: 4.5rem;
+    }
+
+    .elegant-link {
+      font-family: 'DM Serif Display', serif;
     }
 
     .section-title {
@@ -183,6 +178,12 @@
               class="fa-brands fa-instagram"></i>Instagram</a>
           <a href="https://signal.me/#eu/EubdC0JAzwYFZIQU-HkZQFhEUOw_1y-TVF5PFkO_Ea6Bou4a2CJAU6nTZaJdS4Mh"
             class="social-link" target="_blank"><i class="fa-solid fa-comment-sms"></i>Signal</a>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 mt-4 fs-5 elegant-link">
+          <a href="gallery/">Gallery</a>
+          <span class="opacity-50">&middot;</span>
+          <a href="form/">Send a Message</a>
         </div>
       </div>
 
@@ -301,7 +302,7 @@
         </div>
         <div class="col-md-6 text-md-end mt-4 mt-md-0">
           <a href="indexOld.html" class="blog-link me-3">Old Version</a>
-          <a href="/blogs" class="blog-link me-3">Writing & Blog</a>
+          <a href="/blogs" class="blog-link me-3">Writing & Blog (unused)</a>
           <span class="small opacity-50">© 2025–2026</span>
         </div>
       </div>
