@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Taha Dagistanli</title>
   <meta name="description" content="Portfolio and personal page of Taha Dağıstanlı.">
   <link rel="icon" type="image/png" href="images/taha_dagistanli/profile_pic.png">
@@ -22,11 +22,26 @@
       --accent-color: #F0EDE1;
     }
 
+    html {
+      background-color: var(--bg-color);
+    }
+
     body {
       background-color: var(--bg-color);
+      background-image: url("images/white-paper-texture-1.jpg");
+      background-blend-mode: overlay;
+      background-size: 600px;
+      background-repeat: repeat;
+      background-attachment: scroll;
       color: var(--text-color);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        background-size: 900px;
+      }
     }
 
     a {
