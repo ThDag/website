@@ -75,6 +75,14 @@ function formatDate(dateString) {
   })
 }
 
+function formatTime(timeString) {
+  const [hours, minutes] = timeString.split(":").map(Number)
+  return new Date(0, 0, 0, hours, minutes).toLocaleTimeString(undefined, {
+    hour: "numeric",
+    minute: "2-digit"
+  })
+}
+
 function openLightbox(photo) {
   lightboxImg.src = `photographs/${photo.filename}`
   lightboxImg.alt = photo.name || photo.filename
@@ -86,7 +94,9 @@ function openLightbox(photo) {
   lightboxDescription.classList.toggle("hidden", !photo.description)
 
   const metaParts = []
-  if (photo.date) metaParts.push(formatDate(photo.date))
+  if (photo.date) {
+    metaParts.push(photo.time ? `${formatDate(photo.date)} at ${formatTime(photo.time)}` : formatDate(photo.date))
+  }
   if (photo.camera) metaParts.push(photo.camera)
   lightboxMeta.textContent = metaParts.join(" · ")
 
