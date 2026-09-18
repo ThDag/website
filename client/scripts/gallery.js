@@ -6,7 +6,7 @@ let currentDensity = "dense"
 fetch("photographs/photographs.json")
   .then((res) => res.json())
   .then((data) => {
-    photos = data.slice().sort((a, b) => new Date(b.date) - new Date(a.date))
+    photos = data.slice().sort((a, b) => new Date(`${b.date}T${b.time || "00:00"}`) - new Date(`${a.date}T${a.time || "00:00"}`))
     renderGallery()
   })
   .catch((err) => console.error("Could not load photographs.json:", err))
