@@ -14,6 +14,9 @@ services:
 
   server:
     build: ./server
+    environment:
+          - DB_USER=${DB_USER:-postgres}
+          - DB_PASSWORD=${DB_PASSWORD}
     ports:
       - "3011:3011"
     extra_hosts:
