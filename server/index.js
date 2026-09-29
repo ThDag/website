@@ -1,20 +1,11 @@
 import handleFormRequest from "./form.js";
 import handlePersonalBin from "./personalBin.js";
+import handleGallery from "./gallery.js";
 import http from 'http'
+import path from 'path'
 
 const PORT = 3011
 
-async function handleRequest(data, url, headers) {
-  let result = null;
-
-  if (url == "/api/form/") {
-    result = await handleFormRequest(data)
-  } else if (url == "/api/personalbin") {
-    result = await handlePersonalBin(data, headers)
-  }
-
-  return result
-}
 
 
 // ----------------- Create a server object -----------------
@@ -35,26 +26,37 @@ const server = http.createServer((req, res) => {
       res.end();
       return;
 
-    } else {
-      res.setHeader('Content-Type', 'application/json');
-
-
-      let result;
-      try {
-        result = await handleRequest(data, url, req.headers)
-      } catch (err) {
-        console.error(err)
-      }
-      console.log("recieved data: ", data)
-      console.log("url: ", url);
-      console.log("result: ", result)
-
-      if (result?.cookie) {
-        res.writeHead(200, { "Set-Cookie": result.cookie })
-      }
-
-      res.end(JSON.stringify(result));
     }
+
+    res.setHeader('Content-Type', 'application/json');
+
+
+
+
+    let result;
+    try {
+      if (url == "/api/form/") {
+        result = await handleFormRequest(data)
+      } else if (url == "/api/personalbin") {
+        result = await handlePersonalBin(data, req.headers)
+      }
+      else if (url == "/image/") {
+        result = await handleGallery(req, res)
+      }
+    } catch (err) {
+      console.error(err)
+    }
+
+    console.log("recieved data: ", data)
+    console.log("url: ", url);
+    console.log("result: ", result)
+
+    if (result?.cookie) {
+      res.writeHead(200, { "Set-Cookie": result.cookie })
+    }
+
+    res.end(JSON.stringify(result));
+
   })
 });
 
