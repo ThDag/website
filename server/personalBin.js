@@ -16,7 +16,7 @@ const res = await pool.query("CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMAR
 const re2 = await pool.query(`CREATE TABLE IF NOT EXISTS sessions ( id SERIAL PRIMARY KEY, session_id TEXT NOT NULL,
  account_id INT NOT NULL, created_at TIMESTAMPTZ DEFAULT NOW(), expires_at TIMESTAMPTZ DEFAULT (NOW() + INTERVAL '1 day')); `)
 const res1 = await pool.query("SELECT * FROM users")
-console.log("entire database:", res1.rows)
+// console.log("entire database:", res1.rows)
 
 
 async function handlePersonalBin(data, headers) {
