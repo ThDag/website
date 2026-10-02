@@ -39,7 +39,7 @@ const server = http.createServer((req, res) => {
         result = await handlePersonalBin(data, req.headers)
         endCreateServer(res)
       }
-      else if (url.startsWith("/api/images/")) {
+      else if (url.startsWith("/api/photographs/")) {
         result = await handleGallery(req, res)
       }
     } catch (err) {

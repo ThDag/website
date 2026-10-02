@@ -10,6 +10,7 @@ const MIME_TYPES = {
   '.webp': 'image/webp',
   '.gif': 'image/gif',
   '.svg': 'image/svg+xml',
+  '.json': 'application/json',
 };
 
 async function getGalleryImages(req, res) {
@@ -23,8 +24,8 @@ async function getGalleryImages(req, res) {
 
 
   // this part of the code makes sure the person is only trying to access images folder and not doing /../../ to access other files
-  const root = path.resolve("./public/images/")
-  const imagePath = path.resolve(root, req.url.match(/(?<=\/images\/).+/)[0])
+  const root = path.resolve("./public/photographs/")
+  const imagePath = path.resolve(root, req.url.match(/(?<=\/photographs\/).+/)[0])
   if (!imagePath.startsWith(root + "/")) {
     res.statusCode = 403;
     res.end("Forbidden");
@@ -41,20 +42,6 @@ async function getGalleryImages(req, res) {
     res.end("file type not supported");
     return "error: file type not supported, request directed to gallery.js";
   }
-
-  // fs.stat(imagePath, (err, stats) => {
-  //   if (err) {
-  //     res.writeHead(500, {
-  //       "Content-Type": "text/plain"
-  //     })
-  //     res.end(`internal server error: ${err}`);
-  //     return `error : ${err}, request directed to gallery.js`;
-  //   }
-  //   res.writeHead(200, {
-  //     'Content-Type': contentType,
-  //     'Content-Length': stats.size,
-  //   });
-  // })
 
   const stats = await fsp.stat(imagePath);
   // in the future it should be a try catch block and return to the client info if the file doesn't exist
