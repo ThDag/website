@@ -119,7 +119,7 @@ function formatTime(timeString) {
 }
 
 function openLightbox(photo) {
-  lightboxImg.src = `photographs/${photo.filename}`
+  lightboxImg.src = `/api/photographs/${photo.filename}`
   lightboxImg.alt = photo.name || photo.filename
 
   lightboxName.textContent = photo.name || photo.filename
