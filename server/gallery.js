@@ -1,5 +1,7 @@
+import fsp from "fs/promises"
 import fs from "fs"
 import path from "path"
+
 
 const MIME_TYPES = {
   '.jpg': 'image/jpeg',
@@ -11,6 +13,8 @@ const MIME_TYPES = {
 };
 
 async function getGalleryImages(req, res) {
+
+
   if (req.method != "GET") {
     res.writeHead(405, { 'Content-Type': 'text/plain' });
     res.end('Method Not Allowed');
@@ -38,25 +42,29 @@ async function getGalleryImages(req, res) {
     return "error: file type not supported, request directed to gallery.js";
   }
 
-  fs.stat(imagePath, (err, stats) => {
-    if (err) {
-      res.writeHead(500, {
-        "Content-Type": "text/plain"
-      })
-      res.end(`internal server error: ${err}`);
-      return `error : ${err}, request directed to gallery.js`;
-    }
-    res.writeHead(200, {
-      'Content-Type': contentType,
-      'Content-Length': stats.size,
-    });
-  })
+  // fs.stat(imagePath, (err, stats) => {
+  //   if (err) {
+  //     res.writeHead(500, {
+  //       "Content-Type": "text/plain"
+  //     })
+  //     res.end(`internal server error: ${err}`);
+  //     return `error : ${err}, request directed to gallery.js`;
+  //   }
+  //   res.writeHead(200, {
+  //     'Content-Type': contentType,
+  //     'Content-Length': stats.size,
+  //   });
+  // })
 
+  const stats = await fsp.stat(imagePath);
+  // in the future it should be a try catch block and return to the client info if the file doesn't exist
+  res.writeHead(200, {
+    'Content-Type': contentType,
+    'Content-Length': stats.size,
+  });
 
   const imageStream = fs.createReadStream(imagePath)
   imageStream.pipe(res)
-
-  res.end()
 
 }
 

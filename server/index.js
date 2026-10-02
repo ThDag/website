@@ -5,6 +5,7 @@ import http from 'http'
 
 const PORT = 3011
 
+console.log("index.js running")
 
 
 // ----------------- Create a server object -----------------
@@ -40,7 +41,6 @@ const server = http.createServer((req, res) => {
       }
       else if (url.startsWith("/api/images/")) {
         result = await handleGallery(req, res)
-        return;
       }
     } catch (err) {
       console.error(err)
