@@ -20,6 +20,13 @@ fetch("/api/photographs/photographs.json")
   })
   .catch((err) => console.error("Could not load photographs.json:", err))
 
+// Image URLs for each size. Thumbnails are pre-generated WebP files created by
+// scripts/gallery_photo_info_extractor.py ("ram1.jpeg" -> "thumbs/ram1.webp").
+const webpName = (photo) => photo.filename.replace(/\.[^.]+$/, ".webp")
+const thumbUrl = (photo) => `/api/photographs/thumbs/${webpName(photo)}` // 640px, grid tiles
+const mediumUrl = (photo) => `/api/photographs/medium/${webpName(photo)}` // 1600px, full view + lightbox preview
+const fullUrl = (photo) => `/api/photographs/${photo.filename}` // original, lightbox only
+
 // Tailwind CSS mapping for CSS Grid setups based on screen breakpoints (sm: 640px, md: 768px).
 const gridClassesByDensity = {
   large: "grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-0.5",
@@ -42,7 +49,14 @@ function renderGallery() {
 
     const tile = document.createElement("div")
     const img = document.createElement("img")
-    img.src = `/api/photographs/${photo.filename}`
+    // Grid views only need small thumbnails; the single-column "full" view uses the medium size.
+    img.src = currentDensity === "full" ? mediumUrl(photo) : thumbUrl(photo)
+
+    // If the thumbnail hasn't been generated yet (server returns 404), fall back to the original once.
+    img.onerror = () => {
+      img.onerror = null
+      img.src = fullUrl(photo)
+    }
 
     // Accessible fallback: uses photo.name if available, otherwise filename.
     img.alt = photo.name || photo.filename
@@ -52,6 +66,7 @@ function renderGallery() {
 
     // Defers network requests and offscreen image decoding until the element nears the viewport.
     img.loading = "lazy"
+    img.decoding = "async"
 
     // "full" view keeps native aspect ratios (h-auto), while other views lock tiles into 
     // a 1:1 ratio (aspect-square) and crop with object-cover + zoom on parent hover.
@@ -118,8 +133,24 @@ function formatTime(timeString) {
   })
 }
 
+// The photo currently shown in the lightbox (null when closed). Prevents a slow original
+// from replacing the image after the lightbox was closed or another photo was opened.
+let currentPhoto = null
+
 function openLightbox(photo) {
-  lightboxImg.src = `/api/photographs/${photo.filename}`
+  currentPhoto = photo
+
+  // Show the medium version right away (usually already cached), then swap in the original once it has loaded.
+  lightboxImg.src = mediumUrl(photo)
+  lightboxImg.onerror = () => {
+    lightboxImg.onerror = null
+    lightboxImg.src = fullUrl(photo)
+  }
+  const full = new Image()
+  full.onload = () => {
+    if (currentPhoto === photo) lightboxImg.src = full.src
+  }
+  full.src = fullUrl(photo)
   lightboxImg.alt = photo.name || photo.filename
 
   lightboxName.textContent = photo.name || photo.filename
@@ -147,6 +178,7 @@ function openLightbox(photo) {
 }
 
 function closeLightbox() {
+  currentPhoto = null
   lightbox.classList.add("hidden")
   lightbox.classList.remove("flex")
 

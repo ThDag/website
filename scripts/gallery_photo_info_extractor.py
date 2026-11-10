@@ -5,13 +5,17 @@ from all the jpeg files puts them in the json file in the same directory.
 information extracted: filename, date, time, device captured
 
 this is for added new entries into photographs.json with just adding the jpeg files in the the folder and running this
+
+it also generates resized webp copies of every jpeg so the gallery grid doesn't download the originals:
+  thumbs/<name>.webp  (640px long edge)  -> dense / large grid
+  medium/<name>.webp  (1600px long edge) -> full view + lightbox preview
 """
 
 import json
 import os
 import sys
 
-from PIL import Image
+from PIL import Image, ImageOps
 from PIL.ExifTags import TAGS
 
 
@@ -34,6 +38,36 @@ def extract_exif(file_path):
         pass
 
     return date, time_str, camera
+
+
+THUMB_SIZES = {"thumbs": 640, "medium": 1600}
+
+
+def make_thumbnail(src, dst, max_edge):
+    with Image.open(src) as img:
+        # apply EXIF rotation, otherwise portrait phone photos come out sideways (webp copy has no EXIF)
+        img = ImageOps.exif_transpose(img)
+        img.thumbnail((max_edge, max_edge), Image.LANCZOS)
+        img.convert("RGB").save(dst, "WEBP", quality=78, method=6)
+
+
+def generate_thumbnails(target_dir, jpegs):
+    """creates missing or outdated thumbnails for every jpeg; safe to run repeatedly"""
+    created = 0
+    for folder, max_edge in THUMB_SIZES.items():
+        out_dir = os.path.join(target_dir, folder)
+        os.makedirs(out_dir, exist_ok=True)
+        for filename in jpegs:
+            src = os.path.join(target_dir, filename)
+            dst = os.path.join(out_dir, os.path.splitext(filename)[0] + ".webp")
+            if os.path.exists(dst) and os.path.getmtime(dst) >= os.path.getmtime(src):
+                continue
+            try:
+                make_thumbnail(src, dst, max_edge)
+                created += 1
+            except Exception as e:
+                print(f"Could not create {folder} for '{filename}': {e}")
+    print(f"Generated {created} thumbnail(s)." if created else "All thumbnails up to date.")
 
 
 def process_directory(target_dir):
@@ -74,6 +108,8 @@ def process_directory(target_dir):
 
     # 3. Find JPEG files in the directory
     jpegs = [f for f in files if f.lower().endswith((".jpg", ".jpeg"))]
+
+    generate_thumbnails(target_dir, sorted(jpegs))
 
     new_entries = []
     for filename in sorted(jpegs):

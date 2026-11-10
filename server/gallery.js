@@ -43,11 +43,22 @@ async function getGalleryImages(req, res) {
     return "error: file type not supported, request directed to gallery.js";
   }
 
-  const stats = await fsp.stat(imagePath);
-  // in the future it should be a try catch block and return to the client info if the file doesn't exist
+  let stats;
+  try {
+    stats = await fsp.stat(imagePath);
+  } catch {
+    // missing file (e.g. thumbnail not generated yet) -> fast 404 so the client can fall back to the original
+    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.end("Not Found");
+    return "error: file not found, request directed to gallery.js";
+  }
+
   res.writeHead(200, {
     'Content-Type': contentType,
     'Content-Length': stats.size,
+    // images never change under the same name, so browsers can cache them for a year;
+    // the json changes whenever photos are added, so it always gets revalidated
+    'Cache-Control': ext === '.json' ? 'no-cache' : 'public, max-age=31536000, immutable',
   });
 
   const imageStream = fs.createReadStream(imagePath)
