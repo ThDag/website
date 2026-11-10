@@ -30,9 +30,116 @@
       background-color: var(--bg-color);
       background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 0);
       background-size: 24px 24px;
+      background-attachment: fixed;
       color: var(--text-color);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       line-height: 1.6;
+    }
+
+    /* Scrolling mode (toggled in the script at the bottom): the dots and the
+       tiling are laid on the page itself, so the browser scrolls them
+       natively (no scroll-synced JS, which jitters on iOS). The lantern
+       stays with the pointer. */
+    html.bg-scroll body {
+      position: relative;
+      background-attachment: scroll;
+    }
+
+    html.bg-scroll .backdrop-lattice {
+      position: absolute;
+      inset: 0;
+      --ly: var(--py);
+    }
+
+    ::selection {
+      background: rgba(240, 237, 225, 0.85);
+      color: var(--bg-color);
+    }
+
+    /* --- Background: star-and-cross tiling lit like a lantern ---
+       The classic 8-pointed star and cross tile layout (Seljuk / Iznik
+       tradition). Every star and cross is centred on a dot of the 24px grid. It's almost invisible on its own; a warm pool of light follows
+       the pointer and brings out the pattern near it. */
+    /* Pointer position: --mx/--my in viewport space, --py in page space. */
+    :root {
+      --mx: 50vw;
+      --my: 22vh;
+      --py: 22vh;
+    }
+
+    .backdrop,
+    .backdrop-lattice {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .backdrop-glow,
+    .backdrop-grain {
+      position: absolute;
+      inset: 0;
+    }
+
+    .backdrop-glow {
+      background:
+        radial-gradient(circle 640px at var(--mx) var(--my),
+          rgba(212, 170, 90, 0.12) 0%, rgba(212, 170, 90, 0.085) 14%, rgba(212, 170, 90, 0.052) 30%,
+          rgba(212, 170, 90, 0.026) 48%, rgba(212, 170, 90, 0.01) 66%, rgba(212, 170, 90, 0.003) 82%, transparent 100%),
+        radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.35) 100%);
+    }
+
+    .backdrop-lattice {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48' fill='none' stroke='%23D4AF61' stroke-width='0.7' stroke-linejoin='round'%3E%3Cpath d='M16.97 0.00 12.00 4.97 12.00 12.00 4.97 12.00 0.00 16.97 -4.97 12.00 -12.00 12.00 -12.00 4.97 -16.97 0.00 -12.00 -4.97 -12.00 -12.00 -4.97 -12.00 -0.00 -16.97 4.97 -12.00 12.00 -12.00 12.00 -4.97ZM64.97 0.00 60.00 4.97 60.00 12.00 52.97 12.00 48.00 16.97 43.03 12.00 36.00 12.00 36.00 4.97 31.03 0.00 36.00 -4.97 36.00 -12.00 43.03 -12.00 48.00 -16.97 52.97 -12.00 60.00 -12.00 60.00 -4.97ZM16.97 48.00 12.00 52.97 12.00 60.00 4.97 60.00 0.00 64.97 -4.97 60.00 -12.00 60.00 -12.00 52.97 -16.97 48.00 -12.00 43.03 -12.00 36.00 -4.97 36.00 -0.00 31.03 4.97 36.00 12.00 36.00 12.00 43.03ZM64.97 48.00 60.00 52.97 60.00 60.00 52.97 60.00 48.00 64.97 43.03 60.00 36.00 60.00 36.00 52.97 31.03 48.00 36.00 43.03 36.00 36.00 43.03 36.00 48.00 31.03 52.97 36.00 60.00 36.00 60.00 43.03ZM40.97 24.00 36.00 28.97 36.00 36.00 28.97 36.00 24.00 40.97 19.03 36.00 12.00 36.00 12.00 28.97 7.03 24.00 12.00 19.03 12.00 12.00 19.03 12.00 24.00 7.03 28.97 12.00 36.00 12.00 36.00 19.03Z'/%3E%3C/svg%3E");
+      background-size: 48px 48px;
+      opacity: 0.42;
+      --ly: var(--my);
+      -webkit-mask-image: radial-gradient(circle 560px at var(--mx) var(--ly), #000 0%, rgba(0, 0, 0, 0.855) 12%, rgba(0, 0, 0, 0.674) 25%, rgba(0, 0, 0, 0.511) 39%, rgba(0, 0, 0, 0.385) 54%, rgba(0, 0, 0, 0.294) 70%, rgba(0, 0, 0, 0.254) 86%, rgba(0, 0, 0, 0.24) 100%);
+      mask-image: radial-gradient(circle 560px at var(--mx) var(--ly), #000 0%, rgba(0, 0, 0, 0.855) 12%, rgba(0, 0, 0, 0.674) 25%, rgba(0, 0, 0, 0.511) 39%, rgba(0, 0, 0, 0.385) 54%, rgba(0, 0, 0, 0.294) 70%, rgba(0, 0, 0, 0.254) 86%, rgba(0, 0, 0, 0.24) 100%);
+    }
+
+    .backdrop-grain {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.06;
+      mix-blend-mode: overlay;
+    }
+
+    /* Touch screens: there's no pointer to follow, so the light becomes a
+       band laid on the top of the page. Full strength down past the name,
+       then a long, gentle fade by about two thirds of the screen. It's part
+       of the page, so it scrolls away with the header. */
+    @media not all and (hover: hover) and (pointer: fine) {
+      body {
+        background-image:
+          radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 0),
+          linear-gradient(to bottom,
+            rgba(212, 170, 90, 0.12) 0,
+            rgba(212, 170, 90, 0.1200) 30vh,
+            rgba(212, 170, 90, 0.0984) 42vh,
+            rgba(212, 170, 90, 0.0720) 54vh,
+            rgba(212, 170, 90, 0.0480) 66vh,
+            rgba(212, 170, 90, 0.0288) 78vh,
+            rgba(212, 170, 90, 0.0144) 90vh,
+            rgba(212, 170, 90, 0.0060) 102vh,
+            rgba(212, 170, 90, 0.0018) 112vh,
+            transparent 120vh);
+        background-size: 24px 24px, auto;
+        background-repeat: repeat, no-repeat;
+      }
+
+      .backdrop-glow {
+        background: radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.35) 100%);
+      }
+
+      .backdrop-lattice {
+        -webkit-mask-image: linear-gradient(to bottom, #000 0, rgba(0, 0, 0, 1.000) 30vh, rgba(0, 0, 0, 0.863) 42vh, rgba(0, 0, 0, 0.696) 54vh, rgba(0, 0, 0, 0.544) 66vh, rgba(0, 0, 0, 0.422) 78vh, rgba(0, 0, 0, 0.331) 90vh, rgba(0, 0, 0, 0.278) 102vh, rgba(0, 0, 0, 0.251) 112vh, rgba(0, 0, 0, 0.24) 120vh);
+        mask-image: linear-gradient(to bottom, #000 0, rgba(0, 0, 0, 1.000) 30vh, rgba(0, 0, 0, 0.863) 42vh, rgba(0, 0, 0, 0.696) 54vh, rgba(0, 0, 0, 0.544) 66vh, rgba(0, 0, 0, 0.422) 78vh, rgba(0, 0, 0, 0.331) 90vh, rgba(0, 0, 0, 0.278) 102vh, rgba(0, 0, 0, 0.251) 112vh, rgba(0, 0, 0, 0.24) 120vh);
+      }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
     }
 
     a {
@@ -154,7 +261,13 @@
 
 <body>
 
-  <div class="container py-5" style="max-width: 800px;">
+  <div class="backdrop-lattice" aria-hidden="true"></div>
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop-glow"></div>
+    <div class="backdrop-grain"></div>
+  </div>
+
+  <div class="container page py-5" style="max-width: 800px;">
     <header class="mb-5 mt-5 text-center">
 
       <div class="mx-auto mb-4">
@@ -318,6 +431,40 @@
   </div>
 
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // true  = the tiling scrolls with the page
+    // false = the tiling stays fixed while the content scrolls over it
+    const BACKGROUND_SCROLLS_WITH_PAGE = true;
+
+    if (BACKGROUND_SCROLLS_WITH_PAGE) document.documentElement.classList.add('bg-scroll');
+
+    // The lantern drifts after the pointer. Only on devices with a real
+    // pointer; touch screens keep the light resting behind the name.
+    (() => {
+      if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      const root = document.documentElement;
+      const still = matchMedia('(prefers-reduced-motion: reduce)');
+      let tx = innerWidth / 2, ty = innerHeight * 0.22, x = tx, y = ty, raf = 0;
+      const paint = () => {
+        root.style.setProperty('--mx', x.toFixed(1) + 'px');
+        root.style.setProperty('--my', y.toFixed(1) + 'px');
+        root.style.setProperty('--py', (y + scrollY).toFixed(1) + 'px');
+      };
+      const step = () => {
+        x += (tx - x) * 0.09;
+        y += (ty - y) * 0.09;
+        paint();
+        raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.5 ? requestAnimationFrame(step) : 0;
+      };
+      addEventListener('pointermove', (e) => {
+        tx = e.clientX; ty = e.clientY;
+        if (still.matches) { x = tx; y = ty; paint(); return; }
+        if (!raf) raf = requestAnimationFrame(step);
+      }, { passive: true });
+      // Keep the lit spot under the pointer when the page scrolls beneath it.
+      addEventListener('scroll', paint, { passive: true });
+    })();
+  </script>
 </body>
 
 </html>
