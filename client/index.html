@@ -39,7 +39,7 @@
       line-height: 1.6;
     }
 
-    /* Background: gold star-and-cross tiling, brighter near the pointer */
+    /* Background: gold eight-pointed star-and-cross lattice (two squares, one turned 45°; stars touch tip to tip), brighter near the pointer */
     .lattice,
     .glow,
     .grain {
@@ -50,8 +50,8 @@
 
     .lattice {
       position: absolute;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48' fill='none' stroke='%23D4AF61' stroke-width='0.7' stroke-linejoin='round'%3E%3Cpath d='M16.97 0.00 12.00 4.97 12.00 12.00 4.97 12.00 0.00 16.97 -4.97 12.00 -12.00 12.00 -12.00 4.97 -16.97 0.00 -12.00 -4.97 -12.00 -12.00 -4.97 -12.00 -0.00 -16.97 4.97 -12.00 12.00 -12.00 12.00 -4.97ZM64.97 0.00 60.00 4.97 60.00 12.00 52.97 12.00 48.00 16.97 43.03 12.00 36.00 12.00 36.00 4.97 31.03 0.00 36.00 -4.97 36.00 -12.00 43.03 -12.00 48.00 -16.97 52.97 -12.00 60.00 -12.00 60.00 -4.97ZM16.97 48.00 12.00 52.97 12.00 60.00 4.97 60.00 0.00 64.97 -4.97 60.00 -12.00 60.00 -12.00 52.97 -16.97 48.00 -12.00 43.03 -12.00 36.00 -4.97 36.00 -0.00 31.03 4.97 36.00 12.00 36.00 12.00 43.03ZM64.97 48.00 60.00 52.97 60.00 60.00 52.97 60.00 48.00 64.97 43.03 60.00 36.00 60.00 36.00 52.97 31.03 48.00 36.00 43.03 36.00 36.00 43.03 36.00 48.00 31.03 52.97 36.00 60.00 36.00 60.00 43.03ZM40.97 24.00 36.00 28.97 36.00 36.00 28.97 36.00 24.00 40.97 19.03 36.00 12.00 36.00 12.00 28.97 7.03 24.00 12.00 19.03 12.00 12.00 19.03 12.00 24.00 7.03 28.97 12.00 36.00 12.00 36.00 19.03Z'/%3E%3C/svg%3E");
-      background-size: 48px 48px;
+      background-image: url("images/ottoman-pattern.svg");
+      background-size: 36px 36px;
       opacity: 0.42;
       mask-image: radial-gradient(circle 560px at var(--mx) var(--py),
           #000, rgb(0 0 0 / 0.75) 20%, rgb(0 0 0 / 0.45) 45%, rgb(0 0 0 / 0.3) 70%, rgb(0 0 0 / 0.24));
