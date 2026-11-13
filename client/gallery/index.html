@@ -111,11 +111,81 @@
     }
   </script>
   <style>
-    .bg-grain {
+    body.bg-grain {
+      position: relative;
       background-color: #141312;
       background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 0);
       background-size: 24px 24px;
     }
+    :root {
+      --bg-color: #141312;
+      --text-color: #F0EDE1;
+      --gold: 212 170 90;
+      /* pointer position, set by the script at the bottom */
+      --mx: 50vw;
+      --my: 22vh;
+      --py: 22vh;
+    }
+
+    /* Background: gold girih star lattice (10-point and 5-point stars, tiles seamlessly both ways), brighter near the pointer */
+    .lattice,
+    .glow,
+    .grain {
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .lattice {
+      position: absolute;
+      background-image: url("../images/ottoman-girih-bg.svg");
+      background-size: 155px 112px;
+      opacity: 0.42;
+      mask-image: radial-gradient(circle 560px at var(--mx) var(--py),
+          #000, rgb(0 0 0 / 0.75) 20%, rgb(0 0 0 / 0.45) 45%, rgb(0 0 0 / 0.3) 70%, rgb(0 0 0 / 0.24));
+    }
+
+    .glow {
+      position: fixed;
+      background:
+        radial-gradient(circle 640px at var(--mx) var(--my),
+          rgb(var(--gold) / 0.12), rgb(var(--gold) / 0.065) 25%, rgb(var(--gold) / 0.025) 50%, rgb(var(--gold) / 0.006) 75%, transparent),
+        radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgb(0 0 0 / 0.35));
+    }
+
+    .grain {
+      position: fixed;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.06;
+      mix-blend-mode: overlay;
+    }
+
+    /* Touch screens: no pointer, so the light is a band at the top of the page */
+    @media not all and (hover: hover) and (pointer: fine) {
+      body.bg-grain {
+        background-image:
+          radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 0),
+          linear-gradient(rgb(var(--gold) / 0.12) 30vh, rgb(var(--gold) / 0.075) 50vh,
+            rgb(var(--gold) / 0.036) 70vh, rgb(var(--gold) / 0.012) 90vh, transparent 120vh);
+        background-size: 24px 24px, auto;
+        background-repeat: repeat, no-repeat;
+      }
+
+      .lattice {
+        mask-image: linear-gradient(#000 30vh, rgb(0 0 0 / 0.71) 50vh, rgb(0 0 0 / 0.47) 70vh,
+            rgb(0 0 0 / 0.32) 90vh, rgb(0 0 0 / 0.24) 120vh);
+      }
+
+      .glow {
+        background: radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgb(0 0 0 / 0.35));
+      }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
   </style>
 
   <script defer src="https://umami.tahadagistanli.com/script.js"
@@ -125,7 +195,11 @@
 <body id="top"
   class="bg-surface text-on-surface bg-grain min-h-screen antialiased selection:bg-surface-container-high selection:text-primary">
 
-  <main class="max-w-[760px] mx-auto px-6 pt-10 md:pt-14 pb-20">
+  <div class="lattice" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <main class="page max-w-[760px] mx-auto px-6 pt-10 md:pt-14 pb-20">
 
     <!-- Header -->
     <div class="mb-12 text-center max-w-xl mx-auto">
@@ -205,6 +279,31 @@
   </div>
 
   <script src="../scripts/gallery.js"></script>
+  <script>
+    // The light drifts after the pointer (mouse/trackpad only).
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      const root = document.documentElement.style;
+      let tx = innerWidth / 2, ty = innerHeight * 0.22, x = tx, y = ty, moving = false;
+      const paint = () => {
+        root.setProperty('--mx', x + 'px');
+        root.setProperty('--my', y + 'px');
+        root.setProperty('--py', y + scrollY + 'px');
+      };
+      const step = () => {
+        x += (tx - x) * 0.09;
+        y += (ty - y) * 0.09;
+        paint();
+        moving = Math.abs(tx - x) + Math.abs(ty - y) > 0.5;
+        if (moving) requestAnimationFrame(step);
+      };
+      addEventListener('pointermove', (e) => {
+        tx = e.clientX;
+        ty = e.clientY;
+        if (!moving) step();
+      });
+      addEventListener('scroll', paint);
+    }
+  </script>
 </body>
 
 </html>
