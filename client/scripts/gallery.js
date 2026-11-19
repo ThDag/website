@@ -188,11 +188,11 @@ function closeLightbox() {
 
 document.getElementById("lightbox-close").addEventListener("click", closeLightbox)
 
-// Closes when clicking the backdrop, but not when clicking the image or caption.
+// Closes when clicking anywhere except the image or caption text.
 lightbox.addEventListener("click", (event) => {
-  // `event.target` is the actual clicked element. Only triggers if the user clicked the outer overlay
-  // itself, rather than an inner child (event bubbling would still reach this listener, but target would differ).
-  if (event.target === lightbox) closeLightbox()
+  // The overlay contains a full-width wrapper around the image and caption, so checking for the overlay itself
+  // misses clicks on the empty space of that wrapper. Instead, close unless the click landed on actual content.
+  if (!event.target.closest("#lightbox-img, #lightbox-name, #lightbox-description, #lightbox-meta")) closeLightbox()
 })
 
 document.addEventListener("keydown", (event) => {
