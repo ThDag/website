@@ -46,9 +46,12 @@ THUMB_SIZES = {"thumbs": 640, "medium": 1600}
 def make_thumbnail(src, dst, max_edge):
     with Image.open(src) as img:
         # apply EXIF rotation, otherwise portrait phone photos come out sideways (webp copy has no EXIF)
+        # keep the color profile: most iPhone shots are Display P3, and without the profile browsers treat the
+        # pixels as sRGB, which makes the thumbnails look duller and shifted compared to the original
+        icc_profile = img.info.get("icc_profile")
         img = ImageOps.exif_transpose(img)
         img.thumbnail((max_edge, max_edge), Image.LANCZOS)
-        img.convert("RGB").save(dst, "WEBP", quality=78, method=6)
+        img.convert("RGB").save(dst, "WEBP", quality=85, method=6, icc_profile=icc_profile)
 
 
 def generate_thumbnails(target_dir, jpegs):
